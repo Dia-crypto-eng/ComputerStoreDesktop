@@ -1,0 +1,44 @@
+﻿<Page x:Class="ComputerStore.BONS"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComputerStore.CONTROLLERS"
+      mc:Ignorable="d"  
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid  Grid.Column="1"  Grid.Row="1" Height="600" Width="769">
+        <Grid x:Name="HeadPage"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="769" Height="157" Background="White">
+            <Grid Background="#F6F7F8"  HorizontalAlignment="Left" Height="137" Margin="3,10,0,0" VerticalAlignment="Top" Width="762">
+                <ListView Background="#FF016DB2"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" 
+                          Margin="547,35,0,0" Height="65" >
+                    <StackPanel  Background="#FF016DB2" Orientation="Horizontal" Width="195" Height="41" 
+                                 HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="FileAccountOutline" Width="70" Height="40" />
+                        <TextBlock Text="Add bon" TextAlignment="Center" FontSize="20" 
+                                   VerticalAlignment="Center" Margin="0,7" Width="98" />
+                    </StackPanel>
+                </ListView>
+                <Label Background="{x:Null}" Foreground="#FF5789F5" FontSize="30" Content="BON" 
+                       HorizontalAlignment="Left" 
+                       Height="65" Margin="10,37,0,0" VerticalAlignment="Top" Width="245"/>
+            </Grid>
+        </Grid>
+        <DataGrid x:Name="Bndtgd" ColumnWidth="3*" HorizontalAlignment="Left"  Height="446" 
+                  VerticalAlignment="Bottom" Width="769"  Foreground="#DD000000" 
+                  BorderBrush="#FFF7F7F7"  HorizontalContentAlignment="Center" 
+                  Background="#FF016DB2" RowBackground="Azure" Visibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Background="Azure" Foreground="#FF016DB2" 
+                                    Content="Show" BorderBrush="#FF016DB2"
+                                    Click="SHOWBN"
+                               ></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -65,29 +65,29 @@ namespace ComputerStore
             private void Call(object sender, RoutedEventArgs e)
             {
                 string S = ((TextBlock)VisualTreeHelper.GetChild((StackPanel)sender, 1)).Text;
-                /*switch (s)
+            Console.WriteLine(S);
+            switch (S)
                 {
-                    case "facture":
-                        home.content = new facture();
+                    case "Facture":
+                        Home.Content = new FACTURE();
+                        break;
+                    case "Bon":
+                        Home.Content = new BONS();
+                        break;
+                    case "Client":
+                        Home.Content = new CLIENT();
+                        break;
+                    case "Stock":
+                        Home.Content = new STOCK();
+                        break;
+                    case "Panne":
+                        Home.Content = new PANNE();
+                        break;
+                    case "Exit":
+                        Close();
+                        break;
 
-                        break;
-                    case "bon":
-                        home.content = new bons();
-                        break;
-                    case "client":
-                        home.content = new client();
-                        break;
-                    case "stock":
-                        home.content = new stock();
-                        break;
-                    case "panne":
-                        home.content = new panne();
-                        break;
-                    case "exit":
-                        close();
-                        break;
-
-                }*/
+                }
 
 
 
