@@ -20,7 +20,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="800" />
         </Grid.RowDefinitions>
-        <Grid x:Name="stk" Background="#FF016DB2" HorizontalAlignment="Left" Height="800"   VerticalAlignment="Top" >
+        <Grid x:Name="stk" Background="Black" HorizontalAlignment="Left" Height="680"   VerticalAlignment="Top" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -28,8 +28,8 @@
             <ToggleButton x:Name="Tg" Height="157" Width="231"  Background="White"  Foreground="{x:Null}" HorizontalAlignment="Left"  
                       Style="{DynamicResource MaterialDesignFlatMidBgButton}" Grid.Row="0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="220" Height="80" Margin="-15">
-                    <materialDesign:PackIcon Kind="ViewHeadline" HorizontalAlignment="Left" VerticalAlignment="Center"    Height="80" Width="73"  Background="{x:Null}" Foreground="#FF016DB2"   BorderBrush="{x:Null}" />
-                    <Label Background="{x:Null}" Height="60"  Width="150" VerticalAlignment="Bottom" Content="Light-Thec" HorizontalContentAlignment="Center" FontSize="27" Foreground="#FF016DB2" Margin="-5, 0"  />
+                    <materialDesign:PackIcon Kind="ViewHeadline" HorizontalAlignment="Left" VerticalAlignment="Center"    Height="80" Width="73"  Background="{x:Null}" Foreground="Black"   BorderBrush="{x:Null}" />
+                    <Label Background="{x:Null}" Height="60"  Width="150" VerticalAlignment="Bottom" Content="Light-Thec" HorizontalContentAlignment="Center" FontSize="27" Foreground="Black" Margin="-5, 0"  />
                 </StackPanel>
             <ToggleButton.Triggers>
                  <EventTrigger RoutedEvent="ToggleButton.Checked">
@@ -62,7 +62,7 @@
                  </EventTrigger>
                 </ToggleButton.Triggers>
             </ToggleButton>
-            <ListView Background="#FF016DB2" Foreground="#FFF2F3F7" Width="230" x:Name="MyListView" Grid.Row="1" 
+            <ListView Background="Black" Foreground="#FFF2F3F7" Width="230" x:Name="MyListView" Grid.Row="1" 
                   ItemsSource="{Binding ListHome}">
                 <ListView.ItemTemplate>
                     <DataTemplate >
@@ -74,6 +74,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        <Frame   x:Name="Home" Height="Auto" Width="Auto"  Grid.Column="1"  Background="#FFE9F1F7" NavigationUIVisibility="Hidden"/>
+        <Frame   x:Name="Home" Margin="0"  Height="Auto" Width="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.Column="1"  Background="Red" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
+<!--"#FFE9F1F7"-->

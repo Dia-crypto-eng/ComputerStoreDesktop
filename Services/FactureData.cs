@@ -1,8 +1,7 @@
 ﻿
 using ComputerStore.ENTITY;
 using ComputerStore.Models;
-//using Newtonsoft.Json;
-//using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +54,7 @@ namespace ComputerStore.DATA
             {
                 var res = await Clien.GetAsync("http://127.0.0.1:5000//facture").ConfigureAwait(false);       
                 string se = await res.Content.ReadAsStringAsync();
-              //  listbuyInvoices = JsonConvert.DeserializeObject<List<BuyInvoiceModel>>(se) ;
+               listbuyInvoices = JsonConvert.DeserializeObject<List<BuyInvoiceModel>>(se) ;
             }
             catch (Exception e)
             {

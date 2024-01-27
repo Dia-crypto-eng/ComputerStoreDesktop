@@ -1,6 +1,6 @@
 ﻿using ComputerStore.ENTITY;
 using ComputerStore.Models;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +54,7 @@ namespace ComputerStore.DATA
             {
                 var resp = await Client.GetAsync("http://127.0.0.1:5000//product").ConfigureAwait(false);
                 string se = await resp.Content.ReadAsStringAsync();
-  //              product = JsonConvert.DeserializeObject<List<ProductModel>>(se);
+                product = JsonConvert.DeserializeObject<List<ProductModel>>(se);
             }
             catch(Exception e) { Console.WriteLine(); }
 

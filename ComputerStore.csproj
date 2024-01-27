@@ -49,6 +49,9 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.77\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -96,12 +99,14 @@
     <Compile Include="Views\CLIENT.xaml.cs">
       <DependentUpon>CLIENT.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FACTURE.cs" />
     <Compile Include="Views\FactureDetail.xaml.cs">
       <DependentUpon>FactureDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\familyDetail.xaml.cs">
       <DependentUpon>familyDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FACTURE.xaml.cs">
+      <DependentUpon>FACTURE.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PANNE.xaml.cs">
       <DependentUpon>PANNE.xaml</DependentUpon>
@@ -151,10 +156,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\FACTURE.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\FactureDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -162,6 +163,10 @@
     <Page Include="Views\familyDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FACTURE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PANNE.xaml">
       <Generator>MSBuild:Compile</Generator>
