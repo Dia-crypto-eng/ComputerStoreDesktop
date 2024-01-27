@@ -37,6 +37,12 @@ namespace ComputerStore
             new BonsDetail().Show();
 
         }
-       
+        public void Show(object sender, RoutedEventArgs e)
+        {
+
+            new BonsDetail().Show();
+
+        }
+
     }
 }
