@@ -12,14 +12,16 @@ namespace ComputerStore.Models
     internal class BuyInvoiceModel : BaseModel
     {
         private byte id;
-        private float montant;
+        private string provider;
+        private float amount;
         private DateTime date;
         public BuyInvoiceModel()
         {
         }
 
         public byte Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
-        public float Montant { get { return montant; } set { montant = value; OnPropertyChanged("Montant"); } }
+        public string Provider { get { return provider; } set { provider = value; OnPropertyChanged("Provider"); } }
+        public float Amount { get { return amount; } set { amount = value; OnPropertyChanged("Montant"); } }
         public DateTime Date { get { return date; } set { date = value; OnPropertyChanged("Date"); } }
 
 

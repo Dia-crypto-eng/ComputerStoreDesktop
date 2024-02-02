@@ -25,9 +25,9 @@ namespace ComputerStore
         void Show(object sender, RoutedEventArgs e)
         {
             Grid D = (Grid)VisualTreeHelper.GetParent(HeadPage);
-            D.Children.RemoveAt(0);
-            BodyPage.Children.Clear();
-            BodyPage.Children.Add(new FactureDetail((byte)Dtgd.Items.IndexOf(Adds.GetParent<DataGridRow>((Button)sender).Item)));
+            D.Children.RemoveAt(1);
+            HeadPage.Children.Clear();
+            HeadPage.Children.Add(new FactureDetail((byte)Dtgd.Items.IndexOf(Adds.GetParent<DataGridRow>((Button)sender).Item)));
 
         }
 

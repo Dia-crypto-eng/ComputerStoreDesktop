@@ -6,58 +6,80 @@
         xmlns:local="clr-namespace:ComputerStore.CONTROLLERS"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       
-        >
+        Height="670"
+         >
     <!--Icon="C:\Users\Basbas\Desktop\Nouveau dossier\NEW_COBRA\front-end/cobra (3).ico"-->
-    <Grid x:Name="BECH"  Margin="0,0,0,-1" Background="#FF016DB2">
 
-        <Border Background="#FFD6DFF0" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="810" Grid.ColumnSpan="2">
-            <Button Content="PRINT" Click="Button_Click_1" Margin="75,157,659,-99"/>
+    <Grid>
+        <Grid x:Name="BECH"  Margin="200,0,200,0" Background="#FFD6DFF0">
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            
+            
+            <Label  Content="Facture" Background="{x:Null}" Foreground="Black" FontSize="30" 
+              HorizontalAlignment="Left" Height="50" Margin="20,15,0,0" VerticalAlignment="Top"
+              Width="245" FontWeight="Black"/>
+            
+            
+
+        </Grid>
+
+        
+        <Border  Grid.Row="1"   HorizontalAlignment="Left"  VerticalAlignment="Top" Width="610" Grid.ColumnSpan="2">
+            <Grid >
+                <Border Background="#FFF3F3F3"  HorizontalAlignment="Left" Height="50" Margin="20,0,0,0" VerticalAlignment="Top" Width="290">
+                        <StackPanel HorizontalAlignment="Left"  Margin="16,5,0,0" VerticalAlignment="Top" Width="244">
+                            <StackPanel  Orientation="Horizontal" Height="15">
+                                <Label Width="104" Content="Facture n=°" Foreground="Black" FontSize="8" Padding="0"/>
+                                <TextBlock Width="142" Text="23" Foreground="Black" FontSize="8" Margin="1"/>
+                            </StackPanel>
+                            <StackPanel  Orientation="Horizontal" Height="15">
+                            <Label Width="104" Content="Fournisseur:" Foreground="Black" FontSize="8"  Padding="0"/>
+                                <TextBlock Width="141" Text="RABAH" Foreground="Black" FontSize="8" Margin="1"/>
+                            </StackPanel>
+                            <StackPanel  Orientation="Horizontal" Height="15">
+                            <Label Width="104" Content="Date:" Foreground="Black" FontSize="8" Padding="0"/>
+                                <TextBlock Width="141" Text="23/03/2024" Foreground="Black" FontSize="8" Margin="1"/>
+                            </StackPanel>   
+
+                    </StackPanel>
+
+                    </Border>
+            </Grid>
         </Border>
-        <Border Background="#FFE9F1F7" Height="35" Width="216" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="584,107,0,0">
+        
+       
+
+        <DataGrid x:Name="factureTable" Grid.Row="2"  ColumnWidth="Auto" FontSize="15" Height="Auto"
+                  ColumnHeaderStyle="{StaticResource ResourceKey=hd}" HorizontalAlignment="Left" 
+                  VerticalAlignment="Stretch" Width="620"  Foreground="#DD000000" 
+                  BorderBrush="#FFF7F7F7"   Background="#FFF3F3F3" 
+                  RowBackground="#F6F7F8" Visibility="Visible" Margin="20,0,0,1"/>
+       
+        <StackPanel Grid.Row="3"  Background="#FFE9F1F7" HorizontalAlignment="Left"
+                    Margin="20,5,0,0" VerticalAlignment="Top" Width="620" >
+            <StackPanel  Orientation="Horizontal"  >
+                <Label Width="563" Content="TOTAL FACTURE" Foreground="Black" FontSize="9"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"   >
+                <Label Width="563" Content="LAST SOLD" Foreground="Black" FontSize="9"></Label>
+            </StackPanel>
             <StackPanel Orientation="Horizontal"  >
-                <Label Content="DATE" Foreground="#FF016DB2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="49" FontSize="15"/>
-                <TextBlock Width="165"/>
-
+                <Label Width="563" Content="TOTAL" Foreground="Black" FontSize="9"></Label>
             </StackPanel>
-        </Border>
-
-
-        <Border Background="#FFD6DFF0"   HorizontalAlignment="Left" Height="34" Margin="0,686,0,0" VerticalAlignment="Top" Width="810" Grid.ColumnSpan="2"/>
-        <DataGrid x:Name="factureTable" ColumnWidth="Auto" FontSize="15" ColumnHeaderStyle="{StaticResource ResourceKey=hd}" 
-                  HorizontalAlignment="Left"  Height="298" VerticalAlignment="Bottom" Width="739"  Foreground="#DD000000" 
-                  BorderBrush="#FFF7F7F7"  HorizontalContentAlignment="Center" Background="#FFF3F3F3" 
-                  RowBackground="#F6F7F8" Visibility="Visible" Margin="38,0,0,186"/>
-        <Border Background="#FFE9F1F7"  HorizontalAlignment="Left" Height="90" Margin="520,0,0,0" VerticalAlignment="Top" Width="290">
-            <StackPanel HorizontalAlignment="Left" Height="70" Margin="46,8,0,0" VerticalAlignment="Top" Width="244">
-                <StackPanel  Orientation="Horizontal" Height="35">
-                    <Label Width="104" Content="Facture n=°" Foreground="#FF016DB2" FontSize="18"/>
-                    <TextBlock Width="142"/>
-                </StackPanel>
-                <StackPanel  Orientation="Horizontal" Height="35">
-                    <Label Width="104" Content="Fournisseur" Foreground="#FF016DB2" FontSize="18"/>
-                    <TextBlock Width="141"/>
-                </StackPanel>
-
+            <StackPanel Orientation="Horizontal"  >
+                <Label Width="563" Content="VERSEMENT" Foreground="Black" FontSize="9"></Label>
             </StackPanel>
-
-        </Border>
-        <StackPanel Background="#FFE9F1F7" HorizontalAlignment="Left" Height="115" Margin="38,553,0,0" VerticalAlignment="Top" Width="737" RenderTransformOrigin="0.503,1.57" Grid.ColumnSpan="2">
-            <StackPanel  Orientation="Horizontal" Background="#FFD6DFF0" Height="23">
-                <Label Width="563" Content="TOTAL FACTURE" Foreground="#FF016DB2"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Background="#FFE9F1F7" Height="23" >
-                <Label Width="563" Content="LAST SOLD" Foreground="#FF016DB2"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Background="#FFE9F1F7" Height="23">
-                <Label Width="563" Content="TOTAL" Foreground="#FF016DB2"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Background="#FFE9F1F7" Height="23">
-                <Label Width="563" Content="VERSEMENT" Foreground="#FF016DB2"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Background="#FFE9F1F7" Height="23">
-                <Label Width="563" Content="SOLDE" Foreground="#FF016DB2"></Label>
+            <StackPanel Orientation="Horizontal"  >
+                <Label Width="563" Content="SOLDE" Foreground="Black" FontSize="9"></Label>
             </StackPanel>
         </StackPanel>
 
@@ -66,4 +88,6 @@
 
 
     </Grid>
+        <Button  Content="PRINT" Click="Button_Click_1" Margin="601,23,263,610" />
+    </Grid>    
 </UserControl>

@@ -61,5 +61,10 @@ namespace ComputerStore.CONTROLLERS
 
             }
         }
+
+        private void factureTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

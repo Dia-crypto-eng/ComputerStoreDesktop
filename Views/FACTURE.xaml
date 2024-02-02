@@ -7,13 +7,13 @@
       mc:Ignorable="d"  
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       >
-    <Grid   Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Margin="0" Background="White">
+    <Grid   Height="Auto" HorizontalAlignment="Stretch" Margin="0" Background="Blue">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="HeadPage" Grid.Row="0"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="769" Height="155" Background="#F6F7F8" >
+        <Grid x:Name="HeadPage" Grid.Row="0"  VerticalAlignment="Top" HorizontalAlignment="Stretch"   Background="#F6F7F8" >
             <Label Content="Facture" Background="{x:Null}" Foreground="Black" FontSize="30" 
                        HorizontalAlignment="Left" Height="65" Margin="10,50,0,0" VerticalAlignment="Top"
                        Width="245"/>
@@ -29,7 +29,7 @@
 
             </Button>
         </Grid>
-        <Grid x:Name="BodyPage" Grid.Row="1" Width="769"  HorizontalAlignment="Left"   >
+        <Grid x:Name="BodyPage" Grid.Row="1"   HorizontalAlignment="Stretch"   >
 
             <DataGrid x:Name="Dtgd" ItemsSource="{Binding Path=ListBuyInvoice}" IsReadOnly="True" ColumnWidth="3*"  Foreground="#DD000000"  BorderBrush="#FFF7F7F7" 
                           HorizontalContentAlignment="Center" Background="Black" RowBackground="#F6F7F8" Visibility="Visible">

@@ -52,7 +52,7 @@ namespace ComputerStore.DATA
             List<BuyInvoiceModel> listbuyInvoices = new List<BuyInvoiceModel>();
             try
             {
-                var res = await Clien.GetAsync("http://127.0.0.1:5000//facture").ConfigureAwait(false);       
+                var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/").ConfigureAwait(false);       
                 string se = await res.Content.ReadAsStringAsync();
                listbuyInvoices = JsonConvert.DeserializeObject<List<BuyInvoiceModel>>(se) ;
             }
