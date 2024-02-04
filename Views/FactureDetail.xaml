@@ -55,10 +55,10 @@
                     </Border>
             </Grid>
         </Border>
-        
-       
 
-        <DataGrid x:Name="factureTable" Grid.Row="2"  ColumnWidth="Auto" FontSize="15" Height="Auto"
+
+
+            <DataGrid x:Name="factureTable" ItemsSource="{Binding Path=ListBuyInvoiceItem}"  Grid.Row="2"  ColumnWidth="Auto" FontSize="15" Height="Auto"
                   ColumnHeaderStyle="{StaticResource ResourceKey=hd}" HorizontalAlignment="Left" 
                   VerticalAlignment="Stretch" Width="620"  Foreground="#DD000000" 
                   BorderBrush="#FFF7F7F7"   Background="#FFF3F3F3" 

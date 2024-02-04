@@ -12,6 +12,7 @@ namespace ComputerStore.ViewModels
     internal class BuyInvoiceViewModel :BaseViewModel
     {
         private List<BuyInvoiceModel> listBuyInvoice = new List<BuyInvoiceModel>();
+        private List<BuyInvoiceItemModel> listBuyInvoiceItem = new List<BuyInvoiceItemModel>();
         FactureData factureData;
         public BuyInvoiceViewModel()
         {
@@ -24,7 +25,9 @@ namespace ComputerStore.ViewModels
             getBuyInvoice(id);
         }
 
-        public List<BuyInvoiceModel> ListBuyInvoice { get { return listBuyInvoice; } set { listBuyInvoice = value; OnPropertyChanged("Tab"); } }
+        public List<BuyInvoiceModel> ListBuyInvoice { get { return listBuyInvoice; } set { listBuyInvoice = value; OnPropertyChanged("ListBuyInvoice"); } }
+
+        public List<BuyInvoiceItemModel> ListBuyInvoiceItem { get { return listBuyInvoiceItem; } set { listBuyInvoiceItem = value; OnPropertyChanged("ListBuyInvoiceItem"); } }
 
         private void getListBuyInvoice()
         {
@@ -32,7 +35,7 @@ namespace ComputerStore.ViewModels
         }
         private void getBuyInvoice(int id)
         {
-          //  ListBuyInvoice = factureData.getInvoice(id).Result;
+           ListBuyInvoiceItem = factureData.getInvoice(id).Result;
         }
 
     }

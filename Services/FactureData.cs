@@ -65,6 +65,52 @@ namespace ComputerStore.DATA
         }
 
 
+        public async Task<List<BuyInvoiceItemModel>> getInvoice(int id)
+        {
+            List<BuyInvoiceItemModel> listbuyInvoicesItem = new List<BuyInvoiceItemModel>();
+
+            listbuyInvoicesItem=new List<BuyInvoiceItemModel>()
+            { new BuyInvoiceItemModel
+            {
+                Id = 111,
+                IdFactureElement = 122,
+                CategoryProduct = "SSS",
+                MarkProduct = "RRRRR",
+                NameProduct = "TTTT",
+                Price_buy = 333,
+                Quantity = 4,
+                Amount = 5555 },
+            new BuyInvoiceItemModel
+            {
+                Id = 111,
+                IdFactureElement = 122,
+                CategoryProduct = "SSS",
+                MarkProduct = "RRRRR",
+                NameProduct = "TTTT",
+                Price_buy = 333,
+                Quantity = 4,
+                Amount = 5555
+            }};
+
+            /**  try
+            {
+                var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/"+id).ConfigureAwait(false);
+                string se = await res.Content.ReadAsStringAsync();
+                listbuyInvoicesItem = JsonConvert.DeserializeObject<List<BuyInvoiceItemModel>>(se);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("qqqqqqqqqqqqqq");
+            }
+          **/
+            return listbuyInvoicesItem;
+        }
+
+
+
+
+
+
     }
 
     
