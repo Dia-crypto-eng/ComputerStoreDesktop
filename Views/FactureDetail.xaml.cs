@@ -27,24 +27,17 @@ namespace ComputerStore.CONTROLLERS
             InitializeComponent();
             buyInvoiceViewModel = new BuyInvoiceViewModel(id);
             this.DataContext = this.buyInvoiceViewModel;
-
-
+           
             // this.factureEntity = this.facturedata.getInvoice().Result;
             // factureTable.ItemsSource = this.factureEntity.FactureElement;
             //DateTime Date = this.factureEntity.date;
-
-
-
-
 
             /* id.Text = (I + 1).ToString();
              totalAmount.Text = this.factureEntity.totalAmount.ToString() ;
              TVA.Text = (this.factureEntity.totalAmount * 0.19).ToString();
              TTC.Text = (this.factureEntity.totalAmount * 1.19).ToString();*/
 
-
         }
-
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -62,9 +55,5 @@ namespace ComputerStore.CONTROLLERS
             }
         }
 
-        private void factureTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

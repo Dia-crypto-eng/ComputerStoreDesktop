@@ -76,7 +76,7 @@ namespace ComputerStore.DATA
                 IdFactureElement = 122,
                 CategoryProduct = "SSS",
                 MarkProduct = "RRRRR",
-                NameProduct = "TTTT",
+                NameProduct = "TTTTtttttttttttttttttt",
                 Price_buy = 333,
                 Quantity = 4,
                 Amount = 5555 },

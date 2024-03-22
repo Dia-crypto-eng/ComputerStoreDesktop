@@ -24,10 +24,12 @@ namespace ComputerStore
         }
         void Show(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine();
+            byte numberPage = (byte)Dtgd.Items.IndexOf(Adds.GetParent<DataGridRow>((Button)sender).Item);
             Grid D = (Grid)VisualTreeHelper.GetParent(HeadPage);
             D.Children.RemoveAt(1);
             HeadPage.Children.Clear();
-            HeadPage.Children.Add(new FactureDetail((byte)Dtgd.Items.IndexOf(Adds.GetParent<DataGridRow>((Button)sender).Item)));
+            HeadPage.Children.Add(new FactureDetail(numberPage));
 
         }
 

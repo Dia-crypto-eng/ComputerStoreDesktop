@@ -4,90 +4,107 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerStore.CONTROLLERS"
+   
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Height="670"
-         >
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:math="http://hexinnovation.com/math"
+             Height="670"
+    
+             >
     <!--Icon="C:\Users\Basbas\Desktop\Nouveau dossier\NEW_COBRA\front-end/cobra (3).ico"-->
+    <UserControl.Resources>
+        <math:MathConverter x:Key="Math" />
 
+
+    </UserControl.Resources>
     <Grid>
+
+    
+
+
         <Grid x:Name="BECH"  Margin="200,0,200,0" Background="#FFD6DFF0">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="2*" />
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+            <Grid Grid.Row="0">
 
-            
-            
-            <Label  Content="Facture" Background="{x:Null}" Foreground="Black" FontSize="30" 
+                <Label  Content="Facture" Background="{x:Null}" Foreground="Black" FontSize="30" 
               HorizontalAlignment="Left" Height="50" Margin="20,15,0,0" VerticalAlignment="Top"
               Width="245" FontWeight="Black"/>
+
+            </Grid>
+
+            <Border Background="#FFF3F3F3"  HorizontalAlignment="Left" Height="64" Margin="20,0,0,0"
+                     VerticalAlignment="Center" Width="290" Grid.Row="1">
+
+
+                <StackPanel  HorizontalAlignment="Left"  Margin="16,0,0,0"
+                                Width="244" Height="45" VerticalAlignment="Top">
+                    
+                        <StackPanel  Orientation="Horizontal" Height="15">
+                            <Label Width="104" Content="Facture n=°" Foreground="Black" FontSize="8" Padding="0"/>
+                        <TextBlock Width="142"  Text="{Binding BuyInvoice.Id}" Foreground="Black" FontSize="8" Margin="1"/>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal" Height="15">
+                            <Label Width="104" Content="Fournisseur:" Foreground="Black" FontSize="8"  Padding="0"/>
+                            <TextBlock Width="141" Text="{Binding BuyInvoice.Provider}" Foreground="Black" FontSize="8" Margin="1"/>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal" Height="15">
+                            <Label Width="104" Content="Date:" Foreground="Black" FontSize="8" Padding="0"/>
+                        <TextBlock Width="141" Text="{Binding BuyInvoice.Date}" Foreground="Black" FontSize="8" Margin="1"/>
+                        </StackPanel>
+                    
+                </StackPanel>
+
+            </Border>
             
-            
+
+            <DataGrid x:Name="factureTable" ItemsSource="{Binding Path=ListBuyInvoiceItem}"  Grid.Row="2"  
+                  ColumnWidth="Auto" FontSize="15" Height="Auto" ColumnHeaderStyle="{StaticResource ResourceKey=hd}" 
+                  HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="620"  Foreground="#DD000000" 
+                  BorderBrush="#FFF7F7F7"   Background="#FFF3F3F3" 
+                  RowBackground="#F6F7F8" Margin="20,0,0,1" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item" Binding="{Binding IdFactureElement}" />
+                    <DataGridTextColumn Header="Category" Binding="{Binding CategoryProduct}" />
+                    <DataGridTextColumn Header="Mark" Binding="{Binding MarkProduct}" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding NameProduct}" />
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price_buy}" />
+                    <DataGridTextColumn Header="QTY" Binding="{Binding Quantity}" />
+                    <DataGridTextColumn Header="COST" Binding="{Binding Amount}" />
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
+
+            <StackPanel Grid.Row="3"  Background="#FFE9F1F7" 
+                        Margin="20,5,0,0" VerticalAlignment="Top" Width="620" >
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <Label  Width="56" Content="SUBTOTAL" Foreground="Black" FontSize="9"></Label>
+                    <TextBlock Width="42" Text="{Binding BuyInvoice.Amount}" Foreground="Black" FontSize="9" Margin="0,4,0,1" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  >
+                    <Label  Width="56" Content="TVA" Foreground="Black" FontSize="9"></Label>
+                    <TextBlock Width="42" Text="{Binding BuyInvoice.Amount, ConverterParameter=x*19/100, 
+                        Converter={StaticResource Math} }" Foreground="Black" FontSize="9" Margin="0,4,0,1">
+                  
+                        </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  >
+                    <Label Width="56" Content="TOTAL" Foreground="Black" FontSize="9"></Label>
+                    <TextBlock Width="42" Text="{Binding BuyInvoice.Amount, ConverterParameter=x*119/100, 
+                        Converter={StaticResource Math} }" Foreground="Black" FontSize="9" Margin="0,4,0,1"/>
+                </StackPanel>
+            </StackPanel>
 
         </Grid>
-
-        
-        <Border  Grid.Row="1"   HorizontalAlignment="Left"  VerticalAlignment="Top" Width="610" Grid.ColumnSpan="2">
-            <Grid >
-                <Border Background="#FFF3F3F3"  HorizontalAlignment="Left" Height="50" Margin="20,0,0,0" VerticalAlignment="Top" Width="290">
-                        <StackPanel HorizontalAlignment="Left"  Margin="16,5,0,0" VerticalAlignment="Top" Width="244">
-                            <StackPanel  Orientation="Horizontal" Height="15">
-                                <Label Width="104" Content="Facture n=°" Foreground="Black" FontSize="8" Padding="0"/>
-                                <TextBlock Width="142" Text="23" Foreground="Black" FontSize="8" Margin="1"/>
-                            </StackPanel>
-                            <StackPanel  Orientation="Horizontal" Height="15">
-                            <Label Width="104" Content="Fournisseur:" Foreground="Black" FontSize="8"  Padding="0"/>
-                                <TextBlock Width="141" Text="RABAH" Foreground="Black" FontSize="8" Margin="1"/>
-                            </StackPanel>
-                            <StackPanel  Orientation="Horizontal" Height="15">
-                            <Label Width="104" Content="Date:" Foreground="Black" FontSize="8" Padding="0"/>
-                                <TextBlock Width="141" Text="23/03/2024" Foreground="Black" FontSize="8" Margin="1"/>
-                            </StackPanel>   
-
-                    </StackPanel>
-
-                    </Border>
-            </Grid>
-        </Border>
-
-
-
-            <DataGrid x:Name="factureTable" ItemsSource="{Binding Path=ListBuyInvoiceItem}"  Grid.Row="2"  ColumnWidth="Auto" FontSize="15" Height="Auto"
-                  ColumnHeaderStyle="{StaticResource ResourceKey=hd}" HorizontalAlignment="Left" 
-                  VerticalAlignment="Stretch" Width="620"  Foreground="#DD000000" 
-                  BorderBrush="#FFF7F7F7"   Background="#FFF3F3F3" 
-                  RowBackground="#F6F7F8" Visibility="Visible" Margin="20,0,0,1"/>
-       
-        <StackPanel Grid.Row="3"  Background="#FFE9F1F7" HorizontalAlignment="Left"
-                    Margin="20,5,0,0" VerticalAlignment="Top" Width="620" >
-            <StackPanel  Orientation="Horizontal"  >
-                <Label Width="563" Content="TOTAL FACTURE" Foreground="Black" FontSize="9"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"   >
-                <Label Width="563" Content="LAST SOLD" Foreground="Black" FontSize="9"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  >
-                <Label Width="563" Content="TOTAL" Foreground="Black" FontSize="9"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  >
-                <Label Width="563" Content="VERSEMENT" Foreground="Black" FontSize="9"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  >
-                <Label Width="563" Content="SOLDE" Foreground="Black" FontSize="9"></Label>
-            </StackPanel>
-        </StackPanel>
-
-
-
-
-
-    </Grid>
         <Button  Content="PRINT" Click="Button_Click_1" Margin="601,23,263,610" />
-    </Grid>    
+    </Grid>
 </UserControl>

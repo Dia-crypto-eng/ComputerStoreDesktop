@@ -13,6 +13,7 @@ namespace ComputerStore.ViewModels
     {
         private List<BuyInvoiceModel> listBuyInvoice = new List<BuyInvoiceModel>();
         private List<BuyInvoiceItemModel> listBuyInvoiceItem = new List<BuyInvoiceItemModel>();
+        private BuyInvoiceModel buyInvoice = new BuyInvoiceModel(); 
         FactureData factureData;
         public BuyInvoiceViewModel()
         {
@@ -29,13 +30,19 @@ namespace ComputerStore.ViewModels
 
         public List<BuyInvoiceItemModel> ListBuyInvoiceItem { get { return listBuyInvoiceItem; } set { listBuyInvoiceItem = value; OnPropertyChanged("ListBuyInvoiceItem"); } }
 
+
+        public BuyInvoiceModel BuyInvoice { get{ return buyInvoice; }set {buyInvoice = value; OnPropertyChanged("BuyInvoice"); } }
         private void getListBuyInvoice()
         {
             ListBuyInvoice = factureData.getAllInvoice ().Result;
         }
         private void getBuyInvoice(int id)
         {
-           ListBuyInvoiceItem = factureData.getInvoice(id).Result;
+           
+            ListBuyInvoiceItem = factureData.getInvoice(id).Result;
+           
+           BuyInvoice = factureData.getAllInvoice().Result.ElementAt<BuyInvoiceModel>(id);
+           
         }
 
     }
