@@ -15,7 +15,7 @@ namespace ComputerStore.Models
     {
         
         private byte id;
-        private byte idFactureElement;
+        private byte idInvoiceElement;
         private string categoryProduct;
         private string markProduct;
         private string nameProduct;
@@ -27,7 +27,7 @@ namespace ComputerStore.Models
         }
 
         public byte Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
-        public byte IdFactureElement { get { return idFactureElement; } set { idFactureElement = value; OnPropertyChanged("IdFactureElement"); } }
+        public byte IdInvoiceElement { get { return idInvoiceElement; } set { idInvoiceElement = value; OnPropertyChanged("IdInvoiceElement"); } }
         public string CategoryProduct { get { return categoryProduct; } set { categoryProduct = value; OnPropertyChanged("FamilyProduct"); } }
         public string MarkProduct { get { return markProduct; } set { markProduct = value; OnPropertyChanged("CodeProduct"); } }
         public string NameProduct { get { return nameProduct; } set { nameProduct = value; OnPropertyChanged("NameProduct"); } }

@@ -69,7 +69,7 @@
                   BorderBrush="#FFF7F7F7"   Background="#FFF3F3F3" 
                   RowBackground="#F6F7F8" Margin="20,0,0,1" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Item" Binding="{Binding IdFactureElement}" />
+                    <DataGridTextColumn Header="Item" Binding="{Binding IdInvoiceElement}" />
                     <DataGridTextColumn Header="Category" Binding="{Binding CategoryProduct}" />
                     <DataGridTextColumn Header="Mark" Binding="{Binding MarkProduct}" />
                     <DataGridTextColumn Header="Name" Binding="{Binding NameProduct}" />
