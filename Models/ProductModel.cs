@@ -11,10 +11,10 @@ namespace ComputerStore.Models
     internal class ProductModel :  BaseModel
     {
        
-        protected byte id;
-        protected string name;
-        protected string code;
-        protected string family;
+        private byte id;
+        private string name;
+        private string code;
+        private string family;
 
         public ProductModel()
         {

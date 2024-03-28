@@ -11,14 +11,14 @@ namespace ComputerStore.Models
     internal class FamilyModel :  BaseModel
     {
         private byte id;
-        private string family;
+        private string name;
         public FamilyModel()
         {
             
         }
 
     public byte Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
-    public string Family { get { return family; } set { family = value; OnPropertyChanged("Family"); } }
+    public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
 
 }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace ComputerStore.DATA
 {
@@ -14,7 +15,6 @@ namespace ComputerStore.DATA
     {   
        
         HttpClient Client = new HttpClient();
-        HttpResponseMessage response;
         public ProductData()
         {
          
@@ -47,6 +47,26 @@ namespace ComputerStore.DATA
         {
 
         }
+
+        public async Task<List<FamilyModel>> getAllFamily()
+        {
+            List<FamilyModel> listFamily = new List<FamilyModel>();
+            try
+            {
+                var res = await Client.GetAsync("http://127.0.0.1:8000/product/category").ConfigureAwait(false);
+                string se = await res.Content.ReadAsStringAsync();
+                listFamily = JsonConvert.DeserializeObject<List<FamilyModel>>(se);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("fffffffffffff");
+            }
+
+            return listFamily;
+        }
+
+
+
         public async Task<List<ProductModel>> getAllProduct()
         {
             List<ProductModel> product = new List<ProductModel>();

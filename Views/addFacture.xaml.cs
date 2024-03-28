@@ -1,4 +1,5 @@
 ﻿using ComputerStore.DATA;
+using ComputerStore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +24,15 @@ namespace ComputerStore.CONTROLLERS
     {
         private List<int> Index=new List<int>();
         private int i = -1;
-        private ProductData productData;
+        private ProductViewModel productViewModel;
 
         public addFacture()
         {
-            productData = new ProductData();
-          
+           
             InitializeComponent();
-            DataContext = this;
-          
+            productViewModel = new ProductViewModel();
+            this.DataContext = this.productViewModel;
+
         }
         private void AddFamily(object sender, RoutedEventArgs e)
         {

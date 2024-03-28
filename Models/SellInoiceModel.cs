@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace ComputerStore.Models
 {
-    internal class SellInoiceModel
+    internal class SellInoiceModel:BaseModel
     {
-    }
+
+        public SellInoiceModel()
+        {
+
+
+        }
+
+
+       }
 }

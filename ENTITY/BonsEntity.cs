@@ -13,7 +13,7 @@ namespace ComputerStore.ENTITY
         private float MONTANTB;
         private string NameClient;
         private string Sold;
-        private List<BonsElement> BonsElements;
+     //   private List<BonsElement> BonsElements;
 
 
        
@@ -28,7 +28,7 @@ namespace ComputerStore.ENTITY
 
         public string SOLD { get => Sold; set => Sold = value; }
 
-        internal List<BonsElement> BONSELEMENT { get => BonsElements; set => BonsElements = value; }
+       // internal List<BonsElement> BONSELEMENT { get => BonsElements; set => BonsElements = value; }
 
     }
 }

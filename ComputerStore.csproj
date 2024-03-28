@@ -126,7 +126,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ENTITY\BonsElement.cs" />
     <Compile Include="ENTITY\BonsEntity.cs" />
     <Compile Include="ENTITY\ClientEntity.cs" />
     <Compile Include="ENTITY\PanneEntity.cs" />
@@ -186,7 +185,6 @@
     <Compile Include="Models\BuyInvoiceModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\FamilyModel.cs" />
-    <Compile Include="Models\familyProductModel.cs" />
     <Compile Include="Models\InventoryModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SellInoiceModel.cs" />

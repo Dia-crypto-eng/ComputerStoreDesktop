@@ -12,10 +12,10 @@
         <Button  Background="#FF016DB2" Content="Back" Click="Back" HorizontalAlignment="Left" Margin="93,30,0,0" VerticalAlignment="Top" Width="75" BorderBrush="{x:Null}"/>
         <StackPanel Background="Azure"   x:Name="listFamilyView"  HorizontalAlignment="Left" Height="346" Margin="171,94,0,0" VerticalAlignment="Top" Width="419" Orientation="Vertical">
             <Grid x:Name="AddFami" ></Grid>
-            <ListBox Name="ListFamily" ItemsSource="{Binding Fmname}"  Height="346">
+            <ListBox Name="ListFamily" ItemsSource="{Binding ListFamily}"  Height="346">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox  Background="#FF016DB2" Foreground="Black" Checked="INDEX" Content="{Binding Namefamily}" ></CheckBox>
+                        <CheckBox  Background="#FF016DB2" Foreground="Black" Checked="INDEX" Content="{Binding Name}" ></CheckBox>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
                 

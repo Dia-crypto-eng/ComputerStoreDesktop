@@ -38,11 +38,8 @@ namespace ComputerStore.ViewModels
         }
         private void getBuyInvoice(int id)
         {
-           
-            ListBuyInvoiceItem = factureData.getInvoice(id).Result;
-           
+           ListBuyInvoiceItem = factureData.getInvoice(id).Result;
            BuyInvoice = factureData.getAllInvoice().Result.ElementAt<BuyInvoiceModel>(id);
-           
         }
 
     }

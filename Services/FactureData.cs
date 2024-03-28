@@ -24,27 +24,7 @@ namespace ComputerStore.DATA
         {
 
         }
-        /* public async Task<List<BuyInvoiceItemModel>> getInvoice(int id)
-         {    
-         List<BuyInvoiceItemModel> listbuyItemInvoices = new List<BuyInvoiceItemModel>();
-
-         try
-             {
-                 var res = await Clien.GetAsync("http://127.0.0.1:5000//facture/"+id).ConfigureAwait(false);       
-                 string se = await res.Content.ReadAsStringAsync();
-                 listbuyItemInvoices = JsonConvert.DeserializeObject<List<BuyInvoiceItemModel>>(se) ;
-             }
-             catch (Exception e)
-             {
-                 Console.WriteLine("qqqqqqqqqqqqqq");
-             }
-
-
-             return listbuyItemInvoices;
-
-         }*/
-
-
+      
 
 
         public async Task<List<BuyInvoiceModel>> getAllInvoice()

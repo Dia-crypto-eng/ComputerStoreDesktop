@@ -24,7 +24,7 @@ namespace ComputerStore.CONTROLLERS
         public BonsDetail()
         {
             InitializeComponent();
-            BonTable.ItemsSource = Bnsdata.GetBons();
+           //BonTable.ItemsSource = Bnsdata.GetBons();
         }
        /* void ShowbOn(object sender, RoutedEventArgs e)
         {
