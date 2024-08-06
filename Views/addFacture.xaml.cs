@@ -1,5 +1,5 @@
-﻿using ComputerStore.DATA;
-using ComputerStore.ViewModels;
+﻿
+using ComputerStore.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,64 +12,48 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ComputerStore.ViewModels;
+using ComputerStore.Models;
 
-namespace ComputerStore.CONTROLLERS
+namespace ComputerStore.Views
 {
     /// <summary>
     /// Interaction logic for addFacture.xaml
     /// </summary>
     public partial class addFacture : UserControl
     {
-        private List<int> Index=new List<int>();
-        private int i = -1;
+       
         private ProductViewModel productViewModel;
-
+        private BuyInvoiceViewModel buyInvoiceViewModel;
         public addFacture()
         {
-           
             InitializeComponent();
             productViewModel = new ProductViewModel();
-            this.DataContext = this.productViewModel;
-
+            buyInvoiceViewModel = new BuyInvoiceViewModel(productViewModel);
+            this.DataContext = this.buyInvoiceViewModel;
+            FactureDetail factureDetail = new FactureDetail(buyInvoiceViewModel);
+            factureDetail.Margin = new Thickness(25, 2, 25, 2);
+            factureShow.Children.Add(factureDetail);
         }
         private void AddFamily(object sender, RoutedEventArgs e)
         {
             AddFami.Children.Add(new Addfamily());
         }
-        private void Next(object sender, RoutedEventArgs e)
-        {
-            i++;
-            listFamilyView.Children.Clear();
-            _ = listFamilyView.Children.Add(new FamilyDetail(Index.ElementAt<int>(i)));
-        }
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            switch (i)
+          
+
+        private void AddProduct(object sender, RoutedEventArgs e)
             {
-                case 0:
-                    ((Grid)VisualTreeHelper.GetParent(Adds.GetParent<UserControl>((Button)sender))).Children.Add(new addFacture());
-                    ((Grid)VisualTreeHelper.GetParent(Adds.GetParent<UserControl>((Button)sender))).Children.RemoveAt(0);
-                    
-                  
-                    break;
-                default:
-                    if (i < 0) break;
-                    --i;
-                    listFamilyView.Children.Clear();
-                    _ = listFamilyView.Children.Add(new FamilyDetail(Index.ElementAt<int>(i)));
-                    break;
+             if (add_product.Children.Add(new AddProduct( )) != 0)
+                   {
+                    add_product.Children.Clear();
+                   }
+
             }
-        }
-    
-        private void INDEX(object sender, RoutedEventArgs e)
-        {
-            //Index.Add(listFamily.IndexOf((string)((CheckBox)sender).Content)) ;
-            Index.Sort();
-        }
+
     }
 
 }
 
 
+ 

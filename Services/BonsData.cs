@@ -1,4 +1,4 @@
-﻿using ComputerStore.ENTITY;
+﻿using ComputerStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,66 +17,66 @@ namespace ComputerStore.DATA
         {
 
         }
-        public List<BonsEntity> bns = new List<BonsEntity>();
+        public List<SellInoiceModel> bns = new List<SellInoiceModel>();
         //public List<BonsElement> bnse = new List<BonsElement>();
-        public List<BonsEntity> GetAllBons() {
+        public List<SellInoiceModel> GetAllBons() {
             
-            bns.Add( new BonsEntity(){ 
+            bns.Add( new SellInoiceModel(){ 
             Id = 001,
-            Date = "13/12/2021",
-            MONTANT=5500,
-            NAMECLIENT = "Kamal Boualag",
-            SOLD = "PAID",
+            BnDate = "13/12/2021",
+            Montant=5500,
+            NameClient = "Kamal Boualag",
+            Sold = "PAID",
            
             });
 
-            bns.Add(new BonsEntity()
+            bns.Add(new SellInoiceModel()
             {
                 Id = 001,
-                Date = "13/12/2021",
-                MONTANT = 5500,
-                NAMECLIENT = "Kamal Boualag",
-                SOLD = "PAID",
+                BnDate = "13/12/2021",
+                Montant = 5500,
+                NameClient = "Kamal Boualag",
+                Sold = "PAID",
 
             });
 
-            bns.Add(new BonsEntity()
+            bns.Add(new SellInoiceModel()
             {
                 Id = 001,
-                Date = "13/12/2021",
-                MONTANT = 5500,
-                NAMECLIENT = "Kamal Boualag",
-                SOLD = "PAID",
+                BnDate = "13/12/2021",
+                Montant = 5500,
+                NameClient = "Kamal Boualag",
+                Sold = "PAID",
 
             });
 
-            bns.Add(new BonsEntity()
+            bns.Add(new SellInoiceModel()
             {
                 Id = 001,
-                Date = "13/12/2021",
-                MONTANT = 5500,
-                NAMECLIENT = "Kamal Boualag",
-                SOLD = "UNPAID",
+                BnDate = "13/12/2021",
+                Montant = 5500,
+                NameClient = "Kamal Boualag",
+                Sold = "UNPAID",
 
             });
 
-            bns.Add(new BonsEntity()
+            bns.Add(new SellInoiceModel()
             {
                 Id = 001,
-                Date = "13/12/2021",
-                MONTANT = 5500,
-                NAMECLIENT = "Kamal Boualag",
-                SOLD = "UNPAID",
+                BnDate = "13/12/2021",
+                Montant = 5500,
+                NameClient = "Kamal Boualag",
+                Sold = "UNPAID",
 
             });
 
-            bns.Add(new BonsEntity()
+            bns.Add(new SellInoiceModel()
             {
                 Id = 001,
-                Date = "13/12/2021",
-                MONTANT = 5500,
-                NAMECLIENT = "Kamal Boualag",
-                SOLD = "UNPAID",
+                BnDate = "13/12/2021",
+                Montant = 5500,
+                NameClient = "Kamal Boualag",
+                Sold = "UNPAID",
 
             });
             return bns;

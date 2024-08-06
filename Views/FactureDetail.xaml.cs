@@ -1,5 +1,4 @@
 ﻿using ComputerStore.DATA;
-using ComputerStore.ENTITY;
 using ComputerStore.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 
-namespace ComputerStore.CONTROLLERS
+namespace ComputerStore.Views
 {
  
     public partial class FactureDetail : UserControl
@@ -25,17 +24,15 @@ namespace ComputerStore.CONTROLLERS
         public FactureDetail(byte id)
         {
             InitializeComponent();
-            buyInvoiceViewModel = new BuyInvoiceViewModel(id);
+            this.buyInvoiceViewModel = new BuyInvoiceViewModel(id);
             this.DataContext = this.buyInvoiceViewModel;
-           
-            // this.factureEntity = this.facturedata.getInvoice().Result;
-            // factureTable.ItemsSource = this.factureEntity.FactureElement;
-            //DateTime Date = this.factureEntity.date;
 
-            /* id.Text = (I + 1).ToString();
-             totalAmount.Text = this.factureEntity.totalAmount.ToString() ;
-             TVA.Text = (this.factureEntity.totalAmount * 0.19).ToString();
-             TTC.Text = (this.factureEntity.totalAmount * 1.19).ToString();*/
+        }
+        internal FactureDetail(BuyInvoiceViewModel buyInvoiceViewModel)
+        {
+            InitializeComponent();
+            this.buyInvoiceViewModel= buyInvoiceViewModel;
+            this.DataContext = this.buyInvoiceViewModel;
 
         }
 

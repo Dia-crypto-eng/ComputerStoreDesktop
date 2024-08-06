@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ComputerStore.CONTROLLERS
+namespace ComputerStore.Views
 {
     /// <summary>
     /// Interaction logic for BonsDetail.xaml

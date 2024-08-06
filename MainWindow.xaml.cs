@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ComputerStore.Views;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,11 +23,6 @@ namespace ComputerStore
     
         public partial class MainWindow : Window
         {
-
-
-
-
-
 
             private List<itemHome> listHome;
             public MainWindow()
@@ -52,15 +48,6 @@ namespace ComputerStore
                 public string Icon { get; set; }
                 public string Name { get; set; }
             }
-
-
-            public int derat(int a)
-            {
-                if (a > 3) return 0;
-                return 1;
-            }
-
-
 
             private void Call(object sender, RoutedEventArgs e)
             {
@@ -88,7 +75,6 @@ namespace ComputerStore
                         break;
 
                 }
-
 
 
             }

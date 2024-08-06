@@ -1,5 +1,4 @@
-﻿using ComputerStore.ENTITY;
-using ComputerStore.Models;
+﻿using ComputerStore.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -67,12 +66,12 @@ namespace ComputerStore.DATA
 
 
 
-        public async Task<List<ProductModel>> getAllProduct()
+        public async Task<List<ProductModel>> getProductCategory(string s)
         {
             List<ProductModel> product = new List<ProductModel>();
             try
             {
-                var resp = await Client.GetAsync("http://127.0.0.1:5000//product").ConfigureAwait(false);
+                var resp = await Client.GetAsync("http://127.0.0.1:8000/product/"+s).ConfigureAwait(false);
                 string se = await resp.Content.ReadAsStringAsync();
                 product = JsonConvert.DeserializeObject<List<ProductModel>>(se);
             }

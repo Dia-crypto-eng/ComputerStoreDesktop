@@ -1,9 +1,9 @@
 ﻿
-using ComputerStore.ENTITY;
 using ComputerStore.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -45,15 +45,15 @@ namespace ComputerStore.DATA
         }
 
 
-        public async Task<List<BuyInvoiceItemModel>> getInvoice(int id)
+        public async Task<ObservableCollection<BuyInvoiceItemModel>> getInvoice(int id)
         {
-            List<BuyInvoiceItemModel> listbuyInvoicesItem = new List<BuyInvoiceItemModel>();
+            ObservableCollection<BuyInvoiceItemModel> listbuyInvoicesItem = new ObservableCollection<BuyInvoiceItemModel>();
           
             try
             {
                 var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/"+(id+1)).ConfigureAwait(false);
                 string se = await res.Content.ReadAsStringAsync();
-                listbuyInvoicesItem = JsonConvert.DeserializeObject<List<BuyInvoiceItemModel>>(se);
+                listbuyInvoicesItem = JsonConvert.DeserializeObject<ObservableCollection<BuyInvoiceItemModel>>(se);
             }
             catch (Exception e)
             {

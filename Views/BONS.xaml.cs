@@ -1,4 +1,4 @@
-﻿using ComputerStore.CONTROLLERS;
+﻿using ComputerStore.Views;
 using ComputerStore.DATA;
 using System;
 using System.Collections.Generic;
@@ -14,21 +14,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ComputerStore.ViewModels;
 
-namespace ComputerStore
+namespace ComputerStore.Views
 {
     /// <summary>
     /// Interaction logic for BONS.xaml
     /// </summary>
     public partial class BONS : Page
     {
-       
-        BonsData bn = new BonsData();
+        SellInoiceViewModel sellInoiceViewModel;
         public BONS()
         {
-         
             InitializeComponent();
-            Bndtgd.ItemsSource = bn.GetAllBons();
+            sellInoiceViewModel = new SellInoiceViewModel();
+            this.DataContext = this.sellInoiceViewModel;
+            
         }
 
         public void SHOWBN (object sender , RoutedEventArgs e)

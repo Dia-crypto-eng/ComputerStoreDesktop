@@ -1,5 +1,4 @@
-﻿using ComputerStore.ENTITY;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +12,7 @@ namespace ComputerStore.Models
        
         private byte id;
         private string name;
+        private string mark;
         private string code;
         private string family;
 
@@ -24,6 +24,7 @@ namespace ComputerStore.Models
         public string Code { get { return code; } set { code = value; OnPropertyChanged("Code"); } }
         public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
         public string Family { get { return family; } set { family = value; OnPropertyChanged("Family"); } }
+        public string Mark { get { return mark;  } set { mark = value; OnPropertyChanged("Mark"); } }
 
     }
 }

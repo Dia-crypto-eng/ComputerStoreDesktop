@@ -1,4 +1,4 @@
-﻿using ComputerStore.CONTROLLERS;
+﻿using ComputerStore.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ComputerStore
+namespace ComputerStore.Views
 {
     /// <summary>
     /// Interaction logic for addfamily.xaml
     /// </summary>
     public partial class Addfamily : UserControl
     {
-        
-        
-
         public Addfamily()
-        {
-          
+        {     
             InitializeComponent();
-
         }
-
-     
 
         private void AddFamily(object sender, RoutedEventArgs e)
         {
@@ -39,9 +32,5 @@ namespace ComputerStore
                 stt.Children.Clear();
             }
         }
-
-     
-
-    
     }
 }

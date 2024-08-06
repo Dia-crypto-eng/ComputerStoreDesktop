@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ComputerStore.CONTROLLERS
+namespace ComputerStore.Views
 {
     /// <summary>
     /// Interaction logic for AddProduct.xaml
@@ -25,7 +25,6 @@ namespace ComputerStore.CONTROLLERS
         
         public AddProduct()
         {
-            
             productData = new ProductData() ;
             this.id_family = 0;
             InitializeComponent();
