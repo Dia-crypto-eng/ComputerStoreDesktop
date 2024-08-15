@@ -90,6 +90,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MenuControl.xaml.cs">
+      <DependentUpon>MenuControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\BonsData.cs" />
     <Compile Include="Services\ClientData.cs" />
     <Compile Include="Services\FactureData.cs" />
@@ -98,37 +101,38 @@
     <Compile Include="Services\StockData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BuyInvoiceViewModel.cs" />
+    <Compile Include="ViewModels\IInvoiceViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\SellInoiceViewModel.cs" />
-    <Compile Include="Views\addFacture.xaml.cs">
+    <Compile Include="Views\Clients\Clients.xaml.cs">
+      <DependentUpon>Clients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Inventory\Inventory.xaml.cs">
+      <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Invoices\addFacture.xaml.cs">
       <DependentUpon>addFacture.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\addfamily.xaml.cs">
+    <Compile Include="Views\Invoices\addfamily.xaml.cs">
       <DependentUpon>addfamily.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddProduct.xaml.cs">
+    <Compile Include="Views\Invoices\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BONS.xaml.cs">
-      <DependentUpon>BONS.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\BonsDetail.xaml.cs">
+    <Compile Include="Views\Invoices\BonsDetail.xaml.cs">
       <DependentUpon>BonsDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CLIENT.xaml.cs">
-      <DependentUpon>CLIENT.xaml</DependentUpon>
+    <Compile Include="Views\Invoices\BuyInvoice.xaml.cs">
+      <DependentUpon>BuyInvoice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FactureDetail.xaml.cs">
+    <Compile Include="Views\Invoices\FactureDetail.xaml.cs">
       <DependentUpon>FactureDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FACTURE.xaml.cs">
-      <DependentUpon>FACTURE.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PANNE.xaml.cs">
+    <Compile Include="Views\Inventory\PANNE.xaml.cs">
       <DependentUpon>PANNE.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\STOCK.xaml.cs">
-      <DependentUpon>STOCK.xaml</DependentUpon>
+    <Compile Include="Views\Invoices\SellInvoice.xaml.cs">
+      <DependentUpon>SellInvoice.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -143,45 +147,49 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\addFacture.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\addfamily.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AddProduct.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\BONS.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\BonsDetail.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\CLIENT.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FactureDetail.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FACTURE.xaml">
+    <Page Include="MenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PANNE.xaml">
+    <Page Include="Views\Clients\Clients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Inventory\Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Invoices\addFacture.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\STOCK.xaml">
+    <Page Include="Views\Invoices\addfamily.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Invoices\AddProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Invoices\BonsDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Invoices\BuyInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Invoices\FactureDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Inventory\PANNE.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Invoices\SellInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -216,12 +224,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="lightning.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

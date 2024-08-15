@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ComputerStore.Views
+namespace ComputerStore.Views.Clients
 {
     /// <summary>
-    /// Interaction logic for STOCK.xaml
+    /// Interaction logic for Clients.xaml
     /// </summary>
-    public partial class STOCK : Page
+    public partial class Clients : UserControl
     {
-        public STOCK()
+        public Clients()
         {
             InitializeComponent();
         }

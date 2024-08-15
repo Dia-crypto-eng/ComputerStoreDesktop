@@ -1,5 +1,4 @@
-﻿using ComputerStore.Views;
-using ComputerStore.DATA;
+﻿using ComputerStore.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,25 +13,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ComputerStore.ViewModels;
 
-namespace ComputerStore.Views
+namespace ComputerStore.Views.Invoices
 {
     /// <summary>
-    /// Interaction logic for BONS.xaml
+    /// Interaction logic for SellInvoice.xaml
     /// </summary>
-    public partial class BONS : Page
+    public partial class SellInvoice : UserControl
     {
         SellInoiceViewModel sellInoiceViewModel;
-        public BONS()
+        public SellInvoice()
         {
             InitializeComponent();
             sellInoiceViewModel = new SellInoiceViewModel();
             this.DataContext = this.sellInoiceViewModel;
-            
         }
 
-        public void SHOWBN (object sender , RoutedEventArgs e)
+        public void SHOWBN(object sender, RoutedEventArgs e)
         {
 
             new BonsDetail().Show();

@@ -8,20 +8,27 @@ using System.Threading.Tasks;
 
 namespace ComputerStore.ViewModels
 {
-    internal class SellInoiceViewModel : BaseViewModel
+    internal class SellInoiceViewModel : BaseViewModel,IInvoiceViewModel<SellInoiceModel>
     {
         private List<SellInoiceModel> listSellInoice;
+        private string title = "Sell Invoice";
         public SellInoiceViewModel()
         {
             getListSellInvoice();
         }
 
-        public List<SellInoiceModel> ListSellInoice { get { return listSellInoice; } 
+        public List<SellInoiceModel> ListInvoice { get { return listSellInoice; } 
             set {   listSellInoice =  value; OnPropertyChanged("ListSellInoice"); } }
+        public string Title { get { return title; } set { title = value; OnPropertyChanged("Title"); } }
+
+      
+
         private void getListSellInvoice()
         {
             BonsData bn = new BonsData();
-            ListSellInoice = bn.GetAllBons() ;
+            ListInvoice = bn.GetAllBons() ;
         }
+
+      
     }
 }
