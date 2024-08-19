@@ -32,5 +32,10 @@ namespace ComputerStore.Views
                 stt.Children.Clear();
             }
         }
+
+        private void addFamily_Click(object sender, RoutedEventArgs e)
+        {
+          Adds.GetParent<Grid> (this).Children.Clear();
+        }
     }
 }

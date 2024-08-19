@@ -26,14 +26,14 @@
      
 
             <Grid  Margin="20 0 20 20" Grid.Column="0" Grid.Row="1">
-                <local:MenuControl VerticalAlignment="Top"  MyGrid="{Binding ElementName=Home}"/>
+                <local:MenuControl VerticalAlignment="Stretch"  MyGrid="{Binding ElementName=Home}"/>
             </Grid>
 
         
             <Grid Grid.Row="0" Grid.Column="1">
-                    <Button Background="Black"  Click="Close" Height="40" BorderBrush="Transparent" Margin="0 20 20 0"
-                            Width="60" HorizontalAlignment="Right">
-                        <materialDesign:PackIcon Kind="ExitToApp" Width="30" Height="30" HorizontalAlignment="Left" 
+                    <Button Background="Black"  Click="Close" Height="30" BorderBrush="Transparent" Margin="0 10 10 0"
+                            Width="30" HorizontalAlignment="Right" Padding="0">
+                        <materialDesign:PackIcon Kind="ExitToApp" Width="20" Height="20" HorizontalAlignment="Left" 
                                                  Foreground="#FFF2F3F7"/>
                     </Button>
                 </Grid>
@@ -42,7 +42,8 @@
             
 
 
-            <Grid x:Name="Home" Margin="0" Height="Auto" Width="Auto" Grid.Row="1"  Grid.Column="1" Background="Transparent">
+            <Grid x:Name="Home" Margin="0" Height="Auto" Width="Auto" Grid.Row="1"  Grid.Column="1" Background="Transparent" 
+                  VerticalAlignment="Stretch" >
             </Grid>
         </Grid>
     </Border>

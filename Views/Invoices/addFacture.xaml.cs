@@ -33,8 +33,8 @@ namespace ComputerStore.Views
             buyInvoiceViewModel = new BuyInvoiceViewModel(productViewModel);
             this.DataContext = this.buyInvoiceViewModel;
             FactureDetail factureDetail = new FactureDetail(buyInvoiceViewModel);
-            factureDetail.Margin = new Thickness(25, 2, 25, 2);
-            factureShow.Children.Add(factureDetail);
+            factureDetail.Margin = new Thickness(25, 20, 25, 20);
+            factureShow.Children.Add(factureDetail);  
         }
         private void AddFamily(object sender, RoutedEventArgs e)
         {

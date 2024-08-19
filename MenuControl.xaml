@@ -8,12 +8,14 @@
              mc:Ignorable="d"
              >
 
-    <Border Background="Black" CornerRadius="30" >
+    <Border Background="Black" CornerRadius="30" VerticalAlignment="Stretch" >
 
       
 
-        <Grid x:Name="stk" Background="Transparent" HorizontalAlignment="Center">
+        <Grid x:Name="stk" Background="Transparent" HorizontalAlignment="Center"
+              >
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -79,7 +81,7 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel>
-                                                <TextBlock Text="{Binding Name}" Margin="80,1,0,0"/>
+                                                <TextBlock Text="{Binding}" Margin="80,1,0,0"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -89,6 +91,20 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
+            <Grid Grid.Row="2" >
+            <Border BorderBrush="White" Opacity="0.4" BorderThickness="0,1,0,0" Margin="10,0,6,0"/>
+
+                <StackPanel Background="Transparent"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,20,6,0"
+             Orientation="Horizontal" Height="35">
+                <materialDesign:PackIcon Kind="Cog" Width="30" Height="30" HorizontalAlignment="Left" Margin="31 0  31  0"
+                                         Foreground="White"/>
+                <TextBlock Text="Setting" Height="20" Width="100" HorizontalAlignment="Left" FontSize="14" FontWeight="DemiBold"
+                           Margin="0 0  0  2" Foreground="White" />
+                
+            </StackPanel>
+            </Grid>
+
         </Grid>
     </Border>
 </UserControl>

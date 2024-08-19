@@ -2,6 +2,7 @@
 using ComputerStore.Views.Invoices;
 using MaterialDesignThemes.Wpf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.XPath;
 
 namespace ComputerStore
 {
@@ -23,6 +25,7 @@ namespace ComputerStore
     /// </summary>
     public partial class MenuControl : UserControl
     {
+        private UserControl page = new UserControl();
         private List<itemHome> listHome1;
         public MenuControl()
         {
@@ -31,24 +34,18 @@ namespace ComputerStore
             listHome1 = new List<itemHome>(){
                                            new itemHome { Icon = "Home", Name = "Home" },
                                            new itemHome { Icon = "FileTableOutline", Name = "Invoices" ,
-                                                          SubItems=new List<subItem> (){new subItem{ Name = "buy",User =new BuyInvoice() },
-                                                                                         new subItem{ Name = "sell" ,User =new SellInvoice()} }
+                                                          SubItems={"buy", "sell"}
                                                         },
                                            new itemHome { Icon = "AccountGroup", Name = "Clients",
-                                                          SubItems=new List<subItem> (){new subItem{ Name = "customer" , User =new Clients() },
-                                                                                         new subItem{ Name = "provider" },
-                                                                                         new subItem{ Name = "notice" } }
+                                                          SubItems={ "customer" , "provider" , "notice" } 
                                                         },
                                            new itemHome { Icon = "PackageVariantClosed", Name = "Inventory"} ,
                                            new itemHome { Icon = "Finance", Name = "Reports"} ,
                                            new itemHome { Icon = "Truck", Name = "Delivery"},
-                                        
             };
 
             HomeMenu.ItemsSource = listHome1;
-
         }
-
         public static readonly DependencyProperty MyGridProperty =
             DependencyProperty.Register("MyGrid", typeof(Grid), typeof(MenuControl), new PropertyMetadata(null));
 
@@ -60,11 +57,39 @@ namespace ComputerStore
 
         private void ChoosePage(object sender, SelectionChangedEventArgs e)
         {
-            UserControl page = ((subItem)((ListView)sender).SelectedItem).User;
-            if (page != null)
+            // احفظ العنصر المحدد الحالي قبل إعادة تعيين ItemsSource
+            var selectedItem = ((ListView)sender).SelectedItem;
+
+            // تأكد أن العنصر المحدد ليس null قبل محاولة الوصول إلى خصائصه
+            if (selectedItem != null)
             {
-                MyGrid.Children.Clear();
-                MyGrid.Children.Add(page);
+               //page = ((subItem)selectedItem).User;
+                
+                switch (selectedItem)
+                {
+                    case "buy":
+                        { page = new BuyInvoice(); }
+                    break;
+                    case "sell":
+                        { page = new SellInvoice(); }
+                    break;
+                    case "customer":
+                        { page = new  Clients(); }
+                        break;
+                    case "provider":
+                        {  }
+                        break;
+                    case "notice":
+                        { }
+                        break;
+
+
+
+                }
+               
+                    MyGrid.Children.Clear();
+                    MyGrid.Children.Add(page);
+                
             }
 
         }
@@ -108,23 +133,38 @@ namespace ComputerStore
         {
             if(Tg.IsChecked == true)
             {
-                HomeMenu.ItemsSource = null;
-                HomeMenu.ItemsSource = listHome1;
+                foreach (var item in HomeMenu.Items)
+                {
+                    ListViewItem listViewItem = HomeMenu.ItemContainerGenerator.ContainerFromItem(item) as ListViewItem;
+                    if (listViewItem != null)
+                    {
+                        StackPanel panel = Adds.FindVisualChild<StackPanel>(listViewItem, "header");
+                        Grid expandersGrid = Adds.FindVisualChild<Grid>(listViewItem, "expander");
+                        PackIcon icons = Adds.FindVisualChild<PackIcon>(panel, "StateButton");
+
+                        if (expandersGrid != null  && expandersGrid.Visibility == Visibility.Visible)
+                        {
+                            expandersGrid.Visibility = Visibility.Collapsed;
+                            icons.Kind = PackIconKind.ChevronDown;
+                        }
+                    }
+                }
 
             }
         }
     }
 
+
     public class itemHome
     {
         public string Icon { get; set; }
         public string Name { get; set; }
-        public List<subItem> SubItems { get; set; }
+        public List<string> SubItems { get; set; }
+
+        public itemHome() { 
+        SubItems = new List<string>();
+        }
     }
 
-    public class subItem
-    {
-        public string Name { get; set; }
-        public UserControl User { get; set; }
-    }
+
 }

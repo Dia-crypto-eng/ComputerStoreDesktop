@@ -1,5 +1,6 @@
 ﻿using ComputerStore.ViewModels;
 using HexInnovation;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,23 +33,35 @@ namespace ComputerStore.Views.Invoices
 
         void Show(object sender, RoutedEventArgs e)
         {
-            byte numberPage = (byte)Dtgd.Items.IndexOf(Adds.GetParent<DataGridRow>((Button)sender).Item);
+            byte numberPage = 0;
+                //(byte)Dtgd.Items.IndexOf(Adds.GetParent<DataGridRow>((Button)sender).Item);
             Grid D = (Grid)VisualTreeHelper.GetParent(HeadPage);
-            D.Children.RemoveAt(1);
+            D.Children.RemoveAt(0);
 
 
-            HeadPage.Children.Clear();
+            BodyPage.Children.Clear();
             FactureDetail factureDetail = new FactureDetail(numberPage);
             factureDetail.Margin = new Thickness(250, 60, 250, 60);
-            HeadPage.Children.Add(factureDetail);
+            BodyPage.Children.Add(factureDetail);
 
         }
 
         private void Add_facture(object sender, RoutedEventArgs e)
         {
-            HeadPage.Children.RemoveAt(1);
-            BodyPage.Children.Clear();
-            BodyPage.Children.Add(new addFacture());
+            PackIcon iconCase = Adds.FindVisualChild<PackIcon>((Button)sender, "AddFactureCase");
+            if (iconCase.Kind == PackIconKind.PaperAdd)
+            {
+                HeadPage.Children.RemoveAt(2);
+                BodyPage.Children.Clear();
+                BodyPage.Children.Add(new addFacture());
+                iconCase.Kind = PackIconKind.ArrowLeftBold;
+            }
+            else
+            {
+
+            }
+
+
         }
 
         private void ButtonInvoice(object sender, RoutedEventArgs e)

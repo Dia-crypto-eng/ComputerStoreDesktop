@@ -10,12 +10,17 @@
         BorderBrush="{x:Null}">
     <StackPanel >
       
-        <Grid Background="#FF016DB2"  VerticalAlignment="Top" Height="55">
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" 
-                     Background="White" Height="30" Width="222" Margin="16,10,188,10" />
-            <Button BorderBrush="{x:Null}" Background="#FFE9F1F7" Foreground="Black"
-                    FontSize="11" Content="ADD FAMILY" Click="AddFamily" Margin="306,11,16,10" Height="Auto"/>
+        <Grid Background="Transparent"  VerticalAlignment="Top" Height="55">
+            <Button x:Name="addFamily" Background="Transparent"   Foreground="Black" Click="addFamily_Click" 
+             HorizontalAlignment="Left"  VerticalAlignment="Top" Width="35" Padding="0" Margin="10 10"
+             BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="CloseOutline" Width="20" Height="20"></materialDesign:PackIcon>
+            </Button>
+            <TextBox  VerticalAlignment="Center" 
+                     Background="White" Height="30" Margin="64,0,128,0" />
+            <Button BorderBrush="Black" Background="Transparent" Foreground="Black"
+                    FontSize="11" Content="ADD FAMILY" Click="AddFamily" Margin="246,11,16,10" Height="Auto"/>
         </Grid>
-        <StackPanel Background="#FF5789F5" x:Name="stt"  VerticalAlignment="Top"></StackPanel>
+        <StackPanel Background="Transparent" x:Name="stt"  VerticalAlignment="Top"></StackPanel>
     </StackPanel>
 </UserControl>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" Height="174.8" Width="253.2" x:Name="addpct">
 
     <StackPanel Orientation="Vertical">
-        <Label Background="#FF016DB2" Content="ADD PRODUCT" Foreground="Black"></Label>
+        <Label Background="Black" Content="ADD PRODUCT" Foreground="White"></Label>
         <StackPanel Orientation="Horizontal" Height="30">
             <Label Content="NAME" Foreground="Black" Width="100"></Label>
             <TextBox x:Name="NAME" Width="100"></TextBox>
@@ -25,8 +25,8 @@
             <TextBox x:Name="PRICE_SELL" Text="0" Width="100"></TextBox>
         </StackPanel>
         <Grid>
-            <Button Content="FINISH" Click="FINISH"  Width="80" HorizontalAlignment="Left"></Button>
-            <Button Content="SAVE" Click="SAVE"  Width="80" HorizontalAlignment="Right"></Button>
+            <Button Content="FINISH" Click="FINISH" Background="Black" Foreground="White" BorderBrush="Black" Width="80" HorizontalAlignment="Left"></Button>
+            <Button Content="SAVE" Click="SAVE" Background="Black" Foreground="White"  BorderBrush="Black" Width="80" HorizontalAlignment="Right"></Button>
         </Grid>
     </StackPanel>
 
