@@ -63,8 +63,6 @@ namespace ComputerStore
             // تأكد أن العنصر المحدد ليس null قبل محاولة الوصول إلى خصائصه
             if (selectedItem != null)
             {
-               //page = ((subItem)selectedItem).User;
-                
                 switch (selectedItem)
                 {
                     case "buy":
@@ -82,8 +80,6 @@ namespace ComputerStore
                     case "notice":
                         { }
                         break;
-
-
 
                 }
                
@@ -153,7 +149,6 @@ namespace ComputerStore
             }
         }
     }
-
 
     public class itemHome
     {

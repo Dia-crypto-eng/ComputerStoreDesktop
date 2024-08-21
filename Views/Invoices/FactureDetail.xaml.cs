@@ -20,19 +20,21 @@ namespace ComputerStore.Views
  
     public partial class FactureDetail : UserControl
     {
-        BuyInvoiceViewModel buyInvoiceViewModel;
-        public FactureDetail(byte id)
-        {
-            InitializeComponent();
-            this.buyInvoiceViewModel = new BuyInvoiceViewModel(id);
-            this.DataContext = this.buyInvoiceViewModel;
-
-        }
+        private BuyInvoiceItemViewModel buyInvoiceItemViewModel;
+    
         internal FactureDetail(BuyInvoiceViewModel buyInvoiceViewModel)
         {
             InitializeComponent();
-            this.buyInvoiceViewModel= buyInvoiceViewModel;
-            this.DataContext = this.buyInvoiceViewModel;
+            this.buyInvoiceItemViewModel = new BuyInvoiceItemViewModel(buyInvoiceViewModel);
+            this.DataContext = this.buyInvoiceItemViewModel;
+
+        }
+
+        internal FactureDetail(BuyInvoiceItemViewModel buyInvoiceItemViewModel)
+        {
+            InitializeComponent();
+            this.buyInvoiceItemViewModel = buyInvoiceItemViewModel ;
+            this.DataContext = this.buyInvoiceItemViewModel;
 
         }
 

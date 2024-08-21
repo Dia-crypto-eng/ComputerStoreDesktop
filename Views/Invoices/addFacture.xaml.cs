@@ -23,25 +23,24 @@ namespace ComputerStore.Views
     /// </summary>
     public partial class addFacture : UserControl
     {
-       
-        private ProductViewModel productViewModel;
-        private BuyInvoiceViewModel buyInvoiceViewModel;
-        public addFacture()
+        private BuyInvoiceItemViewModel buyInvoiceItemViewModel;
+        internal addFacture(BuyInvoiceViewModel buyInvoiceViewModel)
         {
             InitializeComponent();
-            productViewModel = new ProductViewModel();
-            buyInvoiceViewModel = new BuyInvoiceViewModel(productViewModel);
-            this.DataContext = this.buyInvoiceViewModel;
-            FactureDetail factureDetail = new FactureDetail(buyInvoiceViewModel);
+            this.buyInvoiceItemViewModel = new BuyInvoiceItemViewModel(buyInvoiceViewModel);
+            this.DataContext = this.buyInvoiceItemViewModel;
+            FactureDetail factureDetail = new FactureDetail(this.buyInvoiceItemViewModel);
             factureDetail.Margin = new Thickness(25, 20, 25, 20);
             factureShow.Children.Add(factureDetail);  
         }
         private void AddFamily(object sender, RoutedEventArgs e)
         {
-            AddFami.Children.Add(new Addfamily());
+            // عرض الـ Modal والطبقة الشفافة
+            ModalGrid.Visibility = Visibility.Visible;
+            OverlayGrid.Visibility = Visibility.Visible;
+
         }
           
-
         private void AddProduct(object sender, RoutedEventArgs e)
             {
              if (add_product.Children.Add(new AddProduct( )) != 0)
@@ -51,6 +50,12 @@ namespace ComputerStore.Views
 
             }
 
+        private void Addfamily_CloseModal(object sender, EventArgs e)
+        {
+            // إخفاء الـ Modal والطبقة الشفافة
+            ModalGrid.Visibility = Visibility.Collapsed;
+            OverlayGrid.Visibility = Visibility.Collapsed;
+        }
     }
 
 }

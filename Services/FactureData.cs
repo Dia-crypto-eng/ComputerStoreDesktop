@@ -13,8 +13,8 @@ namespace ComputerStore.DATA
 {
     class FactureData
     {
-
-        HttpClient Clien= new HttpClient();
+        private List<BuyInvoiceModel> listbuyInvoices = new List<BuyInvoiceModel>();
+        private HttpClient Clien= new HttpClient();
 
         public void addInvoice()
         {
@@ -29,7 +29,6 @@ namespace ComputerStore.DATA
 
         public async Task<List<BuyInvoiceModel>> getAllInvoice()
         {
-            List<BuyInvoiceModel> listbuyInvoices = new List<BuyInvoiceModel>();
             try
             {
                 var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/").ConfigureAwait(false);       
@@ -45,13 +44,13 @@ namespace ComputerStore.DATA
         }
 
 
-        public async Task<ObservableCollection<BuyInvoiceItemModel>> getInvoice(int id)
+        public async Task<ObservableCollection<BuyInvoiceItemModel>> getInvoice(BuyInvoiceModel buyInvoice)
         {
             ObservableCollection<BuyInvoiceItemModel> listbuyInvoicesItem = new ObservableCollection<BuyInvoiceItemModel>();
           
             try
             {
-                var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/"+(id+1)).ConfigureAwait(false);
+                var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/"+(listbuyInvoices.IndexOf(buyInvoice)+1)).ConfigureAwait(false);
                 string se = await res.Content.ReadAsStringAsync();
                 listbuyInvoicesItem = JsonConvert.DeserializeObject<ObservableCollection<BuyInvoiceItemModel>>(se);
             }

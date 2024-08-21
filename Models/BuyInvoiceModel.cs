@@ -20,7 +20,7 @@ namespace ComputerStore.Models
 
         public byte Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
         public string Provider { get { return provider; } set { provider = value; OnPropertyChanged("Provider"); } }
-        public float Amount { get { return amount; } set { amount = value; OnPropertyChanged("Montant"); } }
+        public float Amount { get { return amount; } set { amount = value; OnPropertyChanged("Amount"); } }
         public DateTime Date { get { return date; } set { date = value; OnPropertyChanged("Date"); } }
 
 

@@ -64,7 +64,7 @@
                 <DataGrid x:Name="Dtgd" ItemsSource="{Binding Path=ListInvoice}" IsReadOnly="True" ColumnWidth="3*" 
                           BorderBrush="#FFF7F7F7" Margin="0 30 0 0" Foreground="Black" FontSize="12" FontWeight="DemiBold"
                           HorizontalContentAlignment="Center" Background="#F6F7F8" RowBackground="White" 
-                          Visibility="Visible"> 
+                          Visibility="Visible" SelectedItem="{Binding Path=BuyInvoice}" > 
                             <DataGrid.Resources>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Background" Value="Transparent"/>

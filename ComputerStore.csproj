@@ -100,6 +100,7 @@
     <Compile Include="Services\ProductData.cs" />
     <Compile Include="Services\StockData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BuyInvoiceItemViewModel.cs" />
     <Compile Include="ViewModels\BuyInvoiceViewModel.cs" />
     <Compile Include="ViewModels\IInvoiceViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />

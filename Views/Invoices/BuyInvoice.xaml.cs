@@ -33,15 +33,11 @@ namespace ComputerStore.Views.Invoices
 
         void Show(object sender, RoutedEventArgs e)
         {
-            byte numberPage = 0;
-                //(byte)Dtgd.Items.IndexOf(Adds.GetParent<DataGridRow>((Button)sender).Item);
             Grid D = (Grid)VisualTreeHelper.GetParent(HeadPage);
             D.Children.RemoveAt(0);
-
-
             BodyPage.Children.Clear();
-            FactureDetail factureDetail = new FactureDetail(numberPage);
-            factureDetail.Margin = new Thickness(250, 60, 250, 60);
+            FactureDetail factureDetail = new FactureDetail(this.buyInvoiceViewModel);
+            factureDetail.Margin = new Thickness(200, 60, 200, 60);
             BodyPage.Children.Add(factureDetail);
 
         }
@@ -51,16 +47,17 @@ namespace ComputerStore.Views.Invoices
             PackIcon iconCase = Adds.FindVisualChild<PackIcon>((Button)sender, "AddFactureCase");
             if (iconCase.Kind == PackIconKind.PaperAdd)
             {
-                HeadPage.Children.RemoveAt(2);
+                HeadPage.Children.RemoveAt(1);
                 BodyPage.Children.Clear();
-                BodyPage.Children.Add(new addFacture());
+                BodyPage.Children.Add(new addFacture(this.buyInvoiceViewModel));
                 iconCase.Kind = PackIconKind.ArrowLeftBold;
             }
             else
-            {
-
+            {  
+                Grid home = Adds.GetParent<Grid>(Adds.GetParent<UserControl>(Adds.GetParent<Grid>(BodyPage)));
+                home.Children.Clear();
+                home.Children.Add(new BuyInvoice());
             }
-
 
         }
 
