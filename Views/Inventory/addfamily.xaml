@@ -86,9 +86,7 @@
                             <Button Content="Save Family" HorizontalAlignment="Right" Background="Black" Width="130"  Margin="0 20" />
                      </Grid>
                      <Grid  Background="#F6F7F8" Margin="20 0"  >
-                        <local:AddProduct Margin="0"  >
-
-                        </local:AddProduct>
+                           <local:AddProduct></local:AddProduct>
                     </Grid> 
 
         </DockPanel>

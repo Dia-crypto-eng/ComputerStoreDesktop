@@ -1,17 +1,15 @@
-﻿<Page x:Class="ComputerStore.Views.PANNE"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ComputerStore.Views"
-      mc:Ignorable="d" 
-      
-      Title="PANNE">
-
+﻿<UserControl x:Class="ComputerStore.Views.Inventory.Damaged"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComputerStore.Views.Inventory"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid  Grid.Column="1"  Grid.Row="1" Height="600" Width="769">
         <Grid x:Name="HeadPage"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="769" Height="157" Background="White">
             <Grid Background="#F6F7F8"  HorizontalAlignment="Left" Height="137" Margin="3,10,0,0" VerticalAlignment="Top" Width="762">
-                
+
                 <Label Background="{x:Null}" Foreground="#FF5789F5" FontSize="40" Content="PANNE" HorizontalAlignment="Left" Height="65" Margin="10,37,0,0" VerticalAlignment="Top" Width="245"/>
             </Grid>
         </Grid>
@@ -19,5 +17,4 @@
         <DataGrid x:Name="Dtgd" ColumnWidth="3*" HorizontalAlignment="Left"  Height="446" VerticalAlignment="Bottom" Width="769"  Foreground="#DD000000" BorderBrush="#FFF7F7F7"  HorizontalContentAlignment="Center" Background="#FF016DB2" RowBackground="Azure" Visibility="Visible"/>
 
     </Grid>
-
-</Page>
+</UserControl>

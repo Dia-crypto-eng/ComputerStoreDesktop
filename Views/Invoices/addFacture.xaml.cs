@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ComputerStore.ViewModels;
 using ComputerStore.Models;
+using MaterialDesignThemes.Wpf;
+using ComputerStore.Views.Clients;
 
 namespace ComputerStore.Views
 {
@@ -33,8 +35,25 @@ namespace ComputerStore.Views
             factureDetail.Margin = new Thickness(25, 20, 25, 20);
             factureShow.Children.Add(factureDetail);  
         }
-        private void AddFamily(object sender, RoutedEventArgs e)
+        private void AddContentModal(object sender, RoutedEventArgs e)
         {
+            
+            if (((Button)sender).Name == "addFamily")
+            {
+                var addContentControl = new Addfamily();
+                addContentControl.CloseModal += Add_CloseModal;
+                ModalGrid.Children.Clear();
+                ModalGrid.Children.Add(addContentControl);
+            }
+            else {
+                var addContentControl = new AddProvider();
+                addContentControl.CloseModal += Add_CloseModal;
+                ModalGrid.Children.Clear();
+                ModalGrid.Children.Add(addContentControl);
+            }
+
+        
+            
             // عرض الـ Modal والطبقة الشفافة
             ModalGrid.Visibility = Visibility.Visible;
             OverlayGrid.Visibility = Visibility.Visible;
@@ -50,7 +69,7 @@ namespace ComputerStore.Views
 
             }
 
-        private void Addfamily_CloseModal(object sender, EventArgs e)
+        private void Add_CloseModal(object sender, EventArgs e)
         {
             // إخفاء الـ Modal والطبقة الشفافة
             ModalGrid.Visibility = Visibility.Collapsed;

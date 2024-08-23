@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ComputerStore.Views
+namespace ComputerStore.Views.Inventory
 {
     /// <summary>
-    /// Interaction logic for PANNE.xaml
+    /// Interaction logic for Damaged.xaml
     /// </summary>
-    public partial class PANNE : Page
+    public partial class Damaged : UserControl
     {
-        public PANNE()
+        public Damaged()
         {
             InitializeComponent();
-
         }
     }
 }

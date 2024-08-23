@@ -1,4 +1,5 @@
 ﻿using ComputerStore.Views.Clients;
+using ComputerStore.Views.Inventory;
 using ComputerStore.Views.Invoices;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -34,13 +35,18 @@ namespace ComputerStore
             listHome1 = new List<itemHome>(){
                                            new itemHome { Icon = "Home", Name = "Home" },
                                            new itemHome { Icon = "FileTableOutline", Name = "Invoices" ,
-                                                          SubItems={"buy", "sell"}
+                                                          SubItems={ "View Invoices", "View Returns" }
                                                         },
+                                           new itemHome { Icon = "Finance", Name = "Reports" ,
+                                                          SubItems={ "Sales", "Purchase", "Inventory" , "Customer" } 
+                                                        } ,
                                            new itemHome { Icon = "AccountGroup", Name = "Clients",
-                                                          SubItems={ "customer" , "provider" , "notice" } 
+                                                          SubItems={ "Financial Status", "Information" } 
                                                         },
-                                           new itemHome { Icon = "PackageVariantClosed", Name = "Inventory"} ,
-                                           new itemHome { Icon = "Finance", Name = "Reports"} ,
+                                           new itemHome { Icon = "PackageVariantClosed", Name = "Inventory",
+                                                          SubItems={ "View Inventory", "Damaged Goods" } 
+                                                        } ,
+                                           
                                            new itemHome { Icon = "Truck", Name = "Delivery"},
             };
 
@@ -65,20 +71,20 @@ namespace ComputerStore
             {
                 switch (selectedItem)
                 {
-                    case "buy":
+                    case "View Invoices":
                         { page = new BuyInvoice(); }
                     break;
-                    case "sell":
+                    case "View Returns":
                         { page = new SellInvoice(); }
                     break;
-                    case "customer":
+                    case "Financial Status":
                         { page = new  Clients(); }
                         break;
-                    case "provider":
-                        {  }
+                    case "View Inventory":
+                        { page = new Inventory(); }
                         break;
-                    case "notice":
-                        { }
+                    case "Damaged Goods":
+                        { page = new Damaged(); }
                         break;
 
                 }
@@ -155,7 +161,6 @@ namespace ComputerStore
         public string Icon { get; set; }
         public string Name { get; set; }
         public List<string> SubItems { get; set; }
-
         public itemHome() { 
         SubItems = new List<string>();
         }

@@ -34,7 +34,8 @@
                         </Label>
                         <ComboBox  VerticalAlignment="Center" Background="White" Height="30" Margin="94,0,128,0" />
                         <Button BorderBrush="Black" Background="Transparent" Foreground="Black" FontSize="11" 
-                                Content="Add provider"  HorizontalAlignment="Right"  Width="100" Margin="246,11,7,10" Height="Auto"
+                                Content="Add provider"  HorizontalAlignment="Right"  Width="100" Margin="246,11,7,10"
+                                Height="Auto" Click="AddContentModal"
                                 />
                     </Grid>
                 </Border>
@@ -97,7 +98,7 @@
                                 <Label Content="Family" Background="Transparent" Foreground="Black" FontSize="16" FontWeight="Bold"
                                                          Margin="30 10 0 0">
                                 </Label>
-                                <Button x:Name="addFamily" Background="Transparent"   Foreground="Black" Click="AddFamily" 
+                                <Button x:Name="addFamily" Background="Transparent"   Foreground="Black" Click="AddContentModal" 
                                                             HorizontalAlignment="Left"  VerticalAlignment="Top" Width="35" Padding="0" Margin="0 10"
                                                             BorderBrush="{x:Null}">
                                     <materialDesign:PackIcon Kind="Plus" Width="20" Height="20"></materialDesign:PackIcon>
@@ -185,17 +186,7 @@
           Width="Auto" Height="Auto"/>
 
         <Grid x:Name="ModalGrid" Visibility="Collapsed"  HorizontalAlignment="Center"  VerticalAlignment="Center">
-            <Border Grid.Column="0" CornerRadius="1" Margin="10" BorderThickness="0.5"   >
-                <Border.Effect>
-                    <DropShadowEffect 
-                    Color="Black" 
-                    Direction="315" 
-                    ShadowDepth="5" 
-                    Opacity="0.4" 
-                    BlurRadius="12" />
-                </Border.Effect>
-                <local:Addfamily CloseModal="Addfamily_CloseModal"></local:Addfamily>
-            </Border>
+    
         </Grid>
 
     </Grid>

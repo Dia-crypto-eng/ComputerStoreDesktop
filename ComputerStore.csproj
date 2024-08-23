@@ -105,8 +105,14 @@
     <Compile Include="ViewModels\IInvoiceViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\SellInoiceViewModel.cs" />
+    <Compile Include="Views\Clients\AddProvider.xaml.cs">
+      <DependentUpon>AddProvider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Clients\Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Inventory\Damaged.xaml.cs">
+      <DependentUpon>Damaged.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Inventory\Inventory.xaml.cs">
       <DependentUpon>Inventory.xaml</DependentUpon>
@@ -114,10 +120,10 @@
     <Compile Include="Views\Invoices\addFacture.xaml.cs">
       <DependentUpon>addFacture.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Invoices\addfamily.xaml.cs">
+    <Compile Include="Views\Inventory\addfamily.xaml.cs">
       <DependentUpon>addfamily.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Invoices\AddProduct.xaml.cs">
+    <Compile Include="Views\Inventory\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Invoices\BonsDetail.xaml.cs">
@@ -128,9 +134,6 @@
     </Compile>
     <Compile Include="Views\Invoices\FactureDetail.xaml.cs">
       <DependentUpon>FactureDetail.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Inventory\PANNE.xaml.cs">
-      <DependentUpon>PANNE.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Invoices\SellInvoice.xaml.cs">
       <DependentUpon>SellInvoice.xaml</DependentUpon>
@@ -156,7 +159,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Clients\AddProvider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Clients\Clients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Inventory\Damaged.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,11 +179,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Invoices\addfamily.xaml">
+    <Page Include="Views\Inventory\addfamily.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Invoices\AddProduct.xaml">
+    <Page Include="Views\Inventory\AddProduct.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -185,10 +196,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Invoices\FactureDetail.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Inventory\PANNE.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -240,6 +247,9 @@
   <ItemGroup>
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AnonymosPerson.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

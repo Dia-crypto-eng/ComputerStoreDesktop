@@ -81,7 +81,7 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel>
-                                                <TextBlock Text="{Binding}" Margin="80,1,0,0"/>
+                                                <TextBlock Text="{Binding}" Margin="70,1,0,0"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
