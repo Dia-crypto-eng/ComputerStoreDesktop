@@ -30,5 +30,31 @@ namespace ComputerStore.DATA
             return listClients;
         }
 
+        public async Task<List<CompanyStatusModel>> getAllFinancialStatus()
+        {
+            List<CompanyStatusModel> listClientStatus = new List<CompanyStatusModel>();
+            try
+            {
+                var res = await Clien.GetAsync("http://127.0.0.1:8000/client/Finance").ConfigureAwait(false);
+                string se = await res.Content.ReadAsStringAsync();
+                listClientStatus = JsonConvert.DeserializeObject<List<CompanyStatusModel>>(se);
+                Console.WriteLine(listClientStatus);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("mmmmmmmmmmmmmmmmmmmm");
+            }
+
+            return listClientStatus;
+        }
+
+
+
+
+
+
+
+
     }
 }

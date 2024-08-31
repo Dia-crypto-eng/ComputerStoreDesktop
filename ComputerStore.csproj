@@ -93,6 +93,7 @@
     <Compile Include="MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompanyStatusModel.cs" />
     <Compile Include="Services\BonsData.cs" />
     <Compile Include="Services\ClientData.cs" />
     <Compile Include="Services\FactureData.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="ViewModels\BuyInvoiceViewModel.cs" />
     <Compile Include="ViewModels\IInvoiceViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ProviderViewModel.cs" />
     <Compile Include="ViewModels\SellInoiceViewModel.cs" />
     <Compile Include="Views\Clients\AddProvider.xaml.cs">
       <DependentUpon>AddProvider.xaml</DependentUpon>

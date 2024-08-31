@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComputerStore.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,15 @@ namespace ComputerStore.Views.Clients
     /// <summary>
     /// Interaction logic for Clients.xaml
     /// </summary>
+  
     public partial class Clients : UserControl
     {
+        ProviderViewModel provider;
         public Clients()
         {
             InitializeComponent();
+            provider = new ProviderViewModel();
+            this.DataContext = this.provider;
         }
     }
 }
