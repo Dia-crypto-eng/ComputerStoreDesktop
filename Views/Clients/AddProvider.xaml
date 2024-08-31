@@ -25,46 +25,32 @@
                     <materialDesign:PackIcon Kind="CloseOutline" Width="20" Height="20"></materialDesign:PackIcon>
                 </Button>
                 <Grid  Margin="50 0 0 0" >
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 " Text="Add Provider" 
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock VerticalAlignment="Center"  Margin="0 " Text="Add Provider" 
                                                     FontSize="23" FontWeight="Bold"  />
                     <!-- حقل إدخال اسم الفئة -->
-                   
+                  
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 8" Text="Specialization" 
+                     FontSize="18" FontWeight="Bold" Grid.Column="1" />
+                        <!-- حقل إدخال اسم الفئة -->
+                    <ComboBox Grid.Column="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                            <ComboBoxItem IsSelected="True" >RAM</ComboBoxItem>
+                            <ComboBoxItem>Processor</ComboBoxItem>
+                    </ComboBox>
+                    
+
                 </Grid>
             </Grid>
-            <Grid  Height="62" DockPanel.Dock="Top" Margin="20 0 0 0">
-                        <Grid.ColumnDefinitions>
-                              
-                              <ColumnDefinition Width="2*"></ColumnDefinition>
-                              <ColumnDefinition Width="2*"></ColumnDefinition>
-                              <ColumnDefinition Width="2*"></ColumnDefinition>
-                              <ColumnDefinition Width="2*"></ColumnDefinition>
-                              <ColumnDefinition Width="2*"></ColumnDefinition>
-                              <ColumnDefinition Width="1*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 8" Text="Specialization" 
-                                            FontSize="18" FontWeight="Bold" Grid.Column="0" />
-                        <!-- حقل إدخال اسم الفئة -->
-                        <ComboBox Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                             <ComboBoxItem IsSelected="True" >RAM</ComboBoxItem>
-                             <ComboBoxItem>Processor</ComboBoxItem>
-                        </ComboBox>
                         
-                        <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 8" Text="Payment" 
-                                      FontSize="18" FontWeight="Bold"  />
-                        <ComboBox Grid.Column="4" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                            <ComboBoxItem IsSelected="True">Fund Transfer</ComboBoxItem>
-                            <ComboBoxItem>Check</ComboBoxItem>
-                            <ComboBoxItem>Cash</ComboBoxItem>
-                         </ComboBox>
-                    </Grid>
-    
-            <Grid DockPanel.Dock="Bottom" Margin="20 0" >
-                <!-- زر لحفظ الفئة الجديدة -->
-                <Button Content="Save Family" HorizontalAlignment="Right" Background="Black" Width="130"  Margin="0 20" />
-            </Grid>
-            
             <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
-                             BorderThickness="0.5" DockPanel.Dock="Right" >
+                             BorderThickness="0.5" DockPanel.Dock="Left" >
                 <Border.Effect>
                     <DropShadowEffect 
                                                   Color="Black" 
@@ -114,6 +100,12 @@
 
                 </Grid>
             </Border>
+
+            <Grid DockPanel.Dock="Bottom" Margin="20 0" >
+                <!-- زر لحفظ الفئة الجديدة -->
+                <Button Content="Save Family" HorizontalAlignment="Right" Background="Black" Width="130"  Margin="0 20" />
+            </Grid>
+
             <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
                     BorderThickness="0.5" >
                 <Border.Effect>
@@ -134,6 +126,7 @@
                     <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20 8" Text="Personal Information" 
                                                       FontSize="20" FontWeight="Bold"/>
 
+                    
                     <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="1" Margin="10" Grid.Row="1">
                         <Grid >
                             <Grid.ColumnDefinitions>

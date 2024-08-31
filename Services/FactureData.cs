@@ -61,37 +61,8 @@ namespace ComputerStore.DATA
 
             return listbuyInvoicesItem;
 
-            //listbuyInvoicesItem =new List<BuyInvoiceItemModel>()
-            //{ new BuyInvoiceItemModel
-            //{
-            //    Id = 111,
-            //    IdFactureElement = 122,
-            //    CategoryProduct = "SSS",
-            //    MarkProduct = "RRRRR",
-            //    NameProduct = "TTTTtttttttttttttttttt",
-            //    Price_buy = 333,
-            //    Quantity = 4,
-            //    Amount = 5555 },
-            //new BuyInvoiceItemModel
-            //{
-            //    Id = 111,
-            //    IdFactureElement = 122,
-            //    CategoryProduct = "SSS",
-            //    MarkProduct = "RRRRR",
-            //    NameProduct = "TTTT",
-            //    Price_buy = 333,
-            //    Quantity = 4,
-            //    Amount = 5555
-            //}};
-
          
-            //return listbuyInvoicesItem;
         }
-
-
-
-
-
 
     }
 

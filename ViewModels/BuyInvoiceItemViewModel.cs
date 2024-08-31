@@ -1,4 +1,5 @@
-﻿using ComputerStore.Models;
+﻿using ComputerStore.DATA;
+using ComputerStore.Models;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace ComputerStore.ViewModels
             SelectBuyInvoiceItemModel.Price_buy = 0;
             SelectBuyInvoiceItemModel.Quantity = 0;
             productViewModel = new ProductViewModel();
+            
             AddItem = new RelayCommand(AddBuyInvoiceItem);
             getBuyInvoice();
         }
