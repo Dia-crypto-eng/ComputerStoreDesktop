@@ -86,7 +86,14 @@ namespace ComputerStore
                     case "Damaged Goods":
                         { page = new Damaged(); }
                         break;
+                    case "Information":
+                        { page = new ClientInformation(); }
+                        break;
 
+
+
+
+                        
                 }
                
                     MyGrid.Children.Clear();

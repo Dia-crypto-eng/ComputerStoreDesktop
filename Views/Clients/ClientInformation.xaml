@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="ComputerStore.Views.Clients.ClientInformation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComputerStore.Views.Clients"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" >
+    
+    <Grid   Height="Auto" HorizontalAlignment="Stretch" Margin="0" Background="#F6F7F8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="597" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="HeadPage" Grid.Row="0"  VerticalAlignment="Top" HorizontalAlignment="Stretch"  
+    Background="#F6F7F8" >
+            <Label Content="Client information" Background="{x:Null}" Foreground="Black" FontSize="30"  FontWeight="Bold"
+             HorizontalAlignment="Left" Height="50" Margin="10,9,0,15" VerticalAlignment="Top"
+             Width="245"/>
+
+
+            <Grid HorizontalAlignment="Right" Width="160"  Margin="0  0 23 0" >
+
+
+                <Border x:Name="BuyButtonBorder" Width="80" Height="50" 
+                  CornerRadius="20,0,0,20" Background="Black" 
+                  BorderBrush="Black" BorderThickness="1"
+                  HorizontalAlignment="Left" >
+                    <Button x:Name="BuyButton" Content="Buy" FontWeight="Bold" Foreground="White"
+                              Background="Transparent" BorderBrush="Transparent"
+                              />
+                </Border>
+
+                <!-- زر الـ Sell داخل Border -->
+                <Border x:Name="SellButtonBorder" Width="80" Height="50" 
+                  CornerRadius="0,20,20,0" Background="White"
+                  BorderBrush="Black" BorderThickness="1"
+                  HorizontalAlignment="Right" >
+                    <Button x:Name="SellButton" Content="Sell" FontWeight="Bold" Foreground="Black"
+                              Background="Transparent" BorderBrush="Transparent"
+                             />
+                </Border>
+            </Grid>
+
+
+            <Button Background="Transparent"  HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="170,15,0,0"   Height="40" Width="60"  BorderBrush="Transparent" >
+                <materialDesign:PackIcon  Kind="PaperAdd" Width="30" Height="30" Foreground="Black"/>
+            </Button>
+
+        </Grid>
+
+        <Grid   x:Name="BodyPage" Grid.Row="1"    >
+            <Border  Background="White" CornerRadius="25"  BorderThickness="1" Margin="0 0 20 0">
+                <Border.Effect>
+                    <DropShadowEffect 
+                              Color="Black" 
+                              Direction="315" 
+                              ShadowDepth="5" 
+                              Opacity="0.5" 
+                              BlurRadius="10"/>
+                </Border.Effect>
+                <!--Foreground="#DD000000"-->
+                <DataGrid  x:Name="InfoDataGrid"  ItemsSource="{Binding Path=ListClient}" IsReadOnly="True" ColumnWidth="2*" 
+                    BorderBrush="#FFF7F7F7" Margin="0 30 0 0" Foreground="Black" FontSize="12" FontWeight="DemiBold"
+                    HorizontalContentAlignment="Center" Background="#F6F7F8" RowBackground="White" 
+                    Visibility="Visible"  AutoGenerateColumns="False" >
+                    <!--SelectedItem="{Binding Path=BuyInvoice}"-->
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Height" Value="40"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+
+                    
+                      <DataGrid.Columns>
+                            <!-- عمود لعرض اسم الشركة -->
+                            <DataGridTemplateColumn  Header="Company Name" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate  >
+                                        <TextBlock x:Name="CompanyName" Text="{Binding CompanyName}" Margin="-13 -7" Padding="10" TextAlignment="Center" 
+                                                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontSize="13" FontWeight="Bold"
+                                                           MouseDown="TextBlock_MouseDown" Background="White" Foreground="Black"></TextBlock>
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!-- عمود لإظهار اسم الزبون -->
+                            <DataGridTemplateColumn  Header="First Name">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                          <TextBlock  x:Name="FirstName" Text="{Binding FirstName}" Margin="-13 -7" Padding="10" TextAlignment="Center" 
+                                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontSize="13" FontWeight="Bold"
+                                                    MouseDown="TextBlock_MouseDown" Background="Black" Foreground="White"></TextBlock>  
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        <!-- أعمدة خاصة بالشركة -->
+                            <DataGridTextColumn Header="CRN" Binding="{Binding CRN}" x:Name="CRNColumn" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="NIF" Binding="{Binding NIF}"  x:Name="NIFColumn">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                            <DataGridTextColumn Header="NIS" Binding="{Binding NIS}"  x:Name="NISColumn">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- أعمدة خاصة بالزبون -->
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"  x:Name="LastNameColumn" 
+                                                Visibility="Collapsed">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Client Email" Binding="{Binding Email}"  x:Name="ClientEmailColumn" 
+                                                Visibility="Collapsed">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Client Phone" Binding="{Binding PhoneNumber}"  x:Name="ClientPhoneColumn"
+                                                   Visibility="Collapsed">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="HorizontalAlignment" Value="Center" />
+                                            <Setter Property="VerticalAlignment" Value="Center" />
+                                            <Setter Property="TextAlignment" Value="Center" />
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                   
+                </DataGrid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
