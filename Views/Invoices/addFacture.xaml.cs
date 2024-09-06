@@ -25,13 +25,13 @@ namespace ComputerStore.Views
     /// </summary>
     public partial class addFacture : UserControl
     {
-        private BuyInvoiceItemViewModel buyInvoiceItemViewModel;
-        internal addFacture(BuyInvoiceViewModel buyInvoiceViewModel)
+        private BuyInvoiceViewModel buyInvoiceViewModel;
+        internal addFacture()
         {
             InitializeComponent();
-            this.buyInvoiceItemViewModel = new BuyInvoiceItemViewModel(buyInvoiceViewModel);
-            this.DataContext = this.buyInvoiceItemViewModel;
-            FactureDetail factureDetail = new FactureDetail(this.buyInvoiceItemViewModel);
+            this.buyInvoiceViewModel =new BuyInvoiceViewModel();
+            this.DataContext = this.buyInvoiceViewModel;
+            FactureDetail factureDetail = new FactureDetail();
             factureDetail.Margin = new Thickness(25, 20, 25, 20);
             factureShow.Children.Add(factureDetail);  
         }

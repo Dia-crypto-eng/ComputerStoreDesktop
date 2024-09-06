@@ -21,6 +21,7 @@ using ComputerStore.Views.Inventory;
 using System.Windows.Media.Animation;
 using System.Windows.Markup;
 using System.Collections;
+using ComputerStore.Cache;
 
 namespace ComputerStore
 {
@@ -35,7 +36,8 @@ namespace ComputerStore
         {
 
             InitializeComponent();
-          
+            var cacheManager = CreateCache.Instance.InvoiceCache;
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

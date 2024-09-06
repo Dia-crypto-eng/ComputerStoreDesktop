@@ -40,15 +40,15 @@
                     
                         <StackPanel  Orientation="Horizontal" Height="15">
                             <Label Width="104" Content="Facture n=°" Foreground="Black" FontSize="8" Padding="0"/>
-                        <TextBlock Width="142"  Text="{Binding BuyInvoiceViewModel.BuyInvoice.Id}" Foreground="Black" FontSize="8" Margin="1"/>
+                        <TextBlock Width="142"  Text="{Binding BuyInvoice.Id}" Foreground="Black" FontSize="8" Margin="1"/>
                         </StackPanel>
                         <StackPanel  Orientation="Horizontal" Height="15">
                             <Label Width="104" Content="Fournisseur:" Foreground="Black" FontSize="8"  Padding="0"/>
-                        <TextBlock Width="141" Text="{Binding BuyInvoiceViewModel.BuyInvoice.Provider}" Foreground="Black" FontSize="8" Margin="1"/>
+                        <TextBlock Width="141" Text="{Binding BuyInvoice.Provider}" Foreground="Black" FontSize="8" Margin="1"/>
                         </StackPanel>
                         <StackPanel  Orientation="Horizontal" Height="15">
                             <Label Width="104" Content="Date:" Foreground="Black" FontSize="8" Padding="0"/>
-                        <TextBlock Width="141" Text="{Binding BuyInvoiceViewModel.BuyInvoice.Date}" Foreground="Black" FontSize="8" Margin="1"/>
+                        <TextBlock Width="141" Text="{Binding BuyInvoice.Date}" Foreground="Black" FontSize="8" Margin="1"/>
                         </StackPanel>
                     
                 </StackPanel>
@@ -82,18 +82,18 @@
                         Margin="20,5,0,0" VerticalAlignment="Top"  Width="520" >
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" >
                     <Label  Width="56" Content="SUBTOTAL" Foreground="Black" FontSize="9"></Label>
-                    <TextBlock Width="42" Text="{Binding BuyInvoiceViewModel.BuyInvoice.Amount}" Foreground="Black" FontSize="9" Margin="0,4,0,1" />
+                    <TextBlock Width="42" Text="{Binding BuyInvoice.Amount}" Foreground="Black" FontSize="9" Margin="0,4,0,1" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  >
                     <Label  Width="56" Content="TVA" Foreground="Black" FontSize="9"></Label>
-                    <TextBlock Width="42" Text="{Binding BuyInvoiceViewModel.BuyInvoice.Amount, ConverterParameter=x*19/100, 
+                    <TextBlock Width="42" Text="{Binding BuyInvoice.Amount, ConverterParameter=x*19/100, 
                         Converter={StaticResource Math} }" Foreground="Black" FontSize="9" Margin="0,4,0,1">
                   
                         </TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  >
                     <Label Width="56" Content="TOTAL" Foreground="Black" FontSize="9"></Label>
-                    <TextBlock Width="42" Text="{Binding BuyInvoiceViewModel.BuyInvoice.Amount, ConverterParameter=x*119/100, 
+                    <TextBlock Width="42" Text="{Binding BuyInvoice.Amount, ConverterParameter=x*119/100, 
                         Converter={StaticResource Math} }" Foreground="Black" FontSize="9" Margin="0,4,0,1"/>
                 </StackPanel>
             </StackPanel>

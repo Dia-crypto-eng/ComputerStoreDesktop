@@ -13,8 +13,8 @@ namespace ComputerStore.DATA
 {
     class FactureData
     {
-        private List<BuyInvoiceModel> listbuyInvoices = new List<BuyInvoiceModel>();
-        private HttpClient Clien= new HttpClient();
+        private HttpClient Clien ;
+        private string url;
 
         public void addInvoice()
         {
@@ -24,44 +24,45 @@ namespace ComputerStore.DATA
         {
 
         }
-      
-
+        public FactureData(HttpClient client, string url) 
+        { 
+            this.Clien = client;
+            this.url = url;
+        
+        }
+       
 
         public async Task<List<BuyInvoiceModel>> getAllInvoice()
         {
             try
             {
-                var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/").ConfigureAwait(false);       
+                var res = await Clien.GetAsync(url).ConfigureAwait(false);       
                 string se = await res.Content.ReadAsStringAsync();
-               listbuyInvoices = JsonConvert.DeserializeObject<List<BuyInvoiceModel>>(se) ;
+                return JsonConvert.DeserializeObject<List<BuyInvoiceModel>>(se) ;
             }
             catch (Exception e)
             {
                 Console.WriteLine("qqqqqqqqqqqqqq");
+                throw;
             }
 
-            return listbuyInvoices;
         }
 
 
-        public async Task<ObservableCollection<BuyInvoiceItemModel>> getInvoice(BuyInvoiceModel buyInvoice)
+        public async Task<ObservableCollection<BuyInvoiceItemModel>> getInvoice(int id)
         {
-            ObservableCollection<BuyInvoiceItemModel> listbuyInvoicesItem = new ObservableCollection<BuyInvoiceItemModel>();
-          
             try
             {
-                var res = await Clien.GetAsync("http://127.0.0.1:8000/invoice/"+(listbuyInvoices.IndexOf(buyInvoice)+1)).ConfigureAwait(false);
+                var res = await Clien.GetAsync(url+id).ConfigureAwait(false);
                 string se = await res.Content.ReadAsStringAsync();
-                listbuyInvoicesItem = JsonConvert.DeserializeObject<ObservableCollection<BuyInvoiceItemModel>>(se);
+                return JsonConvert.DeserializeObject<ObservableCollection<BuyInvoiceItemModel>>(se);
             }
             catch (Exception e)
             {
                 Console.WriteLine("qqqqqqqqqqqqqq");
+                throw;
             }
 
-            return listbuyInvoicesItem;
-
-         
         }
 
     }

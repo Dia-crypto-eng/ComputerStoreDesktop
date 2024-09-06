@@ -1,4 +1,5 @@
 ﻿using ComputerStore.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
 using HexInnovation;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -29,17 +30,19 @@ namespace ComputerStore.Views.Invoices
             InitializeComponent();
             buyInvoiceViewModel = new BuyInvoiceViewModel();
             this.DataContext = this.buyInvoiceViewModel;
-        }
 
-        void Show(object sender, RoutedEventArgs e)
+            Messenger.Default.Register<ShowDetailsMessage>(this, Show);
+        }
+        //object sender, RoutedEventArgs e
+       
+        void Show(ShowDetailsMessage message)
         {
-            Grid D = (Grid)VisualTreeHelper.GetParent(HeadPage);
+            Grid D = Adds.GetParent<Grid>(HeadPage);
             D.Children.RemoveAt(0);
             BodyPage.Children.Clear();
-            FactureDetail factureDetail = new FactureDetail(this.buyInvoiceViewModel);
+            FactureDetail factureDetail = new FactureDetail();
             factureDetail.Margin = new Thickness(200, 60, 200, 60);
             BodyPage.Children.Add(factureDetail);
-
         }
 
         private void Add_facture(object sender, RoutedEventArgs e)
@@ -49,7 +52,7 @@ namespace ComputerStore.Views.Invoices
             {
                 HeadPage.Children.RemoveAt(1);
                 BodyPage.Children.Clear();
-                BodyPage.Children.Add(new addFacture(this.buyInvoiceViewModel));
+                BodyPage.Children.Add(new addFacture());
                 iconCase.Kind = PackIconKind.ArrowLeftBold;
             }
             else

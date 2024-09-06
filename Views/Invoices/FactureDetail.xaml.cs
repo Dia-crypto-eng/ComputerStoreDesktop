@@ -1,4 +1,5 @@
 ﻿using ComputerStore.DATA;
+using ComputerStore.Models;
 using ComputerStore.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -22,21 +23,13 @@ namespace ComputerStore.Views
     {
         private BuyInvoiceItemViewModel buyInvoiceItemViewModel;
     
-        internal FactureDetail(BuyInvoiceViewModel buyInvoiceViewModel)
+        internal FactureDetail()
         {
             InitializeComponent();
-            this.buyInvoiceItemViewModel = new BuyInvoiceItemViewModel(buyInvoiceViewModel);
+            this.buyInvoiceItemViewModel = new BuyInvoiceItemViewModel();
             this.DataContext = this.buyInvoiceItemViewModel;
-
         }
 
-        internal FactureDetail(BuyInvoiceItemViewModel buyInvoiceItemViewModel)
-        {
-            InitializeComponent();
-            this.buyInvoiceItemViewModel = buyInvoiceItemViewModel ;
-            this.DataContext = this.buyInvoiceItemViewModel;
-
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {

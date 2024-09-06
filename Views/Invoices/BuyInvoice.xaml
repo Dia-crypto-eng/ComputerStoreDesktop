@@ -79,7 +79,9 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Button Background="Black" Foreground="White" Content="Show" BorderBrush="Black"
-                                                        Click="Show" Width="80" FontSize="13" Height="30" FontWeight="Bold"></Button>
+                                                    Command="{Binding DataContext.ShowInvoiceDetailsCommand, 
+                                                    RelativeSource={RelativeSource AncestorType=UserControl}}" Width="80" FontSize="13" 
+                                                    CommandParameter="{Binding}" Height="30" FontWeight="Bold"></Button>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

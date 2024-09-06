@@ -11,24 +11,24 @@ using System.Windows.Shapes;
 namespace ComputerStore.DATA
 {
     class ProductData
-    {   
-       
-        HttpClient Client = new HttpClient();
-        public ProductData()
+    {
+
+        private HttpClient Client;
+        public ProductData(HttpClient Client,string url)
         {
          
         
         }
 
+        public ProductData()
+        {
+            Client = new HttpClient();
+
+        }
+
         private async void getFirebaseProduct()
         {
-            /*use firebase
-            FirebaseResponse Response = await firebaseClient.GetAsync("PRODUCT").ConfigureAwait(false);
-            this.product = Response.ResultAs<List<Product>>();
-            Console.WriteLine("number of products in firebase : " + this.product.Count);
-            */
-
-
+          
 
 
 
@@ -37,10 +37,7 @@ namespace ComputerStore.DATA
 
         public async void addProduct()
         {
-           //var dui = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json");
-          //  await Client.PostAsync("http://127.0.0.1:5000//product/", dui) ;
-            //Console.WriteLine(dui.ReadAsStringAsync) ;
-           //Console.WriteLine("success");
+         
         }
         public void deleteProduct()
         {

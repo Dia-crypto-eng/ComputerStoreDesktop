@@ -1,6 +1,8 @@
-﻿using ComputerStore.DATA;
+﻿using ComputerStore.Cache;
+using ComputerStore.DATA;
 using ComputerStore.Models;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 //using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -19,9 +21,14 @@ namespace ComputerStore.ViewModels
         private string title = "Buy Invoice";
         private List<BuyInvoiceModel> listInvoice = new List<BuyInvoiceModel>();
         private BuyInvoiceModel buyInvoice = new BuyInvoiceModel();
+        private BuyInvoiceItemModel selectBuyInvoiceItemModel = new BuyInvoiceItemModel();
+
         private ProviderViewModel providerViewModel = new ProviderViewModel();
-        public FactureData factureData;
-       
+        private ProductViewModel productViewModel;
+        private readonly InvoiceCache _invoiceCache;
+        public ICommand AddItem { get; }
+        public ICommand ShowInvoiceDetailsCommand { get; private set; }
+
         public List<BuyInvoiceModel> ListInvoice { get { return listInvoice; } set { listInvoice = value; OnPropertyChanged("ListBuyInvoice"); } }
         public BuyInvoiceModel BuyInvoice { get { return buyInvoice; } set { buyInvoice = value; OnPropertyChanged("BuyInvoice"); } }
         public string Title { get { return title; } set { title = value; OnPropertyChanged("Title"); } }
@@ -30,17 +37,61 @@ namespace ComputerStore.ViewModels
             get { return providerViewModel; }
             set { providerViewModel = value; OnPropertyChanged("ProviderViewModel"); }
         }
+        public BuyInvoiceItemModel SelectBuyInvoiceItemModel
+        {
+            get { return selectBuyInvoiceItemModel; }
+            set { selectBuyInvoiceItemModel = value; OnPropertyChanged("SelectBuyInvoiceItemModel"); }
+        }
+        public ProductViewModel Product
+        {
+            get { return productViewModel; }
+            set { productViewModel = value; OnPropertyChanged("Product"); }
+        }
+
         //constructor
         public BuyInvoiceViewModel()
         {
+            _invoiceCache = CreateCache.Instance.InvoiceCache;
+            productViewModel = new ProductViewModel();
+            clearSelectBuyInvoiceItemModel();
+            AddItem = new RelayCommand(AddBuyInvoiceItem);
+            ShowInvoiceDetailsCommand = new RelayCommand(ShowInvoiceDetails);
             getListBuyInvoice();
         }
-        
-        private void getListBuyInvoice()
+
+        private void ShowInvoiceDetails()
         {
-            factureData = new FactureData();
-            ListInvoice = factureData.getAllInvoice ().Result;
+            if (BuyInvoice != null)
+            {
+                _invoiceCache.selectInvoice(BuyInvoice);
+                Messenger.Default.Send(new ShowDetailsMessage());
+            }
         }
 
+        private void getListBuyInvoice()
+        {
+            ListInvoice = _invoiceCache.getAllInvoice ().Result;
+        }
+
+        private void AddBuyInvoiceItem()
+        {
+            SelectBuyInvoiceItemModel.NameProduct = Product.SelectProduct.Name;
+            SelectBuyInvoiceItemModel.CategoryProduct = Product.SelectFamily.Name;
+            SelectBuyInvoiceItemModel.MarkProduct = Product.SelectProduct.Mark;
+            _invoiceCache.addInvoiceItem(SelectBuyInvoiceItemModel);
+            clearSelectBuyInvoiceItemModel();
+            //BuyInvoice.Amount += SelectBuyInvoiceItemModel.Amount;
+        }
+        private void clearSelectBuyInvoiceItemModel()
+        {
+            SelectBuyInvoiceItemModel = new BuyInvoiceItemModel();
+            SelectBuyInvoiceItemModel.Price_buy = 0;
+            SelectBuyInvoiceItemModel.Quantity = 0;
+        }
+
+    }
+
+    public class ShowDetailsMessage
+    {
     }
 }
