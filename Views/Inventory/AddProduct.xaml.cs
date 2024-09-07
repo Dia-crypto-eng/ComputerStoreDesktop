@@ -21,11 +21,9 @@ namespace ComputerStore.Views
     /// </summary>
     public partial class AddProduct : UserControl
     {   private byte id_family;
-        private ProductData productData;
         
         public AddProduct()
         {
-            productData = new ProductData() ;
             this.id_family = 0;
             InitializeComponent();
         }

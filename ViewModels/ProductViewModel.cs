@@ -10,17 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using ComputerStore.Cache;
 
 namespace ComputerStore.ViewModels
 {
     internal class ProductViewModel : BaseViewModel
     {
-       
         private List<FamilyModel> listFamily = new List<FamilyModel>();
         private List<ProductModel> listProduct = new List<ProductModel>();
         private FamilyModel selectFamily = new FamilyModel();
         private ProductModel selectProduct = new ProductModel();
-        private ProductData productData;
+        private readonly ProductCache _productCache;
 
         public List<FamilyModel> ListFamily { get { return listFamily; } set { listFamily = value; OnPropertyChanged("ListFamily"); } }
         public List<ProductModel> ListProduct { get { return listProduct; } set { listProduct = value; OnPropertyChanged("ListProduct"); } }
@@ -28,9 +28,8 @@ namespace ComputerStore.ViewModels
         public ProductModel SelectProduct { get { return selectProduct; } set { selectProduct = value; OnPropertyChanged("SelectProduct"); } }
         public ICommand chooseFamily { get; }
        
-
         public ProductViewModel() {
-            productData = new ProductData();
+            _productCache = CreateCache.Instance.ProductCache;
             getListFamily();
             chooseFamily = new RelayCommand(ShowProd);
         }
@@ -42,12 +41,12 @@ namespace ComputerStore.ViewModels
 
         private void getListFamily()
         {
-            ListFamily = productData.getAllFamily().Result;
+            ListFamily = _productCache.getAllFamily().Result;
         }
 
         private void getListProduct()
         {
-            ListProduct = productData.getProductCategory(selectFamily.Name).Result;
+            ListProduct = _productCache.getProductCategory(selectFamily.Name).Result;
         }
 
     }

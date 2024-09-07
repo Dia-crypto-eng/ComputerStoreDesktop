@@ -90,8 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cache\ClientCache.cs" />
     <Compile Include="Cache\CreateCache.cs" />
     <Compile Include="Cache\InvoiceCache.cs" />
+    <Compile Include="Cache\ProductCache.cs" />
     <Compile Include="MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>

@@ -36,7 +36,7 @@ namespace ComputerStore
         {
 
             InitializeComponent();
-            var cacheManager = CreateCache.Instance.InvoiceCache;
+            var cacheManager = CreateCache.Instance;
 
         }
 

@@ -17,16 +17,16 @@ namespace ComputerStore.Cache
 
         public static CreateCache Instance => _instance.Value;
 
-        //public ProductCache ProductCache { get; private set; }
         public InvoiceCache InvoiceCache { get; private set; }
+        public ProductCache ProductCache { get; private set; }
+        public ClientCache ClientCache { get; private set; }
 
         public CreateCache()
         {
             // إنشاء الكاشات هنا
-            // ProductCache = new ProductCache();
-            InvoiceCache = new InvoiceCache(Client, url) ;
-
-
+            ProductCache = new ProductCache(Client, url);
+            InvoiceCache = new InvoiceCache(Client, url);
+            ClientCache = new ClientCache(Client, url);
         }
     }
 }

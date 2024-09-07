@@ -15,7 +15,7 @@ namespace ComputerStore.Cache
     internal class InvoiceCache
     {
         string url;
-        FactureData factureData;
+        private FactureData factureData;
         private BuyInvoiceItemModel buyInvoiceItemModel;
         private BuyInvoiceModel buyInvoiceModel = new BuyInvoiceModel();
         private BuyInvoiceModel buyInvoiceModeltest = new BuyInvoiceModel();
@@ -26,12 +26,18 @@ namespace ComputerStore.Cache
         { 
             this.url = url + "invoice/";
             factureData = new FactureData(client, this.url);
+            LoadAllInvoice();
+        }
+        private async void LoadAllInvoice()
+        {
+            listbuyInvoices = factureData.getAllInvoice().Result;
         }
         public async Task<List<BuyInvoiceModel>> getAllInvoice()
         {
-            listbuyInvoices = factureData.getAllInvoice().Result;
             return listbuyInvoices;
         }
+       
+
         public async Task<ObservableCollection<BuyInvoiceItemModel>> getListInvoiceItem(BuyInvoiceModel buyInvoice)
         {
             if (buyInvoice.Id == 0)

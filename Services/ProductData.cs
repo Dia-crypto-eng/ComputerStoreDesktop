@@ -1,4 +1,5 @@
 ﻿using ComputerStore.Models;
+using ComputerStore.Views.Clients;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,18 +15,14 @@ namespace ComputerStore.DATA
     {
 
         private HttpClient Client;
+        private string url;
         public ProductData(HttpClient Client,string url)
         {
-         
-        
+            this.Client = Client;
+            this.url = url;
         }
 
-        public ProductData()
-        {
-            Client = new HttpClient();
-
-        }
-
+      
         private async void getFirebaseProduct()
         {
           
@@ -46,37 +43,32 @@ namespace ComputerStore.DATA
 
         public async Task<List<FamilyModel>> getAllFamily()
         {
-            List<FamilyModel> listFamily = new List<FamilyModel>();
             try
             {
-                var res = await Client.GetAsync("http://127.0.0.1:8000/product/category").ConfigureAwait(false);
+                var res = await Client.GetAsync(url+"category").ConfigureAwait(false);
                 string se = await res.Content.ReadAsStringAsync();
-                listFamily = JsonConvert.DeserializeObject<List<FamilyModel>>(se);
+                return JsonConvert.DeserializeObject<List<FamilyModel>>(se);
             }
             catch (Exception e)
             {
                 Console.WriteLine("fffffffffffff");
+                throw;
             }
-
-            return listFamily;
         }
-
 
 
         public async Task<List<ProductModel>> getProductCategory(string s)
         {
-            List<ProductModel> product = new List<ProductModel>();
             try
             {
-                var resp = await Client.GetAsync("http://127.0.0.1:8000/product/"+s).ConfigureAwait(false);
+                var resp = await Client.GetAsync(url+s).ConfigureAwait(false);
                 string se = await resp.Content.ReadAsStringAsync();
-                product = JsonConvert.DeserializeObject<List<ProductModel>>(se);
+                return JsonConvert.DeserializeObject<List<ProductModel>>(se);
             }
-            catch(Exception e) { Console.WriteLine(); }
-
-            return product;
-            
-            
+            catch(Exception e) {
+                throw;
+            }
+              
         }
 
     }

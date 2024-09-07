@@ -23,7 +23,7 @@ namespace ComputerStore.ViewModels
         private BuyInvoiceModel buyInvoice = new BuyInvoiceModel();
         private BuyInvoiceItemModel selectBuyInvoiceItemModel = new BuyInvoiceItemModel();
 
-        private ProviderViewModel providerViewModel = new ProviderViewModel();
+        private ProviderViewModel providerViewModel;
         private ProductViewModel productViewModel;
         private readonly InvoiceCache _invoiceCache;
         public ICommand AddItem { get; }
@@ -32,11 +32,6 @@ namespace ComputerStore.ViewModels
         public List<BuyInvoiceModel> ListInvoice { get { return listInvoice; } set { listInvoice = value; OnPropertyChanged("ListBuyInvoice"); } }
         public BuyInvoiceModel BuyInvoice { get { return buyInvoice; } set { buyInvoice = value; OnPropertyChanged("BuyInvoice"); } }
         public string Title { get { return title; } set { title = value; OnPropertyChanged("Title"); } }
-        public ProviderViewModel ProviderViewModel
-        {
-            get { return providerViewModel; }
-            set { providerViewModel = value; OnPropertyChanged("ProviderViewModel"); }
-        }
         public BuyInvoiceItemModel SelectBuyInvoiceItemModel
         {
             get { return selectBuyInvoiceItemModel; }
@@ -47,12 +42,18 @@ namespace ComputerStore.ViewModels
             get { return productViewModel; }
             set { productViewModel = value; OnPropertyChanged("Product"); }
         }
+        public ProviderViewModel Provider
+        {
+            get { return providerViewModel; }
+            set { providerViewModel = value; OnPropertyChanged("Provider"); }
+        }
 
         //constructor
         public BuyInvoiceViewModel()
         {
             _invoiceCache = CreateCache.Instance.InvoiceCache;
-            productViewModel = new ProductViewModel();
+            Product = new ProductViewModel();
+            Provider = new ProviderViewModel();
             clearSelectBuyInvoiceItemModel();
             AddItem = new RelayCommand(AddBuyInvoiceItem);
             ShowInvoiceDetailsCommand = new RelayCommand(ShowInvoiceDetails);

@@ -11,50 +11,47 @@ namespace ComputerStore.DATA
 {
     class ClientData
     {
-        private HttpClient Clien = new HttpClient();
+        private HttpClient Client ;
+        private string url;
+
+        public ClientData(HttpClient Client, string url) 
+        {
+            this.Client = Client;
+            this.url = url;
+        }
+
 
         public async Task<List<ClientModel>> getAllClient()
-        {
-            List<ClientModel> listClients = new List<ClientModel>();
+        {   
             try
             {
-                var res = await Clien.GetAsync("http://127.0.0.1:8000/client/").ConfigureAwait(false);
+                var res = await Client.GetAsync(url).ConfigureAwait(false);
                 string se = await res.Content.ReadAsStringAsync();
-                listClients = JsonConvert.DeserializeObject<List<ClientModel>>(se);
+                return JsonConvert.DeserializeObject<List<ClientModel>>(se);
             }
             catch (Exception e)
             {
                 Console.WriteLine("mmmmmmmmmmmmmmmmmmmm");
+                throw;
             }
 
-            return listClients;
         }
 
         public async Task<List<CompanyStatusModel>> getAllFinancialStatus()
         {
-            List<CompanyStatusModel> listClientStatus = new List<CompanyStatusModel>();
             try
             {
-                var res = await Clien.GetAsync("http://127.0.0.1:8000/client/Finance").ConfigureAwait(false);
+                var res = await Client.GetAsync(url + "Finance").ConfigureAwait(false);
                 string se = await res.Content.ReadAsStringAsync();
-                listClientStatus = JsonConvert.DeserializeObject<List<CompanyStatusModel>>(se);
-                Console.WriteLine(listClientStatus);
-
+                return JsonConvert.DeserializeObject<List<CompanyStatusModel>>(se);
             }
             catch (Exception e)
             {
                 Console.WriteLine("mmmmmmmmmmmmmmmmmmmm");
+                throw;
             }
 
-            return listClientStatus;
         }
-
-
-
-
-
-
-
 
     }
 }
