@@ -31,7 +31,7 @@ namespace ComputerStore.ViewModels
         private void getBuyInvoice()
         {
             this.BuyInvoice = _invoiceCache.getInvoice();
-            ListBuyInvoiceItem = _invoiceCache.getListInvoiceItem(BuyInvoice).Result;  
+            ListBuyInvoiceItem = _invoiceCache.getListInvoiceItem().Result;  
             //ListBuyInvoiceItem = buyInvoiceViewModel.factureData.getInvoice(buyInvoiceViewModel.BuyInvoice).Result;
         }
 

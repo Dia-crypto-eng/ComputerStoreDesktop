@@ -30,7 +30,6 @@ namespace ComputerStore.Views.Invoices
             InitializeComponent();
             buyInvoiceViewModel = new BuyInvoiceViewModel();
             this.DataContext = this.buyInvoiceViewModel;
-
             Messenger.Default.Register<ShowDetailsMessage>(this, Show);
         }
         //object sender, RoutedEventArgs e

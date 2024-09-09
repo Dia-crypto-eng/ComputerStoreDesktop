@@ -32,9 +32,10 @@
                         <Label Content="Provider" Background="Transparent" Foreground="Black" FontSize="16" FontWeight="Bold"
                                     Margin="10 0" Width="75" Height="31" HorizontalAlignment="Left" >
                         </Label>
-                        
-                        <ComboBox ItemsSource="{Binding Provider.ListClient}" Background="Transparent"
-                                        VerticalAlignment="Center"  Height="30" Margin="94,0,48,0" Foreground="#A0A0A0" SelectedIndex="0">
+
+                        <ComboBox x:Name="listClient" ItemsSource="{Binding Provider.ListClient}" Background="Transparent"
+                                        VerticalAlignment="Center"  Height="30" Margin="94,0,48,0" Foreground="#A0A0A0"
+                                        SelectedIndex="0" SelectedItem="{Binding Provider.SelectClient}"  >
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock FontWeight="Bold" FontSize="16">
@@ -48,6 +49,11 @@
                                         </TextBlock>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
+                                <ie:Interaction.Triggers>
+                                    <ie:EventTrigger EventName="SelectionChanged">
+                                    <ie:InvokeCommandAction Command="{Binding AddProviderName}" />
+                                </ie:EventTrigger>
+                                </ie:Interaction.Triggers>
                         </ComboBox>
                         
                         <Button  Background="Transparent" Foreground="Black" FontSize="11" BorderBrush="{x:Null}"

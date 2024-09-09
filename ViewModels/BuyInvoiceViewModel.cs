@@ -1,6 +1,7 @@
 ﻿using ComputerStore.Cache;
 using ComputerStore.DATA;
 using ComputerStore.Models;
+using ComputerStore.Views.Clients;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 //using Newtonsoft.Json.Linq;
@@ -27,6 +28,7 @@ namespace ComputerStore.ViewModels
         private ProductViewModel productViewModel;
         private readonly InvoiceCache _invoiceCache;
         public ICommand AddItem { get; }
+        public ICommand AddProviderName { get; }
         public ICommand ShowInvoiceDetailsCommand { get; private set; }
 
         public List<BuyInvoiceModel> ListInvoice { get { return listInvoice; } set { listInvoice = value; OnPropertyChanged("ListBuyInvoice"); } }
@@ -52,12 +54,20 @@ namespace ComputerStore.ViewModels
         public BuyInvoiceViewModel()
         {
             _invoiceCache = CreateCache.Instance.InvoiceCache;
+            _invoiceCache.InitializeValues();
             Product = new ProductViewModel();
             Provider = new ProviderViewModel();
+            _invoiceCache.selectProvider(Provider.ListClient.ElementAt(0).FirstName);
             clearSelectBuyInvoiceItemModel();
             AddItem = new RelayCommand(AddBuyInvoiceItem);
+            AddProviderName = new RelayCommand(AddInvoiceProvider);
             ShowInvoiceDetailsCommand = new RelayCommand(ShowInvoiceDetails);
             getListBuyInvoice();
+        }
+
+        private void AddInvoiceProvider()
+        {
+            _invoiceCache.selectProvider(Provider.SelectClient.FirstName);
         }
 
         private void ShowInvoiceDetails()

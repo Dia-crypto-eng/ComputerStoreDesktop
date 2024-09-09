@@ -18,7 +18,6 @@ namespace ComputerStore.Cache
         private FactureData factureData;
         private BuyInvoiceItemModel buyInvoiceItemModel;
         private BuyInvoiceModel buyInvoiceModel = new BuyInvoiceModel();
-        private BuyInvoiceModel buyInvoiceModeltest = new BuyInvoiceModel();
         private List<BuyInvoiceModel> listbuyInvoices = new List<BuyInvoiceModel>();
         private ObservableCollection<BuyInvoiceItemModel> listBuyInvoiceItem = new ObservableCollection<BuyInvoiceItemModel>();
 
@@ -27,6 +26,13 @@ namespace ComputerStore.Cache
             this.url = url + "invoice/";
             factureData = new FactureData(client, this.url);
             LoadAllInvoice();
+        }
+        // Method to reset or initialize values
+        public void InitializeValues()
+        {
+            buyInvoiceItemModel = null;
+            buyInvoiceModel = new BuyInvoiceModel();
+            listBuyInvoiceItem = new ObservableCollection<BuyInvoiceItemModel>();
         }
         private async void LoadAllInvoice()
         {
@@ -38,9 +44,9 @@ namespace ComputerStore.Cache
         }
        
 
-        public async Task<ObservableCollection<BuyInvoiceItemModel>> getListInvoiceItem(BuyInvoiceModel buyInvoice)
+        public async Task<ObservableCollection<BuyInvoiceItemModel>> getListInvoiceItem()
         {
-            if (buyInvoice.Id == 0)
+            if (this.buyInvoiceModel.Id == 0)
             { if (this.buyInvoiceItemModel == null)
                        this.listBuyInvoiceItem.Clear();
               else 
@@ -50,22 +56,26 @@ namespace ComputerStore.Cache
                }
             }
             else
-                this.listBuyInvoiceItem = factureData.getInvoice(listbuyInvoices.IndexOf(buyInvoice) + 1).Result;
+                this.listBuyInvoiceItem = factureData.getInvoice(listbuyInvoices.IndexOf(this.buyInvoiceModel) + 1).Result;
            return this.listBuyInvoiceItem;
         }
         public void addInvoiceItem(BuyInvoiceItemModel buyInvoiceItemModel)
         {
             this.buyInvoiceItemModel = buyInvoiceItemModel;
-            getListInvoiceItem(new BuyInvoiceModel());
+            getListInvoiceItem();
         }
         public void selectInvoice(BuyInvoiceModel buyInvoiceModel)
         {
-            this.buyInvoiceModeltest = buyInvoiceModel;
+            this.buyInvoiceModel = buyInvoiceModel;
+        }
+        public void selectProvider(string provider)
+        {
+            this.buyInvoiceModel.Provider = provider;
         }
 
         public BuyInvoiceModel getInvoice()
         {
-            return this.buyInvoiceModeltest;
+            return this.buyInvoiceModel;
         }
 
 

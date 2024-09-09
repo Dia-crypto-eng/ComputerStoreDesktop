@@ -52,8 +52,6 @@ namespace ComputerStore.Views
                 ModalGrid.Children.Add(addContentControl);
             }
 
-        
-            
             // عرض الـ Modal والطبقة الشفافة
             ModalGrid.Visibility = Visibility.Visible;
             OverlayGrid.Visibility = Visibility.Visible;
@@ -75,6 +73,7 @@ namespace ComputerStore.Views
             ModalGrid.Visibility = Visibility.Collapsed;
             OverlayGrid.Visibility = Visibility.Collapsed;
         }
+
     }
 
 }
