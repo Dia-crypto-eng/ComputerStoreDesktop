@@ -165,12 +165,18 @@
 
                                 <Grid Background="Black">
                                     <Label Content="Product" Foreground="White" Margin="5 0" FontWeight="DemiBold"
-                                                           FontSize="14"></Label>
-                                    <materialDesign:PackIcon Kind="Plus" MouseDown="AddProduct" Width="20" 
-                                                                         Height="20" HorizontalAlignment="Right" Foreground="#F6F7F8"/>
+                                                           FontSize="14">
+                                    </Label>
+                                    <Button x:Name="add_product" Background="Transparent"  Foreground="#F6F7F8" Click="AddContentModal" 
+                                            HorizontalAlignment="Right"  VerticalAlignment="Top" Width="35" Padding="0" 
+                                            BorderBrush="{x:Null}">
+                                        <materialDesign:PackIcon Kind="Plus" Width="20" Height="20"></materialDesign:PackIcon>
+                                    </Button>
+                                        <!--<materialDesign:PackIcon Kind="Plus"  Width="20" 
+                                               Height="20" HorizontalAlignment="Right" />-->
                                 </Grid>
-                                <StackPanel x:Name="add_product">
-                                </StackPanel>
+                                <!--<StackPanel x:Name="add_product">
+                                </StackPanel>-->
                                 <ListView x:Name="test" Height="155" ItemsSource="{Binding Product.ListProduct}"
                                                           SelectedItem="{Binding Product.SelectProduct}" >
                                   

@@ -98,6 +98,7 @@
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\CompanyStatusModel.cs" />
+    <Compile Include="Models\ProductDetailModel.cs" />
     <Compile Include="Services\BonsData.cs" />
     <Compile Include="Services\ClientData.cs" />
     <Compile Include="Services\FactureData.cs" />
@@ -262,7 +263,10 @@
     <Folder Include="Views\Reports\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AnonymosPerson.jpg" />
+    <Resource Include="Images\AnonymosPerson.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\product_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

@@ -1,4 +1,5 @@
-﻿using ComputerStore.Views;
+﻿using ComputerStore.ViewModels;
+using ComputerStore.Views;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,13 @@ namespace ComputerStore.Views
     public partial class Addfamily : UserControl
     {
         public event EventHandler CloseModal;
-        public ObservableCollection<string> Properties { get; set; }
+        private ProductViewModel productViewModel;
+  
         public Addfamily()
         {     
             InitializeComponent();
-            // Initialize the collection and bind it to the ListView
-            Properties = new ObservableCollection<string>();
-            ItemsListView.ItemsSource = Properties;
+            productViewModel = new ProductViewModel();
+            DataContext = productViewModel;
         }
 
         // Event handler for the KeyDown event
@@ -38,14 +39,12 @@ namespace ComputerStore.Views
             if (e.Key == Key.Enter)
             {
                 // Add the text to the ListView and clear the TextBox
-                Properties.Add(InputTextBox.Text);
+                productViewModel.addPropriety.Execute(null);
                 InputTextBox.Clear();
-
                 // Optionally, you can set focus back to the TextBox
                 InputTextBox.Focus();
             }
         }
-
 
         private void addFamily_Close(object sender, RoutedEventArgs e)
         {

@@ -17,6 +17,7 @@ using ComputerStore.ViewModels;
 using ComputerStore.Models;
 using MaterialDesignThemes.Wpf;
 using ComputerStore.Views.Clients;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace ComputerStore.Views
 {
@@ -33,11 +34,10 @@ namespace ComputerStore.Views
             this.DataContext = this.buyInvoiceViewModel;
             FactureDetail factureDetail = new FactureDetail();
             factureDetail.Margin = new Thickness(25, 20, 25, 20);
-            factureShow.Children.Add(factureDetail);  
+            factureShow.Children.Add(factureDetail);
         }
         private void AddContentModal(object sender, RoutedEventArgs e)
         {
-            
             if (((Button)sender).Name == "addFamily")
             {
                 var addContentControl = new Addfamily();
@@ -46,10 +46,35 @@ namespace ComputerStore.Views
                 ModalGrid.Children.Add(addContentControl);
             }
             else {
-                var addContentControl = new AddProvider();
-                addContentControl.CloseModal += Add_CloseModal;
-                ModalGrid.Children.Clear();
-                ModalGrid.Children.Add(addContentControl);
+                if (((Button)sender).Name == "add_product")
+                { 
+                    AddProduct addProduct = new AddProduct();
+                    addProduct.DataContext = ((BuyInvoiceViewModel)this.DataContext).Product;
+                    //var productViewModel = addProduct.DataContext as ProductViewModel;
+
+                    //if (productViewModel != null)
+                    //{
+                    //    Console.WriteLine("ProductViewModel has been passed successfully.");
+                    //}
+                    //else
+                    //{
+                    //    Console.WriteLine("Failed to pass ProductViewModel to addProductControl.");
+                    //}
+                    var addContentControl = addProduct;
+                    addContentControl.CloseModal += Add_CloseModal;
+                    ModalGrid.Children.Clear();
+                    ModalGrid.Children.Add(addContentControl);
+                }
+                else
+                {
+                    var addContentControl = new AddProvider();
+                    addContentControl.CloseModal += Add_CloseModal;
+                    ModalGrid.Children.Clear();
+                    ModalGrid.Children.Add(addContentControl);
+
+
+
+                }
             }
 
             // عرض الـ Modal والطبقة الشفافة
@@ -58,14 +83,14 @@ namespace ComputerStore.Views
 
         }
           
-        private void AddProduct(object sender, RoutedEventArgs e)
-            {
-             if (add_product.Children.Add(new AddProduct( )) != 0)
-                   {
-                    add_product.Children.Clear();
-                   }
+        //private void AddProduct(object sender, RoutedEventArgs e)
+        //    {
+        //     if (add_product.Children.Add(new AddProduct( )) != 0)
+        //           {
+        //            add_product.Children.Clear();
+        //           }
 
-            }
+        //    }
 
         private void Add_CloseModal(object sender, EventArgs e)
         {
