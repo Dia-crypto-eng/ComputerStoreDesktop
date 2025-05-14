@@ -9,6 +9,9 @@
              xmlns:controls="clr-namespace:ComputerStore.Views"
              mc:Ignorable="d" 
              >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -58,7 +61,7 @@
                         
                         <Button  Background="Transparent" Foreground="Black" FontSize="11" BorderBrush="{x:Null}"
                                  HorizontalAlignment="Right"  Width="35" Margin="246,11,7,10" Padding="0"
-                                Height="Auto" Click="AddContentModal">
+                                Height="Auto" Click="AddProviderModal">
                             <materialDesign:PackIcon Kind="Plus" Width="20" Height="20"></materialDesign:PackIcon>
                         </Button>
                     </Grid>
@@ -122,7 +125,7 @@
                                 <Label Content="Family" Background="Transparent" Foreground="Black" FontSize="16" FontWeight="Bold"
                                                          Margin="30 10 0 0">
                                 </Label>
-                                <Button x:Name="addFamily" Background="Transparent"   Foreground="Black" Click="AddContentModal" 
+                                <Button x:Name="addFamily" Background="Transparent"   Foreground="Black" Click="AddFamilyModal" 
                                                             HorizontalAlignment="Left"  VerticalAlignment="Top" Width="35" Padding="0" Margin="0 10"
                                                             BorderBrush="{x:Null}">
                                     <materialDesign:PackIcon Kind="Plus" Width="20" Height="20"></materialDesign:PackIcon>
@@ -167,16 +170,13 @@
                                     <Label Content="Product" Foreground="White" Margin="5 0" FontWeight="DemiBold"
                                                            FontSize="14">
                                     </Label>
-                                    <Button x:Name="add_product" Background="Transparent"  Foreground="#F6F7F8" Click="AddContentModal" 
+                                    <Button x:Name="add_product" Background="Transparent"  Foreground="#F6F7F8" Click="AddProductModal" 
+                                            Visibility="{Binding Product.IsFamilySelected, Converter={StaticResource BoolToVisConverter}}" 
                                             HorizontalAlignment="Right"  VerticalAlignment="Top" Width="35" Padding="0" 
                                             BorderBrush="{x:Null}">
                                         <materialDesign:PackIcon Kind="Plus" Width="20" Height="20"></materialDesign:PackIcon>
                                     </Button>
-                                        <!--<materialDesign:PackIcon Kind="Plus"  Width="20" 
-                                               Height="20" HorizontalAlignment="Right" />-->
                                 </Grid>
-                                <!--<StackPanel x:Name="add_product">
-                                </StackPanel>-->
                                 <ListView x:Name="test" Height="155" ItemsSource="{Binding Product.ListProduct}"
                                                           SelectedItem="{Binding Product.SelectProduct}" >
                                   
@@ -195,7 +195,7 @@
                 </Grid>
 
             </StackPanel>
-            <Border Background="White" Grid.Column="1"  CornerRadius="20" Margin="0 0 30 0" >
+            <Border Background="White" Grid.Column="1"  CornerRadius="20" Margin="0 0 30 0" Padding="15">
                 <Border.Effect>
                     <DropShadowEffect 
                          Color="Black" 
@@ -204,8 +204,9 @@
                          Opacity="0.5" 
                          BlurRadius="10"/>
                 </Border.Effect>
-                <Grid x:Name="factureShow"   >
-                </Grid>
+                <Border  x:Name="factureShow" Background="#F6F7F8" 
+                         >
+                </Border>
             </Border>
 
         </Grid>

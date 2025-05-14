@@ -35,7 +35,7 @@
                                 <!-- حقل إدخال اسم الفئة -->
                                 <Border CornerRadius="7" BorderBrush="#F6F7F8" Margin="8" Height="40" BorderThickness="3" 
                                                             Background="White" HorizontalAlignment="Right" Width="200" Padding="0" >
-                                    <TextBox   BorderBrush="#F6F7F8" FontSize="18" Margin="8 0"/>
+                                  <TextBox Text="{Binding SelectFamily.Name}"  BorderBrush="#F6F7F8" FontSize="18" Margin="8 0"/>
                                 </Border>
                             </Grid>
                         </Label>
@@ -92,9 +92,8 @@
                             <!-- زر لحفظ الفئة الجديدة -->
                             <Button Content="Save Family" HorizontalAlignment="Right" Background="Black" Width="130"  Margin="0 20" />
                      </Grid>
-                     <Grid  Background="#F6F7F8" Margin="20 0"  >
-                            <local:AddProduct ></local:AddProduct>
-                     </Grid> 
+                     <Grid x:Name="AddProductGrid" Background="#F6F7F8" Margin="20 0" />
+
 
         </DockPanel>
     </Border>

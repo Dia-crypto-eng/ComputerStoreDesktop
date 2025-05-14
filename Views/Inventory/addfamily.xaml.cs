@@ -31,6 +31,7 @@ namespace ComputerStore.Views
             InitializeComponent();
             productViewModel = new ProductViewModel();
             DataContext = productViewModel;
+            AddProductGrid.Children.Add(new AddProduct(productViewModel));
         }
 
         // Event handler for the KeyDown event

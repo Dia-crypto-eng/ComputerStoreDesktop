@@ -3,6 +3,7 @@ using ComputerStore.Models;
 using ComputerStore.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,5 +48,12 @@ namespace ComputerStore.Views
             }
         }
 
+        private void TTCNumber_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (double.TryParse(((TextBlock)sender).Text, out double calculatedAmount))
+            {
+                TTCLetter.Text = (string)new NumberToWordsConverter().Convert((int)calculatedAmount, typeof(string), null, System.Globalization.CultureInfo.CurrentCulture);
+            }
+        }
     }
 }

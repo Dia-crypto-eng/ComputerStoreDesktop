@@ -39,7 +39,5 @@ namespace ComputerStore.Models
             Amount = Price_buy * Quantity;
         }
 
-
-
     }
 }

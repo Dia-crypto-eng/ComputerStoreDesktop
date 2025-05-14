@@ -22,10 +22,11 @@ namespace ComputerStore.ViewModels
         private string title = "Buy Invoice";
         private List<BuyInvoiceModel> listInvoice = new List<BuyInvoiceModel>();
         private BuyInvoiceModel buyInvoice = new BuyInvoiceModel();
-        private BuyInvoiceItemModel selectBuyInvoiceItemModel = new BuyInvoiceItemModel();
 
+        private BuyInvoiceItemModel selectBuyInvoiceItemModel = new BuyInvoiceItemModel();
         private ProviderViewModel providerViewModel;
         private ProductViewModel productViewModel;
+
         private readonly InvoiceCache _invoiceCache;
         public ICommand AddItem { get; }
         public ICommand AddProviderName { get; }
@@ -75,7 +76,7 @@ namespace ComputerStore.ViewModels
             if (BuyInvoice != null)
             {
                 _invoiceCache.selectInvoice(BuyInvoice);
-                Messenger.Default.Send(new ShowDetailsMessage());
+                Messenger.Default.Send("");
             }
         }
 
@@ -102,7 +103,5 @@ namespace ComputerStore.ViewModels
 
     }
 
-    public class ShowDetailsMessage
-    {
-    }
+   
 }

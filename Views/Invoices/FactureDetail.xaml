@@ -6,62 +6,89 @@
         xmlns:local="clr-namespace:ComputerStore.Views"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:ie="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:math="http://hexinnovation.com/math" 
-             >
+        Height="842"   Width="595"  >
     <!--Icon="C:\Users\Basbas\Desktop\Nouveau dossier\NEW_COBRA\front-end/cobra (3).ico"-->
     <UserControl.Resources>
         <math:MathConverter x:Key="Math" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
     </UserControl.Resources>
-    
+
     <Grid >
 
-        <Grid x:Name="BECH"   Background="#FFD6DFF0" >
+        <Grid x:Name="BECH"   Background="White" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="5*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0">
-
-                <Label  Content="Facture" Background="{x:Null}" Foreground="Black" FontSize="30" 
-              HorizontalAlignment="Left" Height="50" Margin="20,15,0,0" VerticalAlignment="Top"
+            <Image x:Name="image1" Source="../../Images/entete.jpg"   Grid.Row="0"  Stretch="Fill" />
+            <Grid Grid.Row="1">
+                <TextBlock  Text="Facture" Background="{x:Null}" Foreground="Black" FontSize="36" 
+              HorizontalAlignment="Left" Height="60" Margin="26,25,0,0" VerticalAlignment="Top"
               Width="245" FontWeight="Black"/>
+                <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="16" Margin="26 14">
+                    <Run Text="n=°" FontWeight="Bold"></Run>
+                    <Run Text="{Binding BuyInvoice.Id}"></Run>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20 0">
+                    <Run Text="Date:" FontWeight="Bold"></Run>
+                    <Run Text="{Binding BuyInvoice.Date}"></Run>
+                </TextBlock>
 
             </Grid>
 
-            <Border Background="#FFF3F3F3"  HorizontalAlignment="Left" Height="64" Margin="20,0,0,0"
-                     VerticalAlignment="Center" Width="290" Grid.Row="1">
+            <Grid Grid.Row="2">
+                <StackPanel  HorizontalAlignment="Left"  Margin="26,0,0,0"  VerticalAlignment="Top">
+                    <TextBlock>
+                        <Run Text="Activité  :" FontWeight="Bold"></Run>
+                        <Run Text="vente de matériel informatique"></Run>
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="Adresse :" FontWeight="Bold"></Run>
+                        <Run Text="14,chemin Mohamed Ali, Biskra"></Run>
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="RC  :" FontWeight="Bold"></Run>
+                        <Run Text="05/00 - 099999 B05"></Run>
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="NIF :" FontWeight="Bold"></Run>
+                        <Run Text="0015663336"></Run>
+                    </TextBlock>
+                    <TextBlock>
+                            <Run Text="NIS  :" FontWeight="Bold"></Run>
+                            <Run Text="001615663369"></Run>
+                    </TextBlock>
+                    <TextBlock>
+                        <Run Text="Téléphone  :" FontWeight="Bold"></Run>
+                        <Run Text="023 23 23 23"></Run>
+                    </TextBlock>
 
 
-                <StackPanel  HorizontalAlignment="Left"  Margin="16,0,0,0"
-                                Width="244" Height="45" VerticalAlignment="Top">
-                    
-                        <StackPanel  Orientation="Horizontal" Height="15">
-                            <Label Width="104" Content="Facture n=°" Foreground="Black" FontSize="8" Padding="0"/>
-                        <TextBlock Width="142"  Text="{Binding BuyInvoice.Id}" Foreground="Black" FontSize="8" Margin="1"/>
-                        </StackPanel>
-                        <StackPanel  Orientation="Horizontal" Height="15">
-                            <Label Width="104" Content="Fournisseur:" Foreground="Black" FontSize="8"  Padding="0"/>
-                        <TextBlock Width="141" Text="{Binding BuyInvoice.Provider}" Foreground="Black" FontSize="8" Margin="1"/>
-                        </StackPanel>
-                        <StackPanel  Orientation="Horizontal" Height="15">
-                            <Label Width="104" Content="Date:" Foreground="Black" FontSize="8" Padding="0"/>
-                        <TextBlock Width="141" Text="{Binding BuyInvoice.Date}" Foreground="Black" FontSize="8" Margin="1"/>
-                        </StackPanel>
-                    
                 </StackPanel>
 
-            </Border>
-            
+                <StackPanel  HorizontalAlignment="Right"  Margin="16,0,0,0" 
+                 Width="244"  VerticalAlignment="Top">
 
-            <DataGrid x:Name="factureTable" ItemsSource="{Binding Path=ListBuyInvoiceItem}" 
-                      Grid.Row="2" ColumnWidth="Auto" FontSize="15" Height="Auto" Margin="20,0,0,1" 
-                      ColumnHeaderStyle="{StaticResource ResourceKey=hd}" 
-                      HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="520" 
-                      Foreground="#DD000000" BorderBrush="#FFF7F7F7" Background="#FFF3F3F3" 
-                      RowBackground="#F6F7F8" AutoGenerateColumns="False" >
+                    
+                    <TextBlock>
+                        <Run Text="Fournisseur:" FontWeight="Bold"></Run>
+                        <Run Text="{Binding BuyInvoice.Provider}"></Run>
+                    </TextBlock>
+                    
+                </StackPanel>
+            </Grid>
+            <DataGrid x:Name="factureTable" ItemsSource="{Binding Path=ListBuyInvoiceItem}" Background="White"
+                      Grid.Row="3" ColumnWidth="Auto" FontSize="12" Height="Auto"  IsReadOnly="True"
+                      HorizontalAlignment="Center" VerticalAlignment="Stretch"  Width="Auto" Foreground="#DD000000"
+                       BorderBrush="#FFF7F7F7" SelectedItem="{Binding Path=SelectBuyInvoiceItem}"
+                      RowBackground="White" AutoGenerateColumns="False" >
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Item" Binding="{Binding IdInvoiceElement}" />
                     <DataGridTextColumn Header="Category" Binding="{Binding CategoryProduct}" />
@@ -71,34 +98,69 @@
                     <DataGridTextColumn Header="QTY" Binding="{Binding Quantity}" />
                     <DataGridTextColumn Header="COST" Binding="{Binding Amount}" />
 
-
                 </DataGrid.Columns>
+                <ie:Interaction.Triggers>
+                    <ie:EventTrigger EventName="SelectionChanged" >
+                        <ie:InvokeCommandAction Command="{Binding visibilityModify}" />
+                    </ie:EventTrigger>
+                </ie:Interaction.Triggers>
             </DataGrid>
 
 
 
 
-            <StackPanel Grid.Row="3"  Background="#FFE9F1F7" HorizontalAlignment="Left"
-                        Margin="20,5,0,0" VerticalAlignment="Top"  Width="520" >
-                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" >
+            <StackPanel Grid.Row="4"  Background="White" HorizontalAlignment="Center"
+                       VerticalAlignment="Top"  Width="520" >
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" >
                     <Label  Width="56" Content="SUBTOTAL" Foreground="Black" FontSize="9"></Label>
                     <TextBlock Width="42" Text="{Binding BuyInvoice.Amount}" Foreground="Black" FontSize="9" Margin="0,4,0,1" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  >
                     <Label  Width="56" Content="TVA" Foreground="Black" FontSize="9"></Label>
                     <TextBlock Width="42" Text="{Binding BuyInvoice.Amount, ConverterParameter=x*19/100, 
                         Converter={StaticResource Math} }" Foreground="Black" FontSize="9" Margin="0,4,0,1">
-                  
-                        </TextBlock>
+
+                    </TextBlock>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  >
                     <Label Width="56" Content="TOTAL" Foreground="Black" FontSize="9"></Label>
-                    <TextBlock Width="42" Text="{Binding BuyInvoice.Amount, ConverterParameter=x*119/100, 
-                        Converter={StaticResource Math} }" Foreground="Black" FontSize="9" Margin="0,4,0,1"/>
+                    <TextBlock x:Name="TTCNumber" Width="42" Text="{Binding BuyInvoice.Amount, ConverterParameter=x*119/100, 
+                        Converter={StaticResource Math} , NotifyOnTargetUpdated=True}" Foreground="Black" FontSize="9"
+                        TargetUpdated="TTCNumber_TargetUpdated" Margin="0,4,0,1"/>
                 </StackPanel>
             </StackPanel>
-
+            <Grid Grid.Row="5">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="20 10" >
+                    <TextBlock Text="Arrêtée la présente facture à la somme de" FontWeight="Bold"></TextBlock>
+                    <TextBlock x:Name="TTCLetter"></TextBlock>
+                </StackPanel>
+                <TextBlock Text="signature" FontWeight="Bold" HorizontalAlignment="Right" Margin="80 10"></TextBlock>
+            </Grid>
         </Grid>
-        <Button  Content="PRINT" Click="Button_Click_1" Margin="451,23,26,480"  Background="Black"/>
+        <Button  Background="Transparent" Foreground="Black" FontSize="11" BorderBrush="{x:Null}"
+          HorizontalAlignment="Right"  Width="35"  Padding="0"
+         Height="Auto" Click="Button_Click_1" Margin="0,120,377,690" >
+            <materialDesign:PackIcon Kind="Printer" Width="20" Height="20" RenderTransformOrigin="0.542,0.55"></materialDesign:PackIcon>
+        </Button>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                    Margin="0,282,31,0">
+            <Button  Background="Transparent" Foreground="Black" FontSize="11" BorderBrush="{x:Null}"
+                     HorizontalAlignment="Right"  Width="35"  Padding="0" Height="Auto"
+                     Visibility="{Binding IsModifiable, Converter={StaticResource BoolToVisConverter}}">
+                <materialDesign:PackIcon Kind="CheckBold" Width="20" Height="20"></materialDesign:PackIcon>
+            </Button>
+
+            <Button  Background="Transparent" Foreground="Black" FontSize="11" BorderBrush="{x:Null}"
+                     HorizontalAlignment="Right"  Width="35"  Padding="0" Height="Auto"
+                     Visibility="{Binding IsModifiable, Converter={StaticResource BoolToVisConverter}}" >
+                <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20" HorizontalAlignment="Center"></materialDesign:PackIcon>
+            </Button>
+            <Button  Background="Transparent" Foreground="Black" FontSize="11" BorderBrush="{x:Null}"
+                     HorizontalAlignment="Right"  Width="35"  Padding="0" Height="Auto"
+                     Visibility="{Binding IsModifiable, Converter={StaticResource BoolToVisConverter}}">
+                <materialDesign:PackIcon Kind="Delete" Width="20" Height="20"></materialDesign:PackIcon>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

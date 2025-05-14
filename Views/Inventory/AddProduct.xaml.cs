@@ -22,13 +22,12 @@ namespace ComputerStore.Views
     /// Interaction logic for AddProduct.xaml
     /// </summary>
     public partial class AddProduct : UserControl
-    {   //private byte id_family;
+    {  
         public event EventHandler CloseModal;
-
-        public AddProduct()
+        internal AddProduct(ProductViewModel productViewModel)
         {
-            //this.id_family = 0;
             InitializeComponent();
+            this.DataContext = productViewModel;
         }
 
         private void OpenFileButton_Click(object sender, RoutedEventArgs e)

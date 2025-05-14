@@ -30,17 +30,23 @@ namespace ComputerStore.Views.Invoices
             InitializeComponent();
             buyInvoiceViewModel = new BuyInvoiceViewModel();
             this.DataContext = this.buyInvoiceViewModel;
-            Messenger.Default.Register<ShowDetailsMessage>(this, Show);
+            Messenger.Default.Register<string>(this, Show);
         }
         //object sender, RoutedEventArgs e
        
-        void Show(ShowDetailsMessage message)
+        void Show(string message)
         {
             Grid D = Adds.GetParent<Grid>(HeadPage);
             D.Children.RemoveAt(0);
             BodyPage.Children.Clear();
-            FactureDetail factureDetail = new FactureDetail();
-            factureDetail.Margin = new Thickness(200, 60, 200, 60);
+
+            Viewbox factureDetail = new Viewbox
+            {
+                Width = 371,  // العرض المصغر
+                Height = 526, // الارتفاع المصغر
+                Child = new FactureDetail() // إضافة الـ UserControl إلى الـ Viewbox
+            };
+            //factureDetail.Margin = new Thickness(200, 20, 200, 20);
             BodyPage.Children.Add(factureDetail);
         }
 

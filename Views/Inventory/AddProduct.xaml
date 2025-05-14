@@ -6,38 +6,16 @@
              xmlns:local="clr-namespace:ComputerStore.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" x:Name="addpct">
-
-    <!--<StackPanel Orientation="Vertical">
-        <Label  Content="Add product" FontSize="15" FontWeight="DemiBold" Foreground="Black"></Label>
-        <StackPanel Orientation="Horizontal" Height="30">
-            <Label Content="Name" Foreground="Black" Width="100"></Label>
-            <TextBox x:Name="NAME" Width="100"></TextBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Height="30">
-            <Label Content="Code" Foreground="Black" Width="100"></Label>
-            <TextBox x:Name="CODE" Width="100"></TextBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Height="30">
-            <Label Content="PriceBuy"  Foreground="Black" Width="100"></Label>
-            <TextBox x:Name="PRICE_BUY" Text="0" Width="100"></TextBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Height="30">
-            <Label Content="PriceSell" Foreground="Black" Width="100"></Label>
-            <TextBox x:Name="PRICE_SELL" Text="0" Width="100"></TextBox>
-        </StackPanel>
-        <Grid>
-
-            <Button Content="SAVE" Click="SAVE" Background="Black" Foreground="White" Margin="90,10,90,0" RenderTransformOrigin="0.247,0.706"/>
-        </Grid>
-    </StackPanel>-->
-
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+    </UserControl.Resources>
     <DockPanel Background="Transparent"  >
 
         <Grid  Height="62" DockPanel.Dock="Top">
-            <Button Background="Transparent"   Foreground="Black" Click="addProduct_Close" 
-                         HorizontalAlignment="Left"  VerticalAlignment="Top" Width="35" Padding="0" Margin="10 17"
-                         BorderBrush="{x:Null}">
-                <materialDesign:PackIcon Kind="CloseOutline" Width="20" Height="20"></materialDesign:PackIcon>
+            <Button Background="Transparent"   Foreground="Black" Click="addProduct_Close" BorderBrush="{x:Null}"
+                    Visibility="{Binding IsFamilyView, Converter={StaticResource BoolToVisConverter}}" 
+                    HorizontalAlignment="Left"  VerticalAlignment="Top" Width="35" Padding="0" Margin="10 17">
+                <materialDesign:PackIcon Kind="CloseOutline" Width="20" Height="20" ></materialDesign:PackIcon>
             </Button>
             <Grid  Margin="50 0 0 0" >
                 <TextBlock VerticalAlignment="Center"  Margin="0 " Text="Add Product" 
@@ -97,14 +75,14 @@
                                 <ColumnDefinition ></ColumnDefinition>
                                 <ColumnDefinition ></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Margin="10 5" FontSize="16" Content="Name"></Label>
-                            <Label Grid.Row="1" Grid.Column="0" Margin="10 5" FontSize="16"  Content="Code"></Label>
-                            <Label Grid.Row="2" Grid.Column="0" Margin="10 5" FontSize="16" Content="Mark"></Label>
-                            <Label Grid.Row="3" Grid.Column="0" Margin="10 5" FontSize="16" Content="Description"></Label>
-                            <TextBox Grid.Row="0" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10" HorizontalAlignment ="Stretch" Text="{}"></TextBox>
-                            <TextBox Grid.Row="1" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10"  Text=""></TextBox>
-                            <TextBox Grid.Row="2" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10" Text="{}"></TextBox>
-                            <TextBox Grid.Row="3" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10" Text="{}" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
+                            <Label Grid.Row="0" Grid.Column="0" Margin="10 3" FontSize="16" Content="Name"></Label>
+                            <Label Grid.Row="1" Grid.Column="0" Margin="10 3" FontSize="16"  Content="Code"></Label>
+                            <Label Grid.Row="2" Grid.Column="0" Margin="10 3" FontSize="16" Content="Mark"></Label>
+                            <Label Grid.Row="3" Grid.Column="0" Margin="10 3" FontSize="16" Content="Description"></Label>
+                            <TextBox Grid.Row="0" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10 8" Text="{Binding NewProduct.Name}"></TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10 8"  Text="{Binding NewProduct.Code}"></TextBox>
+                            <TextBox Grid.Row="2" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10 8" Text="{Binding NewProduct.Mark}"></TextBox>
+                            <TextBox Grid.Row="3" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10 8" Text="{}" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
                         </Grid>
                     </Grid>
                 </Border>
@@ -114,10 +92,15 @@
 
         </Border>
 
-        <Grid DockPanel.Dock="Bottom" Margin="10 0" >
+        <StackPanel DockPanel.Dock="Bottom" Margin="10 0" Orientation="Horizontal" FlowDirection="RightToLeft">
             <!-- زر لحفظ الفئة الجديدة -->
-            <Button Content="Save Product" HorizontalAlignment="Right" Background="Black" Width="130"  Margin="0 10" />
-        </Grid>
+            <Button Content="Save" Background="Black" Width="70"  Margin="0 10 10 10" 
+                    Visibility="{Binding IsFamilyView, Converter={StaticResource BoolToVisConverter}}" 
+                    Command="{Binding saveProduct}"/>
+            <Button Content="Add" Background="Black" Width="70"  Margin="0 10" 
+                    Command="{Binding addProduct}"/>
+            
+        </StackPanel>
 
         <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
              BorderThickness="0.5" DockPanel.Dock="Right" >
@@ -169,7 +152,7 @@
                     <ScrollViewer>
                         <StackPanel Orientation="Vertical">
                             <!-- استخدام ItemsControl لعرض عناصر الـ Dictionary -->
-                            <ItemsControl ItemsSource="{Binding Specifications}">
+                            <ItemsControl ItemsSource="{Binding NewProduct.Specifications}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
