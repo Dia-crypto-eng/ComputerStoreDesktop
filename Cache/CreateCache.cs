@@ -20,6 +20,7 @@ namespace ComputerStore.Cache
         public InvoiceCache InvoiceCache { get; private set; }
         public ProductCache ProductCache { get; private set; }
         public ClientCache ClientCache { get; private set; }
+        public InventoryCache InventoryCache { get; private set; }
 
         public CreateCache()
         {
@@ -27,6 +28,8 @@ namespace ComputerStore.Cache
             ProductCache = new ProductCache(Client, url);
             InvoiceCache = new InvoiceCache(Client, url);
             ClientCache = new ClientCache(Client, url);
+            InventoryCache = new InventoryCache(Client, url);
+
         }
     }
 }

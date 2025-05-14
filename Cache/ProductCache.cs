@@ -18,7 +18,7 @@ namespace ComputerStore.Cache
         private ProductData productData;
         private List<FamilyModel> listFamily = new List<FamilyModel>();
         private FamilyModel familyModel = new FamilyModel();
-        //private List<ProductModel> products = new List<ProductModel>();
+        private List<ProductModel> products = new List<ProductModel>();
         Dictionary<string, List<ProductModel>> listProducts = new Dictionary<string, List<ProductModel>>();
 
         public ProductCache(HttpClient client, string url)
@@ -31,6 +31,7 @@ namespace ComputerStore.Cache
         public void InitializeValues()
         {
             familyModel = new FamilyModel();
+            products = new List<ProductModel>();
         }
         public void AddPropriety(string selectPropriety)
         {
@@ -60,6 +61,14 @@ namespace ComputerStore.Cache
         public ObservableCollection<string> getProperties()
         {
             return this.familyModel.Properties;
+        }
+        public async void addProduct(ProductModel productModel)
+        {
+            products.Add(productModel);
+        }
+        public async void saveProducts()
+        {
+            productData.addProduct(products);  
         }
     }
 }

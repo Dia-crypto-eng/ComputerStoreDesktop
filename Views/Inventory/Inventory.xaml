@@ -4,19 +4,230 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ComputerStore.Views.Inventory"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:ie="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              >
-    <Grid  Grid.Column="1"  Grid.Row="1" Height="600" Width="769">
-        <Grid x:Name="HeadPage"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="769" Height="157" Background="White">
-            <Grid Background="#F6F7F8"  HorizontalAlignment="Left" Height="137" Margin="3,10,0,0" VerticalAlignment="Top" Width="762">
+    <Grid   Height="Auto" HorizontalAlignment="Stretch" Margin="0" Background="#F6F7F8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="597" />
+        </Grid.RowDefinitions>
 
-                <Label Background="{x:Null}" Foreground="#FF5789F5" FontSize="40" Content="STOCK" HorizontalAlignment="Left" Height="65" Margin="10,37,0,0" VerticalAlignment="Top" Width="245"/>
+        <Grid x:Name="HeadPage" Grid.Row="0"  VerticalAlignment="Top" HorizontalAlignment="Stretch"  
+      Background="#F6F7F8" >
+            <Label Content="Inventory" Background="{x:Null}" Foreground="Black" FontSize="30"  FontWeight="Bold"
+               HorizontalAlignment="Left" Height="50" Margin="10,9,0,15" VerticalAlignment="Top"
+               Width="245"/>
 
-            </Grid>
         </Grid>
 
-        <DataGrid x:Name="Dtgd" ColumnWidth="3*" HorizontalAlignment="Left"  Height="446" VerticalAlignment="Bottom" Width="769"  Foreground="#DD000000" BorderBrush="#FFF7F7F7"  HorizontalContentAlignment="Center" Background="#FF016DB2" RowBackground="Azure" Visibility="Visible"/>
+        <DockPanel x:Name="BodyPage" Grid.Row="1" >
+            <Border DockPanel.Dock="Left" Background="White" CornerRadius="10" Margin="0 0 5 0"
+                    >
+                <Border.Effect>
+                    <DropShadowEffect 
+                         Color="Black" 
+                         Direction="315" 
+                         ShadowDepth="5" 
+                         Opacity="0.5" 
+                         BlurRadius="10"/>
+                </Border.Effect>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Family" Background="Transparent" Foreground="Black" FontSize="16" FontWeight="Bold"
+                                     Margin="10 10 10 0">
+                    </Label>
 
+                    <ListView Name="ListFamily"  ItemsSource="{Binding Product.ListFamily}"
+                                          SelectedItem="{Binding Product.SelectFamily}"  Height="286" Margin="10"
+                                          HorizontalAlignment="Stretch">
+
+
+                        <ListView.ItemTemplate  >
+                            <DataTemplate >
+                                <Border BorderBrush="#F6F7F8">
+                                    <TextBlock   Foreground="Black" Text="{Binding Name}" ></TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                        <ie:Interaction.Triggers>
+                            <ie:EventTrigger EventName="SelectionChanged">
+                                <ie:InvokeCommandAction Command="{Binding chooseCategory}" />
+                            </ie:EventTrigger>
+                        </ie:Interaction.Triggers>
+
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" CornerRadius="10" Margin="0 0 20 0" BorderThickness="0.5" DockPanel.Dock="Right" >
+                <Border.Effect>
+                    <DropShadowEffect 
+                        Color="Black" 
+                        Direction="315" 
+                        ShadowDepth="5" 
+                        Opacity="0.5" 
+                        BlurRadius="10" />
+                </Border.Effect>
+
+                <DockPanel Background="Transparent"  >
+
+                    <Grid  Height="62" DockPanel.Dock="Top">
+                      
+                        <Label  Margin="50 0 10 0">
+                            <Grid Width="208" >
+                                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 8" Text="Product Details" 
+                                                   FontSize="23" FontWeight="Bold"  />
+                                
+                            </Grid>
+                        </Label>
+
+                    </Grid>
+                    <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
+                            BorderThickness="0.5" DockPanel.Dock="Top" >
+                        <Border.Effect>
+                            <DropShadowEffect 
+                                                 Color="Black" 
+                                                 Direction="315" 
+                                                 ShadowDepth="5" 
+                                                 Opacity="0.5" 
+                                                 BlurRadius="10" />
+                        </Border.Effect>
+                        <Grid >
+                            <Image x:Name="image1" Source="../../Images/product_icon.png"  Height="110" Width="220" 
+                                    Stretch="Fill" Margin="10" />
+
+                        </Grid>
+                    </Border>
+                    <StackPanel DockPanel.Dock="Bottom" Margin="0" Height="150" Orientation="Vertical" >
+                        <!-- زر لحفظ الفئة الجديدة -->
+                        <Label  Margin="10 5" FontSize="16" Content="Description"></Label>
+                        <TextBox Grid.Row="3" Grid.Column="1" Background="#F6F7F8" Width="230" Height="100"
+                                  Text="{}" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
+                        
+                    </StackPanel>
+
+                    <Border  Background="White" CornerRadius="10" Margin="10 0" BorderThickness="0.5"  >
+                        <Border.Effect>
+                            <DropShadowEffect 
+                          Color="Black" 
+                          Direction="315" 
+                          ShadowDepth="5" 
+                          Opacity="0.5" 
+                          BlurRadius="10" />
+                        </Border.Effect>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 6" Text="Specifications" 
+                                       FontSize="16" FontWeight="DemiBold"/>
+
+
+                            <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="1" Margin="10 5" Grid.Row="1">
+                           
+                                <ScrollViewer>
+                                    <StackPanel Orientation="Vertical">
+                                        <!-- استخدام ItemsControl لعرض عناصر الـ Dictionary -->
+                                        <ItemsControl ItemsSource="{Binding Product.SelectProduct.Specifications}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <!-- المفتاح (Key) يمثل اسم الحقل -->
+                                                        <Label Content="{Binding Key, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="10 5" />
+                                                        <!-- القيمة (Value) تمثل الـ TextBox الفارغ لإدخال البيانات -->
+                                                        <TextBox Text="{Binding Value,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" 
+                                             Margin="10 5" Background="#F6F7F8"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+
+                        </Grid>
+                    </Border>
+
+
+                </DockPanel>
+            </Border>
+
+            <Border  Background="White" CornerRadius="25"  BorderThickness="1" Margin="0 0 20 0">
+                <Border.Effect>
+                    <DropShadowEffect 
+                                Color="Black" 
+                                Direction="315" 
+                                ShadowDepth="5" 
+                                Opacity="0.5" 
+                                BlurRadius="10"/>
+                </Border.Effect>
+                <!--Foreground="#DD000000"ListInventories-->
+                <DataGrid x:Name="Dtgd" ItemsSource="{Binding Path=ListInventories}" IsReadOnly="True" ColumnWidth="3*" 
+                      BorderBrush="#FFF7F7F7" Margin="0 30 0 0" Foreground="Black" FontSize="12" FontWeight="DemiBold"
+                      HorizontalContentAlignment="Center" Background="#F6F7F8" RowBackground="White" 
+                      Visibility="Visible" SelectedItem="{Binding Path=SelectInventory}" AutoGenerateColumns="False"  >
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Height" Value="40"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"  >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Code" Binding="{Binding Code}"  >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Mark" Binding="{Binding Mark}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                    <ie:Interaction.Triggers>
+                        <ie:EventTrigger EventName="SelectionChanged">
+                            <ie:InvokeCommandAction Command="{Binding chooseInventory}" />
+                        </ie:EventTrigger>
+                    </ie:Interaction.Triggers>
+                </DataGrid>
+            </Border>
+        </DockPanel>
     </Grid>
 
 
