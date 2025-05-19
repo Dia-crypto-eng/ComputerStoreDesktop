@@ -33,7 +33,8 @@ namespace ComputerStore
             InitializeComponent();
 
             listHome1 = new List<itemHome>(){
-                                           new itemHome { Icon = "Home", Name = "Home" },
+                                           new itemHome{ Icon="ChartBar",Name="analysis" ,
+                                                          SubItems={ "Dashboard", "Operating Expenses" }},
                                            new itemHome { Icon = "FileTableOutline", Name = "Invoices" ,
                                                           SubItems={ "View Invoices", "View Returns" }
                                                         },
