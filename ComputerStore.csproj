@@ -131,6 +131,12 @@
     <Compile Include="Views\Clients\Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Home\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Expenses.xaml.cs">
+      <DependentUpon>Expenses.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Inventory\Damaged.xaml.cs">
       <DependentUpon>Damaged.xaml</DependentUpon>
     </Compile>
@@ -188,6 +194,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Clients\Clients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home\Expenses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,7 +283,6 @@
     <Resource Include="lightning.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Reports\" />
   </ItemGroup>
   <ItemGroup>

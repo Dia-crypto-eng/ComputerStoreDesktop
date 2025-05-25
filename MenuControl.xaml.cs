@@ -1,4 +1,5 @@
 ﻿using ComputerStore.Views.Clients;
+using ComputerStore.Views.Home;
 using ComputerStore.Views.Inventory;
 using ComputerStore.Views.Invoices;
 using MaterialDesignThemes.Wpf;
@@ -72,6 +73,12 @@ namespace ComputerStore
             {
                 switch (selectedItem)
                 {
+                    case "Dashboard":
+                        { page = new Dashboard(); }
+                        break;
+                    case "Operating Expenses":
+                        { page = new Expenses(); }
+                        break;
                     case "View Invoices":
                         { page = new BuyInvoice(); }
                     break;
