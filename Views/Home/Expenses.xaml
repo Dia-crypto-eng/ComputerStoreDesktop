@@ -4,9 +4,197 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ComputerStore.Views.Home"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             mc:Ignorable="d" >
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" >
+            <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
+          BorderThickness="0.5" DockPanel.Dock="Left" >
+                <Border.Effect>
+                    <DropShadowEffect 
+                               Color="Black" 
+                               Direction="315" 
+                               ShadowDepth="5" 
+                               Opacity="0.5" 
+                               BlurRadius="10" />
+                </Border.Effect>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20 8" Text="Taxes" 
+                                            FontSize="20" FontWeight="Bold"/>
+
+
+                    <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="1" Margin="10" Grid.Row="1">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                              
+                            </Grid.RowDefinitions>
+                            <!--Source="{Binding filePath}"-->
+
+                            <Label Grid.Row="0" Grid.Column="0" Margin="10" Content="Taxe 01"></Label>
+                            <Label Grid.Row="1" Grid.Column="0" Margin="10" Content="Taxe 02"></Label>
+                            <Label Grid.Row="2" Grid.Column="0" Margin="10" Content="Taxe 03"></Label>
+                            
+                            <TextBox Grid.Row="0" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10" HorizontalAlignment ="Stretch" Text="{}"></TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="1" Background="#F6F7F8" Width="200"  Margin="10"  Text=""></TextBox>
+                            <TextBox Grid.Row="2" Grid.Column="1" Background="#F6F7F8" Width="200"  Margin="10" Text="{}"></TextBox>
+                            
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Border>
+            <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
+           BorderThickness="0.5" DockPanel.Dock="Right" >
+                <Border.Effect>
+                    <DropShadowEffect 
+                                Color="Black" 
+                                Direction="315" 
+                                ShadowDepth="5" 
+                                Opacity="0.5" 
+                                BlurRadius="10" />
+                </Border.Effect>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" 
+                               Margin="20 8" Text="Utilities" 
+                                             FontSize="20" FontWeight="Bold"/>
+
+
+                    <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="1" Margin="10" Grid.Row="1">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                               
+                            </Grid.RowDefinitions>
+                            <!--Source="{Binding filePath}"-->
+
+                            <Label Grid.Row="0" Grid.Column="0" Margin="10" Content="Electricity"></Label>
+                            <Label Grid.Row="1" Grid.Column="0" Margin="10" Content="Water"></Label>
+                            <Label Grid.Row="2" Grid.Column="0" Margin="10" Content="Internet/Phone"></Label>
+                            
+                            <TextBox Grid.Row="0" Grid.Column="1" Background="#F6F7F8" Width="200" Margin="10" HorizontalAlignment ="Stretch" Text="{}"></TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="1" Background="#F6F7F8" Width="200"  Margin="10"  Text=""></TextBox>
+                            <TextBox Grid.Row="2" Grid.Column="1" Background="#F6F7F8" Width="200"  Margin="10" Text="{}"></TextBox>
+                           
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Border>
+        </DockPanel>
+
+        <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
+          BorderThickness="0.5" DockPanel.Dock="Top"  >
+            <Border.Effect>
+                <DropShadowEffect 
+                               Color="Black" 
+                               Direction="315" 
+                               ShadowDepth="5" 
+                               Opacity="0.5" 
+                               BlurRadius="10" />
+            </Border.Effect>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center"
+                           Margin="20 8" Text="Salaries and Wages" 
+                                            FontSize="20" FontWeight="Bold"/>
+
+
+                <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="1" Margin="10" Grid.Row="1">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+
+                        </Grid.RowDefinitions>
+                        <!--Source="{Binding filePath}"-->
+
+                        <Label Grid.Row="0" Grid.Column="0" Margin="10" Content="Employee Salaries"></Label>
+                        <Label Grid.Row="0" Grid.Column="1" Margin="10" Content="Bonues"></Label>
+                        <Label Grid.Row="0" Grid.Column="2" Margin="10" Content="Other"></Label>
+                       
+                        <TextBox Grid.Row="1" Grid.Column="0" Background="#F6F7F8" Width="200" Margin="10" HorizontalAlignment ="Stretch" Text="{}"></TextBox>
+                        <TextBox Grid.Row="1" Grid.Column="1" Background="#F6F7F8" Width="200"  Margin="10"  Text=""></TextBox>
+                        <TextBox Grid.Row="1" Grid.Column="2" Background="#F6F7F8" Width="200"  Margin="10" Text="{}"></TextBox>
+                      </Grid>
+                </Border>
+
+            </Grid>
+        </Border>
+        <Border  Background="White" CornerRadius="10" Margin="10 0 10 10"
+                  BorderThickness="0.5" DockPanel.Dock="Bottom" >
+            <Border.Effect>
+                <DropShadowEffect 
+                                       Color="Black" 
+                                       Direction="315" 
+                                       ShadowDepth="5" 
+                                       Opacity="0.5" 
+                                       BlurRadius="10" />
+            </Border.Effect>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" 
+                           Margin="20 8" Text="Other Operating Expenses" 
+                                                    FontSize="20" FontWeight="Bold"/>
+
+
+                <Border BorderThickness="1" BorderBrush="Black"  Grid.Column="1" Margin="10" Grid.Row="1">
+                    <Grid >
+                        <Expander Header="مصاريف إضافية" IsExpanded="False">
+                            <DataGrid Grid.Column="2" AutoGenerateColumns="False"
+                                      CanUserAddRows="False"
+                              HeadersVisibility="Column" Margin="0,0,0,0">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="الفئة"  Width="*"/>
+                                    <DataGridTextColumn Header="المبلغ"  Width="*"/>
+                                    <DataGridTextColumn Header="التاريخ"  Width="*"/>
+                                    <DataGridTextColumn Header="ملاحظات"  Width="2*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Expander>
+                        </Grid>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </DockPanel>
 </UserControl>
