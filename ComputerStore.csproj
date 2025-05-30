@@ -98,9 +98,12 @@
     </ApplicationDefinition>
     <Compile Include="Cache\ClientCache.cs" />
     <Compile Include="Cache\CreateCache.cs" />
+    <Compile Include="Cache\DashboardCache.cs" />
+    <Compile Include="Cache\ExpensesCache.cs" />
     <Compile Include="Cache\InventoryCache.cs" />
     <Compile Include="Cache\InvoiceCache.cs" />
     <Compile Include="Cache\ProductCache.cs" />
+    <Compile Include="Cache\ReportCache.cs" />
     <Compile Include="MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
@@ -109,18 +112,24 @@
     <Compile Include="NumberToWordsConverter.cs" />
     <Compile Include="Services\BonsData.cs" />
     <Compile Include="Services\ClientData.cs" />
+    <Compile Include="Services\DashboardData.cs" />
+    <Compile Include="Services\ExpensesData.cs" />
     <Compile Include="Services\FactureData.cs" />
     <Compile Include="Services\InventoryData.cs" />
     <Compile Include="Services\PanneData.cs" />
     <Compile Include="Services\ProductData.cs" />
+    <Compile Include="Services\ReportData.cs" />
     <Compile Include="Services\StockData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BuyInvoiceItemViewModel.cs" />
     <Compile Include="ViewModels\BuyInvoiceViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\ExpensesViewModel.cs" />
     <Compile Include="ViewModels\IInvoiceViewModel.cs" />
     <Compile Include="ViewModels\InventoryViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ProviderViewModel.cs" />
+    <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\SellInoiceViewModel.cs" />
     <Compile Include="Views\Clients\AddProvider.xaml.cs">
       <DependentUpon>AddProvider.xaml</DependentUpon>
