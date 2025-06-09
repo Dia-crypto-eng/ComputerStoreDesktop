@@ -76,7 +76,8 @@
                                          BlurRadius="10" />
                     </Border.Effect>
                     <StackPanel Orientation="Vertical">
-                        <Label Content="Add Item" Background="Transparent" Foreground="Black" FontSize="16" FontWeight="Bold"
+                        <Label Content="Add Item" Background="Transparent" Foreground="Black"
+                               FontSize="16" FontWeight="Bold"
                                  Margin="10 10 0 0">
                         </Label>
                         <Border BorderBrush="#F6F7F8" BorderThickness="3" Margin="5" Padding="5">
@@ -126,7 +127,8 @@
                                                          Margin="30 10 0 0">
                                 </Label>
                                 <Button x:Name="addFamily" Background="Transparent"   Foreground="Black" Click="AddFamilyModal" 
-                                                            HorizontalAlignment="Left"  VerticalAlignment="Top" Width="35" Padding="0" Margin="0 10"
+                                                            HorizontalAlignment="Left"  VerticalAlignment="Top" Width="35" Padding="0"
+                                        Margin="0 10"
                                                             BorderBrush="{x:Null}">
                                     <materialDesign:PackIcon Kind="Plus" Width="20" Height="20"></materialDesign:PackIcon>
                                 </Button>

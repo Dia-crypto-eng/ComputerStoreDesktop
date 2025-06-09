@@ -25,12 +25,14 @@ namespace ComputerStore.Views.Invoices
     public partial class BuyInvoice : UserControl
     {
         BuyInvoiceViewModel buyInvoiceViewModel;
+        UserControl add;
         public BuyInvoice()
         {
             InitializeComponent();
             buyInvoiceViewModel = new BuyInvoiceViewModel();
             this.DataContext = this.buyInvoiceViewModel;
             Messenger.Default.Register<string>(this, Show);
+            add = new addFacture();
         }
         //object sender, RoutedEventArgs e
        
@@ -57,7 +59,7 @@ namespace ComputerStore.Views.Invoices
             {
                 HeadPage.Children.RemoveAt(1);
                 BodyPage.Children.Clear();
-                BodyPage.Children.Add(new addFacture());
+                BodyPage.Children.Add(this.add);
                 iconCase.Kind = PackIconKind.ArrowLeftBold;
             }
             else
@@ -86,10 +88,12 @@ namespace ComputerStore.Views.Invoices
             if (isBuyButton)
             {
                 this.DataContext = new BuyInvoiceViewModel();
+                add = new addFacture();
             }
             else
             {
                 this.DataContext = new SellInoiceViewModel();
+                add = new AddReceipt();
             }
 
         }

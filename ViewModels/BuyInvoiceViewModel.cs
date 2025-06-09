@@ -20,6 +20,7 @@ namespace ComputerStore.ViewModels
     internal class BuyInvoiceViewModel :BaseViewModel,IInvoiceViewModel<BuyInvoiceModel>
     {
         private string title = "Buy Invoice";
+        //1
         private List<BuyInvoiceModel> listInvoice = new List<BuyInvoiceModel>();
         private BuyInvoiceModel buyInvoice = new BuyInvoiceModel();
 
@@ -76,7 +77,7 @@ namespace ComputerStore.ViewModels
             if (BuyInvoice != null)
             {
                 _invoiceCache.selectInvoice(BuyInvoice);
-                Messenger.Default.Send("");
+                Messenger.Default.Send("go to buyInvoice.xaml");
             }
         }
 

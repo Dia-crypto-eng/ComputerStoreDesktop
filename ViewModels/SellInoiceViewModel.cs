@@ -10,6 +10,7 @@ namespace ComputerStore.ViewModels
 {
     internal class SellInoiceViewModel : BaseViewModel,IInvoiceViewModel<SellInoiceModel>
     {
+        //1
         private List<SellInoiceModel> listSellInoice;
         private string title = "Sell Invoice";
         public SellInoiceViewModel()

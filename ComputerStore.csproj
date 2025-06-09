@@ -161,6 +161,9 @@
     <Compile Include="Views\Inventory\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Invoices\AddReceipt.xaml.cs">
+      <DependentUpon>AddReceipt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Invoices\BonsDetail.xaml.cs">
       <DependentUpon>BonsDetail.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
     </Compile>
     <Compile Include="Views\Invoices\FactureDetail.xaml.cs">
       <DependentUpon>FactureDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Invoices\Receipt.xaml.cs">
+      <DependentUpon>Receipt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Invoices\SellInvoice.xaml.cs">
       <DependentUpon>SellInvoice.xaml</DependentUpon>
@@ -234,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Invoices\AddReceipt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Invoices\BonsDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -245,6 +255,10 @@
     <Page Include="Views\Invoices\FactureDetail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Invoices\Receipt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Invoices\SellInvoice.xaml">
       <SubType>Designer</SubType>
