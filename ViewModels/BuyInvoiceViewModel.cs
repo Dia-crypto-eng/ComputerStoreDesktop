@@ -17,48 +17,30 @@ using System.Windows.Input;
 
 namespace ComputerStore.ViewModels
 {
-    internal class BuyInvoiceViewModel :BaseViewModel,IInvoiceViewModel<BuyInvoiceModel>
+    internal class BuyInvoiceViewModel :IInvoiceViewModel<BuyInvoiceModel>
     {
-        private string title = "Buy Invoice";
-        //1
-        private List<BuyInvoiceModel> listInvoice = new List<BuyInvoiceModel>();
-        private BuyInvoiceModel buyInvoice = new BuyInvoiceModel();
 
         private BuyInvoiceItemModel selectBuyInvoiceItemModel = new BuyInvoiceItemModel();
-        private ProviderViewModel providerViewModel;
-        private ProductViewModel productViewModel;
-
-        private readonly InvoiceCache _invoiceCache;
+        
+        private readonly InvoiceCache<BuyInvoiceModel, BuyInvoiceItemModel> _invoiceCache;
         public ICommand AddItem { get; }
         public ICommand AddProviderName { get; }
         public ICommand ShowInvoiceDetailsCommand { get; private set; }
 
-        public List<BuyInvoiceModel> ListInvoice { get { return listInvoice; } set { listInvoice = value; OnPropertyChanged("ListBuyInvoice"); } }
-        public BuyInvoiceModel BuyInvoice { get { return buyInvoice; } set { buyInvoice = value; OnPropertyChanged("BuyInvoice"); } }
-        public string Title { get { return title; } set { title = value; OnPropertyChanged("Title"); } }
+        
         public BuyInvoiceItemModel SelectBuyInvoiceItemModel
         {
             get { return selectBuyInvoiceItemModel; }
             set { selectBuyInvoiceItemModel = value; OnPropertyChanged("SelectBuyInvoiceItemModel"); }
         }
-        public ProductViewModel Product
-        {
-            get { return productViewModel; }
-            set { productViewModel = value; OnPropertyChanged("Product"); }
-        }
-        public ProviderViewModel Provider
-        {
-            get { return providerViewModel; }
-            set { providerViewModel = value; OnPropertyChanged("Provider"); }
-        }
+
 
         //constructor
-        public BuyInvoiceViewModel()
+        public BuyInvoiceViewModel():base()
         {
+            Title = "Buy Invoice";
             _invoiceCache = CreateCache.Instance.InvoiceCache;
-            _invoiceCache.InitializeValues();
-            Product = new ProductViewModel();
-            Provider = new ProviderViewModel();
+            _invoiceCache.InitializeValues(null,new BuyInvoiceModel(),new ObservableCollection<BuyInvoiceItemModel>());
             _invoiceCache.selectProvider(Provider.ListClient.ElementAt(0).FirstName);
             clearSelectBuyInvoiceItemModel();
             AddItem = new RelayCommand(AddBuyInvoiceItem);

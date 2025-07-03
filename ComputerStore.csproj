@@ -108,6 +108,7 @@
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\CompanyStatusModel.cs" />
+    <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\ProductDetailModel.cs" />
     <Compile Include="NumberToWordsConverter.cs" />
     <Compile Include="Services\BonsData.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Services\DashboardData.cs" />
     <Compile Include="Services\ExpensesData.cs" />
     <Compile Include="Services\FactureData.cs" />
+    <Compile Include="Services\IInvoiceData.cs" />
     <Compile Include="Services\InventoryData.cs" />
     <Compile Include="Services\PanneData.cs" />
     <Compile Include="Services\ProductData.cs" />

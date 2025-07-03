@@ -1,5 +1,6 @@
 ﻿using ComputerStore.DATA;
 using ComputerStore.Models;
+using ComputerStore.Services;
 using ComputerStore.Views.Invoices;
 using Newtonsoft.Json;
 using System;
@@ -12,70 +13,67 @@ using System.Threading.Tasks;
 
 namespace ComputerStore.Cache
 {
-    internal class InvoiceCache
+    internal class InvoiceCache<T,T2>
+        where T : InvoiceModel
+        where T2 : BuyInvoiceItemModel
     {
-        string url;
-        private FactureData factureData;
-        private BuyInvoiceItemModel buyInvoiceItemModel;
-        private BuyInvoiceModel buyInvoiceModel = new BuyInvoiceModel();
-        private List<BuyInvoiceModel> listbuyInvoices = new List<BuyInvoiceModel>();
-        private ObservableCollection<BuyInvoiceItemModel> listBuyInvoiceItem = new ObservableCollection<BuyInvoiceItemModel>();
+        private IInvoiceData<T, T2> factureData;
+        private T2 InvoiceItemModel;
+        private T InvoiceModel;
+        private List<T> listInvoices = new List<T>();
+        private ObservableCollection<T2> listInvoiceItem = new ObservableCollection<T2>();
 
-        public InvoiceCache(HttpClient client , string url) 
+        public InvoiceCache(IInvoiceData<T, T2> factureData) 
         { 
-            this.url = url + "invoice/";
-            factureData = new FactureData(client, this.url);
+            this.factureData = factureData;
             LoadAllInvoice();
         }
         // Method to reset or initialize values
-        public void InitializeValues()
+        public void InitializeValues(T2 t2, T t, ObservableCollection<T2> listT2)
         {
-            buyInvoiceItemModel = null;
-            buyInvoiceModel = new BuyInvoiceModel();
-            listBuyInvoiceItem = new ObservableCollection<BuyInvoiceItemModel>();
+            InvoiceItemModel = t2;
+            InvoiceModel = t;
+            listInvoiceItem = listT2;
         }
         private async void LoadAllInvoice()
         {
-            listbuyInvoices = factureData.getAllInvoice().Result;
-        }
-        public async Task<List<BuyInvoiceModel>> getAllInvoice()
-        {
-            return listbuyInvoices;
+            listInvoices = factureData.getAllInvoice().Result;
         }
        
-
-        public async Task<ObservableCollection<BuyInvoiceItemModel>> getListInvoiceItem()
+        public async Task<List<T>> getAllInvoice()
         {
-            if (this.buyInvoiceModel.Id == 0)
-            { if (this.buyInvoiceItemModel == null)
-                       this.listBuyInvoiceItem.Clear();
-              else 
-               { 
-                    this.listBuyInvoiceItem.Add(this.buyInvoiceItemModel);
-                    this.buyInvoiceModel.Amount += this.buyInvoiceItemModel.Amount;
-               }
-            }
-            else
-                this.listBuyInvoiceItem = factureData.getInvoice(listbuyInvoices.IndexOf(this.buyInvoiceModel) + 1).Result;
-           return this.listBuyInvoiceItem;
+            return listInvoices;
         }
-        public void addInvoiceItem(BuyInvoiceItemModel buyInvoiceItemModel)
+
+        public async Task<ObservableCollection<T2>> getListInvoiceItem()
         {
-            this.buyInvoiceItemModel = buyInvoiceItemModel;
+            if (this.InvoiceModel.Id != 0)
+            {
+                this.listInvoiceItem = factureData.getInvoice(listInvoices.IndexOf(this.InvoiceModel) + 1).Result;
+            }
+            return this.listInvoiceItem;
+        }
+
+        public void addInvoiceItem(T2 buyInvoiceItemModel)
+        {
+            this.listInvoiceItem.Add(buyInvoiceItemModel);
+            this.InvoiceModel.AddAmountOf(buyInvoiceItemModel);
             getListInvoiceItem();
         }
-        public void selectInvoice(BuyInvoiceModel buyInvoiceModel)
+     
+        public void selectInvoice(T buyInvoiceModel)
         {
-            this.buyInvoiceModel = buyInvoiceModel;
+            this.InvoiceModel = buyInvoiceModel;
         }
+      
         public void selectProvider(string provider)
         {
-            this.buyInvoiceModel.Provider = provider;
+            this.InvoiceModel.Provider = provider;
         }
 
-        public BuyInvoiceModel getInvoice()
+        public T getInvoice()
         {
-            return this.buyInvoiceModel;
+            return this.InvoiceModel;
         }
 
 

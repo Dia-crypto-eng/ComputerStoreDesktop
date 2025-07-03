@@ -17,7 +17,7 @@ namespace ComputerStore.ViewModels
     {
         private ObservableCollection<BuyInvoiceItemModel> listBuyInvoiceItem = new ObservableCollection<BuyInvoiceItemModel>();
         private BuyInvoiceModel buyInvoiceModel;
-        private readonly InvoiceCache _invoiceCache;
+        private readonly InvoiceCache<BuyInvoiceModel, BuyInvoiceItemModel> _invoiceCache;
         private BuyInvoiceItemModel selectBuyInvoiceItem ;
         private bool isModifiableItem = false;
         private bool isModifiable = false;

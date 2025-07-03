@@ -8,20 +8,14 @@ using System.Threading.Tasks;
 
 namespace ComputerStore.Models
 {
-    internal class BuyInvoiceModel : BaseModel
+    internal class BuyInvoiceModel : InvoiceModel
     {
-        private byte id;
-        private string provider;
-        private float amount;
-        private DateTime date;
+      
         public BuyInvoiceModel()
         {
         }
 
-        public byte Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
-        public string Provider { get { return provider; } set { provider = value; OnPropertyChanged("Provider"); } }
-        public float Amount { get { return amount; } set { amount = value; OnPropertyChanged("Amount"); } }
-        public DateTime Date { get { return date; } set { date = value; OnPropertyChanged("Date"); } }
+       
 
 
     }

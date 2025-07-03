@@ -1,4 +1,7 @@
 ﻿using ComputerStore.DATA;
+using ComputerStore.Models;
+using ComputerStore.Services;
+using ComputerStore.Views.Clients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +19,7 @@ namespace ComputerStore.Cache
 
         public static CreateCache Instance => _instance.Value;
 
-        public InvoiceCache InvoiceCache { get; private set; }
+        public InvoiceCache<BuyInvoiceModel, BuyInvoiceItemModel> InvoiceCache { get; private set; }
         public ProductCache ProductCache { get; private set; }
         public ClientCache ClientCache { get; private set; }
         public InventoryCache InventoryCache { get; private set; }
@@ -28,7 +31,7 @@ namespace ComputerStore.Cache
         {
             // إنشاء الكاشات هنا
             ProductCache = new ProductCache(Client, url);
-            InvoiceCache = new InvoiceCache(Client, url);
+            InvoiceCache = new InvoiceCache<BuyInvoiceModel, BuyInvoiceItemModel>(new IInvoiceData<BuyInvoiceModel, BuyInvoiceItemModel>(Client, this.url + "invoice/"));
             ClientCache = new ClientCache(Client, url);
             InventoryCache = new InventoryCache(Client, url);
             DashboardCache = new DashboardCache(Client, url);
