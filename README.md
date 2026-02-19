@@ -1,3 +1,5 @@
+Work in Progress — This project is under active development. Features and documentation will be updated as the project evolves.
+
 ## ComputerStore WPF Application
 
 - **Architecture (MVVM)**  
