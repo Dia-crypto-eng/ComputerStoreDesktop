@@ -23,6 +23,7 @@ namespace ComputerStore.ViewModels
         private BuyInvoiceItemModel selectBuyInvoiceItemModel = new BuyInvoiceItemModel();
         
         private readonly InvoiceCache<BuyInvoiceModel, BuyInvoiceItemModel> _invoiceCache;
+
         public ICommand AddItem { get; }
         public ICommand AddProviderName { get; }
         public ICommand ShowInvoiceDetailsCommand { get; private set; }
