@@ -35,7 +35,7 @@ namespace ComputerStore.ViewModels
             get { return providerViewModel; }
             set { providerViewModel = value; OnPropertyChanged("Provider"); }
         }
-        public List<T> ListInvoice { get { return listInvoice; } set { listInvoice = value; OnPropertyChanged("ListBuyInvoice"); } }
+        public List<T> ListInvoice { get { return listInvoice; } set { listInvoice = value; OnPropertyChanged("ListInvoice"); } }
         public T BuyInvoice { get { return buyInvoice; } set { buyInvoice = value; OnPropertyChanged("BuyInvoice"); } }
     }
 }

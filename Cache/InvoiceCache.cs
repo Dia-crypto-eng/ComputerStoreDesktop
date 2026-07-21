@@ -15,10 +15,8 @@ namespace ComputerStore.Cache
 {
     internal class InvoiceCache<T,T2>
         where T : InvoiceModel
-        where T2 : BuyInvoiceItemModel
     {
         private IInvoiceData<T, T2> factureData;
-        private T2 InvoiceItemModel;
         private T InvoiceModel;
         private List<T> listInvoices = new List<T>();
         private ObservableCollection<T2> listInvoiceItem = new ObservableCollection<T2>();
@@ -29,9 +27,8 @@ namespace ComputerStore.Cache
             LoadAllInvoice();
         }
         // Method to reset or initialize values
-        public void InitializeValues(T2 t2, T t, ObservableCollection<T2> listT2)
+        public void InitializeValues( T t, ObservableCollection<T2> listT2)
         {
-            InvoiceItemModel = t2;
             InvoiceModel = t;
             listInvoiceItem = listT2;
         }

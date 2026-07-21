@@ -21,9 +21,10 @@ namespace ComputerStore.Models
         public string Provider { get { return provider; } set { provider = value; OnPropertyChanged("Provider"); } }
         public float Amount { get { return amount; } set { amount = value; OnPropertyChanged("Amount"); } }
         public DateTime Date { get { return date; } set { date = value; OnPropertyChanged("Date"); } }
-        public void AddAmountOf(BuyInvoiceItemModel item)
+        public void AddAmountOf(Object item)
         {
-            Amount += item.Amount;
+            BuyInvoiceItemModel sumDef = (BuyInvoiceItemModel)item;
+            Amount += sumDef.Amount;
         }
     }
 }

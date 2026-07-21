@@ -41,7 +41,7 @@ namespace ComputerStore.ViewModels
         {
             Title = "Buy Invoice";
             _invoiceCache = CreateCache.Instance.InvoiceCache;
-            _invoiceCache.InitializeValues(null,new BuyInvoiceModel(),new ObservableCollection<BuyInvoiceItemModel>());
+            _invoiceCache.InitializeValues(new BuyInvoiceModel(),new ObservableCollection<BuyInvoiceItemModel>());
             _invoiceCache.selectProvider(Provider.ListClient.ElementAt(0).FirstName);
             clearSelectBuyInvoiceItemModel();
             AddItem = new RelayCommand(AddBuyInvoiceItem);
