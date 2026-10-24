@@ -18,7 +18,6 @@ namespace ComputerStore.Cache
         private ProductData productData;
         private List<FamilyModel> listFamily = new List<FamilyModel>();
         private FamilyModel familyModel = new FamilyModel();
-        private List<ProductModel> products = new List<ProductModel>();
         Dictionary<string, List<ProductModel>> listProducts = new Dictionary<string, List<ProductModel>>();
 
         public ProductCache(HttpClient client, string url)
@@ -31,12 +30,10 @@ namespace ComputerStore.Cache
         public void InitializeValues()
         {
             familyModel = new FamilyModel();
-            products = new List<ProductModel>();
         }
         public void AddPropriety(string selectPropriety)
         {
             this.familyModel.Properties.Add(selectPropriety);
-            Console.WriteLine(this.familyModel.Properties.Last()) ;
         }
         public void selectFamily(FamilyModel familyModel)
         {
@@ -62,13 +59,11 @@ namespace ComputerStore.Cache
         {
             return this.familyModel.Properties;
         }
-        public async void addProduct(ProductModel productModel)
+        public async void addProduct(ProductModel product)
         {
-            products.Add(productModel);
+            // products.Add(productModel);
+            productData.addProduct(product);
         }
-        public async void saveProducts()
-        {
-            productData.addProduct(products);  
-        }
+       
     }
 }

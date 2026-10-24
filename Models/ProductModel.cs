@@ -16,7 +16,7 @@ namespace ComputerStore.Models
         private string name;
         private string mark;
         private string code;
-        private string family;
+        private string category;
         private ObservableCollection<ProductDetailModel> specifications;
         //private JObject specifications = new JObject();
         //private ObservableCollection<ProductDetailModel> specs;
@@ -27,7 +27,7 @@ namespace ComputerStore.Models
         public byte IdProduct { get { return idProduct; } set { idProduct = value; OnPropertyChanged("IdProduct"); } }
         public string Code { get { return code; } set { code = value; OnPropertyChanged("Code"); } }
         public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
-        public string Family { get { return family; } set { family = value; OnPropertyChanged("Family"); } }
+        public string Family { get { return category; } set { category = value; OnPropertyChanged("Family"); } }
         public string Mark { get { return mark;  } set { mark = value; OnPropertyChanged("Mark"); } }
 
         public Object Specifications { 

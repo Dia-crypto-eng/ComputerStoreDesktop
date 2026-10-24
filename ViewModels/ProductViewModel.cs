@@ -43,7 +43,6 @@ namespace ComputerStore.ViewModels
 
         public ICommand chooseFamily { get; }
         public ICommand addPropriety { get; }
-        public ICommand addProduct { get; }
         public ICommand saveProduct { get; }
 
         public ProductViewModel() {
@@ -51,7 +50,6 @@ namespace ComputerStore.ViewModels
             getListFamily();
             chooseFamily = new RelayCommand(ShowProd);
             addPropriety = new RelayCommand(AddPropriety);
-            addProduct = new RelayCommand(AddNewProduct);
             saveProduct = new RelayCommand(SaveProducts);
             _productCache.InitializeValues();
             IsFamilyView = false;
@@ -60,19 +58,18 @@ namespace ComputerStore.ViewModels
 
         private void SaveProducts()
         {
-            _productCache.saveProducts();
+            NewProduct.Family = selectFamily.Name;
+            _productCache.addProduct(NewProduct);
+            // Console.WriteLine(JsonConvert.SerializeObject(NewProduct).ToString()) ;
+            NewProduct = new ProductModel();
+            _productCache.selectFamily(selectFamily);
+            ResetSpecifications();
+
         }
 
         private void AddNewProduct()
         {
-            NewProduct.Family = selectFamily.Name;
-            Console.WriteLine(JsonConvert.SerializeObject(NewProduct).ToString()) ;
-            _productCache.addProduct(NewProduct);
-            NewProduct = new ProductModel();
-            specifications.Clear();
-            foreach (var property in _productCache.getProperties())
-                specifications.Add(new ProductDetailModel { Key = property, Value = "" });
-            NewProduct.Specifications = specifications;
+           
         }
 
         private void AddPropriety()
@@ -89,16 +86,21 @@ namespace ComputerStore.ViewModels
             IsFamilyView = true;
             IsFamilySelected = true;
             NewProduct.Specifications = new ObservableCollection<ProductDetailModel>();
-            specifications.Clear();
-            foreach (var property in _productCache.getProperties())
-                specifications.Add(new ProductDetailModel { Key = property, Value = "" });
-            NewProduct.Specifications = specifications;
+            ResetSpecifications();
             ListProduct = _productCache.getProductCategory().Result;
         }
 
         private void getListFamily()
         {
             ListFamily = _productCache.getAllFamily().Result;
+        }
+
+        private void ResetSpecifications()
+        {
+            specifications.Clear();
+            foreach (var property in _productCache.getProperties())
+                specifications.Add(new ProductDetailModel { Key = property, Value = "" });
+            NewProduct.Specifications = specifications;
         }
 
 

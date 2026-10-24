@@ -33,14 +33,15 @@ namespace ComputerStore.DATA
 
         }
 
-        public async void addProduct(List<ProductModel> products)
+        public async Task addProduct(ProductModel product)
         {
             try
             {
-                string jsonString = JsonConvert.SerializeObject(products);
+                //Console.WriteLine(product);
+                string jsonString = JsonConvert.SerializeObject(product);
                 StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 Console.WriteLine(jsonString);
-                await Client.PostAsync(url, content);
+                //await Client.PostAsync(url, content);
             }
             catch (Exception e)
             {
