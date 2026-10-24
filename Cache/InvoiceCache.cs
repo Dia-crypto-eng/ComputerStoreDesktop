@@ -1,4 +1,8 @@
-﻿using ComputerStore.DATA;
+﻿// ============================================================================
+// InvoiceCache<T, T2> - تعليقات بناءً على المسارات الثلاثة
+// ============================================================================
+
+using ComputerStore.DATA;
 using ComputerStore.Models;
 using ComputerStore.Services;
 using ComputerStore.Views.Invoices;
@@ -13,6 +17,13 @@ using System.Threading.Tasks;
 
 namespace ComputerStore.Cache
 {
+    /// **أربعة methods توضح المسارات:**
+    /// 
+    /// 1. LoadAllInvoice() - مسار الـ initialization (Singleton عند البدء)
+    /// 2. getAllInvoice() - مسار 2.1 (عرض الفواتير)
+    /// 3. getListInvoiceItem() + selectInvoice() - مسار 2.2 (عرض التفاصيل)
+    /// 4. addInvoiceItem() - مسار 2.3 (إضافة فاتورة)
+
     internal class InvoiceCache<T,T2>
         where T : InvoiceModel
     {
