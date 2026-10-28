@@ -22,24 +22,25 @@ namespace ComputerStore.ViewModels
     {
         private bool isFamilyView ;
         private bool isFamilySelected = false;
-        private List<FamilyModel> listFamily = new List<FamilyModel>();
-        private List<ProductModel> listProduct = new List<ProductModel>();
+        private ObservableCollection<FamilyModel> listFamily = new ObservableCollection<FamilyModel>();
+        private ObservableCollection<ProductModel> listProduct = new ObservableCollection<ProductModel>();
         private FamilyModel selectFamily = new FamilyModel();
         private ProductModel selectProduct = new ProductModel();
-        private ProductModel newProduct = new ProductModel();
-        private ObservableCollection<ProductDetailModel> specifications;
+        //private ProductModel newProduct = new ProductModel();
+        private ProductPostModel newProduct = new ProductPostModel();
+        public ProductPostModel NewProduct { get { return newProduct; } set { newProduct = value; OnPropertyChanged("NewProduct"); } }
         private string selectPropriety = "";
         
         private readonly ProductCache _productCache;
 
         public bool IsFamilyView { get { return isFamilyView; } set { isFamilyView = value; OnPropertyChanged("IsFamilyView"); } }
         public bool IsFamilySelected { get { return isFamilySelected; } set { isFamilySelected = value; OnPropertyChanged("IsFamilySelected"); } }
-        public List<FamilyModel> ListFamily { get { return listFamily; } set { listFamily = value; OnPropertyChanged("ListFamily"); } }
-        public List<ProductModel> ListProduct { get { return listProduct; } set { listProduct = value; OnPropertyChanged("ListProduct"); } }        
+        public ObservableCollection<FamilyModel> ListFamily { get { return listFamily; } set { listFamily = value; OnPropertyChanged("ListFamily"); } }
+        public ObservableCollection<ProductModel> ListProduct { get { return listProduct; } set { listProduct = value; OnPropertyChanged("ListProduct"); } }        
         public FamilyModel SelectFamily { get { return selectFamily; } set { selectFamily = value; OnPropertyChanged("SelectFamily"); } }
         public ProductModel SelectProduct { get { return selectProduct; } set { selectProduct = value; OnPropertyChanged("SelectProduct"); } }
         public string SelectPropriety { get { return selectPropriety; } set { selectPropriety = value; OnPropertyChanged("SelectPropriety"); } }
-        public ProductModel NewProduct { get { return newProduct; } set { newProduct = value; OnPropertyChanged("NewProduct"); } }
+        //public ProductModel NewProduct { get { return newProduct; } set { newProduct = value; OnPropertyChanged("NewProduct"); } }
 
         public ICommand chooseFamily { get; }
         public ICommand addPropriety { get; }
@@ -51,19 +52,31 @@ namespace ComputerStore.ViewModels
             chooseFamily = new RelayCommand(ShowProd);
             addPropriety = new RelayCommand(AddPropriety);
             saveProduct = new RelayCommand(SaveProducts);
-            _productCache.InitializeValues();
+            //_productCache.InitializeValues();
             IsFamilyView = false;
-            specifications = new ObservableCollection<ProductDetailModel>();
         }
 
-        private void SaveProducts()
+        private ProductPostModel NewProductFor(FamilyModel family)
         {
-            NewProduct.Family = selectFamily.Name;
-            _productCache.addProduct(NewProduct);
+            return new ProductPostModel
+            {
+                Family = family,
+                Specifications = new ObservableCollection<ProductDetailModel>(
+                    family.Properties.Select(p => new ProductDetailModel { Key = p, Value = "" }))
+            };
+        }
+        private async void SaveProducts()
+        {
+            if (!await _productCache.addProduct(NewProduct)) return;
+            NewProduct = NewProductFor(NewProduct.Family);
+            ListProduct = _productCache.getProductCategory(SelectFamily).Result;
+
+            //NewProduct.Family = selectFamily.Name;
+            //_productCache.addProduct(NewProduct);
             // Console.WriteLine(JsonConvert.SerializeObject(NewProduct).ToString()) ;
-            NewProduct = new ProductModel();
-            _productCache.selectFamily(selectFamily);
-            ResetSpecifications();
+            //NewProduct = new ProductModel();
+            //_productCache.selectFamily(selectFamily);
+            //ResetSpecifications();
 
         }
 
@@ -74,20 +87,25 @@ namespace ComputerStore.ViewModels
 
         private void AddPropriety()
         {
-            _productCache.AddPropriety(SelectPropriety);
-            if (_productCache.getProperties().LastOrDefault() is string lastProperty && lastProperty != null)
-                specifications.Add(new ProductDetailModel { Key = lastProperty, Value = "" });
-            NewProduct.Specifications = specifications;
+            NewProduct.Family.Properties.Add(SelectPropriety);
+            NewProduct.Specifications.Add(new ProductDetailModel { Key = SelectPropriety, Value = "" });
+
+            //_productCache.AddPropriety(SelectPropriety);
+            //if (_productCache.getProperties().LastOrDefault() is string lastProperty && lastProperty != null)
+            //    specifications.Add(new ProductDetailModel { Key = lastProperty, Value = "" });
+            //NewProduct.Specifications = specifications;
         }
 
         private void ShowProd()
         {
-            _productCache.selectFamily(SelectFamily);
+
+            //_productCache.selectFamily(SelectFamily);
             IsFamilyView = true;
             IsFamilySelected = true;
-            NewProduct.Specifications = new ObservableCollection<ProductDetailModel>();
-            ResetSpecifications();
-            ListProduct = _productCache.getProductCategory().Result;
+            NewProduct = NewProductFor(SelectFamily);
+            //NewProduct.Specifications = new ObservableCollection<ProductDetailModel>();
+            //ResetSpecifications();
+            ListProduct = _productCache.getProductCategory(SelectFamily).Result;
         }
 
         private void getListFamily()
@@ -95,13 +113,13 @@ namespace ComputerStore.ViewModels
             ListFamily = _productCache.getAllFamily().Result;
         }
 
-        private void ResetSpecifications()
-        {
-            specifications.Clear();
-            foreach (var property in _productCache.getProperties())
-                specifications.Add(new ProductDetailModel { Key = property, Value = "" });
-            NewProduct.Specifications = specifications;
-        }
+        //private void ResetSpecifications()
+        //{
+        //    specifications.Clear();
+        //    foreach (var property in _productCache.getProperties())
+        //        specifications.Add(new ProductDetailModel { Key = property, Value = "" });
+        //    NewProduct.Specifications = specifications;
+        //}
 
 
     }

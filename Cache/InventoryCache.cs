@@ -3,6 +3,7 @@ using ComputerStore.Models;
 using ComputerStore.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -31,7 +32,7 @@ namespace ComputerStore.Cache
             return listCategoryInventories;
             
         }
-        public void selectInventory(List<ProductModel> ListProduct)
+        public void selectInventory(ObservableCollection<ProductModel> ListProduct)
         {
             //this.buyInvoiceModel = buyInvoiceModel;
             listCategoryInventories = new List<InventoryModel>();

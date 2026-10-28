@@ -110,6 +110,7 @@
     <Compile Include="Models\CompanyStatusModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\ProductDetailModel.cs" />
+    <Compile Include="Models\ProductPostModel.cs" />
     <Compile Include="NumberToWordsConverter.cs" />
     <Compile Include="Services\BonsData.cs" />
     <Compile Include="Services\ClientData.cs" />

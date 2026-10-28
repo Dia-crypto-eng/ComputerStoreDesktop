@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -33,35 +34,49 @@ namespace ComputerStore.DATA
 
         }
 
-        public async Task addProduct(ProductModel product)
+        //public async Task addProduct(ProductModel product)
+        //{
+        //    try
+        //    {
+        //        //Console.WriteLine(product);
+        //        string jsonString = JsonConvert.SerializeObject(product);
+        //        StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+        //        Console.WriteLine(jsonString);
+        //        //await Client.PostAsync(url, content);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine("qqqqqqqqqqqqqq");
+
+        //    }
+
+        //}
+
+        public async Task<bool> addProduct(ProductPostModel product)
         {
             try
             {
-                //Console.WriteLine(product);
-                string jsonString = JsonConvert.SerializeObject(product);
-                StringContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                Console.WriteLine(jsonString);
-                //await Client.PostAsync(url, content);
+                var content = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json");
+                Console.WriteLine(JsonConvert.SerializeObject(product));
+                var res = await Client.PostAsync(url, content);
+                return res.IsSuccessStatusCode;
+                //return true;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("qqqqqqqqqqqqqq");
-
-            }
-
+            catch (Exception) { return false; }
         }
+
         public void deleteProduct()
         {
 
         }
 
-        public async Task<List<FamilyModel>> getAllFamily()
+        public async Task<ObservableCollection<FamilyModel>> getAllFamily()
         {
             try
             {
                 var res = await Client.GetAsync(url+"category").ConfigureAwait(false);
                 string se = await res.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<FamilyModel>>(se);
+                return JsonConvert.DeserializeObject<ObservableCollection<FamilyModel>>(se);
             }
             catch (Exception e)
             {
@@ -71,7 +86,7 @@ namespace ComputerStore.DATA
         }
 
 
-        public async Task<List<ProductModel>> getProductCategory(string s)
+        public async Task<ObservableCollection<ProductModel>> getProductCategory(string s)
         {
             try
             {
@@ -102,7 +117,7 @@ namespace ComputerStore.DATA
                 //var productsSpecifications = products.Select(item => item.Specifications);
                 //Console.WriteLine(productsSpecifications.ElementAt(1).ToString()) ;
                
-                return JsonConvert.DeserializeObject<List<ProductModel>>(se);
+                return JsonConvert.DeserializeObject< ObservableCollection < ProductModel >>(se);
             }
             catch(Exception e) {
                 throw;

@@ -16,9 +16,9 @@ namespace ComputerStore.Cache
     {
         string url;
         private ProductData productData;
-        private List<FamilyModel> listFamily = new List<FamilyModel>();
-        private FamilyModel familyModel = new FamilyModel();
-        Dictionary<string, List<ProductModel>> listProducts = new Dictionary<string, List<ProductModel>>();
+        private ObservableCollection<FamilyModel> listFamily = new ObservableCollection<FamilyModel>();
+        //private FamilyModel familyModel = new FamilyModel();
+        Dictionary<string, ObservableCollection<ProductModel>> listProducts = new Dictionary<string, ObservableCollection<ProductModel>>();
 
         public ProductCache(HttpClient client, string url)
         {
@@ -27,42 +27,50 @@ namespace ComputerStore.Cache
             LoadAllFamily();
             LoadAllProduct();
         }
-        public void InitializeValues()
-        {
-            familyModel = new FamilyModel();
-        }
-        public void AddPropriety(string selectPropriety)
-        {
-            this.familyModel.Properties.Add(selectPropriety);
-        }
-        public void selectFamily(FamilyModel familyModel)
-        {
-            this.familyModel = familyModel;
-        }
+        //public void InitializeValues()
+        //{
+        //    familyModel = new FamilyModel();
+        //}
+        //public void selectFamily(FamilyModel familyModel)
+        //{
+        //    this.familyModel = familyModel;
+        //}
         private async void LoadAllFamily()
         {
             listFamily = productData.getAllFamily().Result;
         }
         private async void LoadAllProduct()
         {
-            listFamily.ForEach(item => listProducts[item.Name] = productData.getProductCategory(item.Name).Result);                      
+            foreach (var item in listFamily)
+                listProducts[item.Name] = productData.getProductCategory(item.Name).Result;
         }
-        public async Task<List<FamilyModel>> getAllFamily()
+        public async Task<ObservableCollection<FamilyModel>> getAllFamily()
         {
             return listFamily;
         }
-        public async Task<List<ProductModel>> getProductCategory()
+
+        public async Task<ObservableCollection<ProductModel>> getProductCategory(FamilyModel family)
         {
-            return listProducts[familyModel.Name];
+            return listProducts.TryGetValue(family.Name, out var list) ? list : new ObservableCollection<ProductModel>();
         }
-        public ObservableCollection<string> getProperties()
+        //public async Task<List<ProductModel>> getProductCategory()
+        //{
+        //    return listProducts[familyModel.Name];
+        //}
+        //public ObservableCollection<string> getProperties()
+        //{
+        //    return this.familyModel.Properties;
+        //}
+        public async Task<bool> addProduct(ProductPostModel product)
         {
-            return this.familyModel.Properties;
-        }
-        public async void addProduct(ProductModel product)
-        {
+            if (!await productData.addProduct(product)) return false;
+            LoadAllFamily();     // أولاً: لأن LoadAllProduct تعتمد على listFamily
+            LoadAllProduct();
+            return true;
+
             // products.Add(productModel);
-            productData.addProduct(product);
+            //productData.addProduct(product);
+
         }
        
     }
